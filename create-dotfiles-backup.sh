@@ -34,7 +34,7 @@ if [ -f $braveBrowserBookmarks ]; then
     echo "."
     echo "."
     if [ -d $braveBackupDirectory ]; then
-        cp $braveBrowserBookmarks "$braveBackupDirectory/bookmarks_$currentDate"
+        cp $braveBrowserBookmarks "$braveBackupDirectory/bookmarks_$currentDate.html"
         if [ $? -eq 0 ]; then
             print_color $BOLD_GREEN "Done!"
         else
