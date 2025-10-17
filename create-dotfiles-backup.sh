@@ -60,7 +60,7 @@ backup_files() {
 		# vs code files case; also get vs code extensions
 		if [ "$1" == "VS Code settings" ]; then
 			echo "Trying to back up VS Code installed extensions..."
-			code --list-extensions >>"$vsCodeBackupDirectory/extensions.txt"
+			code --list-extensions >"$vsCodeBackupDirectory/extensions.txt"
 			if [ $? -eq 0 ]; then
 				print_color $BOLD_GREEN "Done!"
 			else
