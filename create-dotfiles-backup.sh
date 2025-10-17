@@ -1,31 +1,29 @@
 #!/bin/zsh
 
-dotfilesBackupDir="$HOME/dotfiles"
+currentDate=`date +%D_%H:%M:%S`
+
 braveBrowserBookmarks="$HOME/.config/BraveSoftware/Brave-Browser/Default/Bookmarks"
 zshConfig="$HOME/.zshrc"
 
-braveBackupDirectory="$HOME/dotfiles/brave-browser"
-zshBackupDirectory="$HOME/dotfiles/zsh-omz"
+dotfilesBackupDir="$HOME/dotfiles"
+braveBackupDirectory="$dotfilesBackupDir/brave-browser"
+zshBackupDirectory="$dotfilesBackupDir/zsh-omz"
 
 BOLD_RED='\033[1;31m'
 BOLD_GREEN='\033[1;32m'
+BOLD_YELLOW='\033[1;33m'
 NO_COLOR='\033[0m'
 
-print_red()
+print_color()
 {
-    echo -e "$BOLD_RED$1$NO_COLOR"
-}
-
-print_green()
-{
-    echo -e "$BOLD_GREEN$1$NO_COLOR"
+    echo -e "$1$2$NO_COLOR"
 }
 
 echo "-----------------------------"
 echo "------ dotfile backup -------"
 echo "-----------------------------"
 
-echo -e "Backing up files..."
+echo "Backing up files..."
 
 echo "Trying to back up brave browser bookmarks..."
 if [ -f "$braveBrowserBookmarks" ]; then
@@ -33,13 +31,15 @@ if [ -f "$braveBrowserBookmarks" ]; then
     echo "."
     echo "."
     echo "."
-    # copia lo que esta en la ruta a un archivo llamado "brave_bookmarks" en el directorio actual
-    # checkear que si el directorio no existe lo cree
-    # cp $braveBrowserBookmarks ./brave/brave_bookmarks
-    if [ -d ""]
-    print_green "Done!"
+    if [ -d "$braveBackupDirectory"]; then
+        # cp $braveBrowserBookmarks $braveBackupDirectory/"bookmarks_$currentDate"
+        print_color BOLD_GREEN "Done!"
+    else
+        print_color BOLD_YELLOW "Directory not found! Creating..."
+        # create directory
+    fi
 else
-    print_red "File not found! Skipping..."
+    print_color BOLD_RED "Files not found! Skipping..."
 fi
 
 echo "Trying to back up zsh config..."
@@ -48,9 +48,13 @@ if [ -f $zshConfig ]; then
     echo "."
     echo "."
     echo "."
-    # checkear que si el directorio no existe lo cree
-    # cp $zshConfig ./zsh-omz/zsh-config
-    print_green "Done!"
+    if [ -d "$zshBackupDirectory" ]; then
+        # cp $zshConfig ./zsh-omz/zsh-config
+        print_color BOLD_GREEN "Done!"
+    else
+        print_color BOLD_YELLOW "Directory not found! Creating..."
+        # create directory
+    fi
 else
-    print_red "File not found! Skipping..."
+    print_color BOLD_RED "File not found! Skipping..."
 fi
