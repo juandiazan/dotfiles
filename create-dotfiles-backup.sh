@@ -6,8 +6,8 @@ braveBrowserBookmarks="$HOME/.config/BraveSoftware/Brave-Browser/Default/Bookmar
 zshConfig="$HOME/.zshrc"
 
 dotfilesBackupDir="$HOME/dotfiles"
-braveBackupDirectory="$dotfilesBackupDir/test-brave"
-zshBackupDirectory="$dotfilesBackupDir/test-zsh"
+braveBackupDirectory="$dotfilesBackupDir/brave-browser"
+zshBackupDirectory="$dotfilesBackupDir/zsh-and-omz-config"
 
 BOLD_RED='\033[1;31m'
 BOLD_GREEN='\033[1;32m'
