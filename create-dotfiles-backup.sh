@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # utilities
 BOLD_RED='\033[1;31m'
@@ -42,58 +42,34 @@ create_dir_if_not_exists $vsCodeBackupDirectory
 
 echo "Backing up files..."
 
-# -------------------------------------------------------
-# ------------------------ BRAVE ------------------------
-# -------------------------------------------------------
-echo "Trying to back up brave browser bookmarks..."
-if [ -f $braveBrowserBookmarks ]; then
-	echo "File found! Backing up..."
-	cp $braveBrowserBookmarks "$braveBackupDirectory/bookmarks_$currentDate.html"
-	if [ $? -eq 0 ]; then
-		print_color $BOLD_GREEN "Done!"
-	else
-		print_color $BOLD_RED "Could not copy file."
-	fi
-else
-	print_color $BOLD_RED "Files not found! Skipping..."
-fi
+# Param 1 = name of what is being backed up
+# Param 2 = backup origin (file)
+# Param 3 = backup destination directory
+# Param 4 = name of new file
+backup_files() {
+	echo "Trying to back up $1..."
+	if [ -f $2 ]; then
+		echo "File found! Backing up..."
+		cp $2 "$3/$4"
+		if [ $? -eq 0 ]; then
+			print_color $BOLD_GREEN "Done!"
+		else
+			print_color $BOLD_RED "Could not copy file."
+		fi
 
-# -------------------------------------------------------
-# ------------------------- ZSH -------------------------
-# -------------------------------------------------------
-echo "Trying to back up zsh config..."
-if [ -f $zshConfig ]; then
-	echo "File found! Backing up..."
-	cp $zshConfig "$zshBackupDirectory/.zshrc"
-	if [ $? -eq 0 ]; then
-		print_color $BOLD_GREEN "Done!"
-	else
-		print_color $BOLD_RED "Could not copy file."
+		# vs code files case; also get vs code extensions
+		if [ "$1" == "VS Code settings" ]; then
+			echo "Trying to back up VS Code installed extensions..."
+			code --list-extensions >>"$vsCodeBackupDirectory/extensions.txt"
+			if [ $? -eq 0 ]; then
+				print_color $BOLD_GREEN "Done!"
+			else
+				print_color $BOLD_RED "Could save extensions."
+			fi
+		fi
 	fi
-else
-	print_color $BOLD_RED "File not found! Skipping..."
-fi
+}
 
-# -------------------------------------------------------
-# ----------------------- VS Code -----------------------
-# -------------------------------------------------------
-echo "Trying to back up VS Code settings..."
-if [ -f $vscodeSettings ]; then
-	echo "File found! Backing up..."
-	cp $vscodeSettings "$vsCodeBackupDirectory/settings.json"
-	if [ $? -eq 0 ]; then
-		print_color $BOLD_GREEN "Done!"
-	else
-		print_color $BOLD_RED "Could not copy file."
-	fi
-else
-	print_color $BOLD_RED "File not found! Skipping..."
-fi
-
-echo "Trying to back up VS Code installed extensions..."
-code --list-extensions >>"$vsCodeBackupDirectory/extensions.txt"
-if [ $? -eq 0 ]; then
-	print_color $BOLD_GREEN "Done!"
-else
-	print_color $BOLD_RED "Could save extensions."
-fi
+backup_files "brave browser bookmarks" $braveBrowserBookmarks $braveBackupDirectory "bookmarks_$currentDate.html"
+backup_files "zsh config" $zshConfig $zshBackupDirectory ".zshrc"
+backup_files "VS Code settings" $vscodeSettings $vsCodeBackupDirectory "settings.json"
