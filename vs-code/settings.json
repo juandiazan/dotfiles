@@ -1,0 +1,22 @@
+{
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "files.autoSave": "afterDelay",
+    "editor.cursorBlinking": "expand",
+
+    "editor.defaultFormatter": null,
+
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+
+    "shfmt.path": "/usr/bin/shfmt",
+    "shfmt.indent": 4,
+    "shfmt.logging": "verbose",
+    "haskell.manageHLS": "GHCup",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "workbench.colorTheme": "Ocean Green: Dark",
+    "telemetry.editStats.enabled": false,
+    "telemetry.telemetryLevel": "error"
+}
