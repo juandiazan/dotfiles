@@ -1,0 +1,14 @@
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+[pull]
+	rebase = true
+[init]
+	defaultBranch = master
+[user]
+	email = juanignaciodiazpuig998@gmail.com
+	name = Juan Diaz
+[credential]
+	helper = store
