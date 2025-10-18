@@ -13,12 +13,14 @@ getVsCodeExtensions=$(code --list-extensions)
 braveBrowserBookmarks="$HOME/.config/BraveSoftware/Brave-Browser/Default/Bookmarks"
 zshConfig="$HOME/.zshrc"
 vscodeSettings="$HOME/.config/Code/User/settings.json"
+gitConfig="$HOME/.config/git/config"
 
 # dotfiles destinations
 dotfilesBackupDir="$HOME/dotfiles"
 braveBackupDirectory="$dotfilesBackupDir/brave-browser"
 zshBackupDirectory="$dotfilesBackupDir/zsh-and-omz-config"
 vsCodeBackupDirectory="$dotfilesBackupDir/vs-code"
+gitBackupDirectory="$dotfilesBackupDir/git"
 
 print_color() {
 	echo -e $1$2$NO_COLOR
@@ -39,6 +41,7 @@ print_color $BOLD_PURPLE "-----------------------------"
 create_dir_if_not_exists $braveBackupDirectory
 create_dir_if_not_exists $zshBackupDirectory
 create_dir_if_not_exists $vsCodeBackupDirectory
+create_dir_if_not_exists $gitBackupDirectory
 
 echo "Backing up files..."
 
@@ -64,12 +67,15 @@ backup_files() {
 			if [ $? -eq 0 ]; then
 				print_color $BOLD_GREEN "Done!"
 			else
-				print_color $BOLD_RED "Could save extensions."
+				print_color $BOLD_RED "Could not save extensions."
 			fi
 		fi
+	else
+		print_color $BOLD_RED "File not found. Could not create backup."
 	fi
 }
 
 backup_files "brave browser bookmarks" $braveBrowserBookmarks $braveBackupDirectory "bookmarks_$currentDate.html"
 backup_files "zsh config" $zshConfig $zshBackupDirectory ".zshrc"
 backup_files "VS Code settings" $vscodeSettings $vsCodeBackupDirectory "settings.json"
+backup_files "git user settings" $gitConfig $gitBackupDirectory "config"
