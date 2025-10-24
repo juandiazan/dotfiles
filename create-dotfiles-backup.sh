@@ -14,6 +14,7 @@ braveBrowserBookmarks="$HOME/.config/BraveSoftware/Brave-Browser/Default/Bookmar
 zshConfig="$HOME/.zshrc"
 vscodeSettings="$HOME/.config/Code/User/settings.json"
 gitConfig="$HOME/.config/git/config"
+waybarConfig="$HOME/.config/waybar/config.jsonc"
 
 # dotfiles destinations
 dotfilesBackupDir="$HOME/dotfiles"
@@ -21,6 +22,7 @@ braveBackupDirectory="$dotfilesBackupDir/brave-browser"
 zshBackupDirectory="$dotfilesBackupDir/zsh-and-omz-config"
 vsCodeBackupDirectory="$dotfilesBackupDir/vs-code"
 gitBackupDirectory="$dotfilesBackupDir/git"
+waybarConfigBackupDirectory="$dotfilesBackupDir/waybar"
 
 print_color() {
 	echo -e $1$2$NO_COLOR
@@ -42,6 +44,7 @@ create_dir_if_not_exists $braveBackupDirectory
 create_dir_if_not_exists $zshBackupDirectory
 create_dir_if_not_exists $vsCodeBackupDirectory
 create_dir_if_not_exists $gitBackupDirectory
+create_dir_if_not_exists $waybarConfigBackupDirectory
 
 echo "Backing up files..."
 
@@ -79,3 +82,4 @@ backup_files "brave browser bookmarks" $braveBrowserBookmarks $braveBackupDirect
 backup_files "zsh config" $zshConfig $zshBackupDirectory ".zshrc"
 backup_files "VS Code settings" $vscodeSettings $vsCodeBackupDirectory "settings.json"
 backup_files "git user settings" $gitConfig $gitBackupDirectory "config"
+backup_files "waybar config" $waybarConfig $waybarConfigBackupDirectory "config.jsonc"
