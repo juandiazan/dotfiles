@@ -105,7 +105,7 @@ backup_files() {
 	fi
 }
 
-# backup_files "brave browser bookmarks" $braveBrowserBookmarks $braveBackupDirectory "bookmarks_$currentDate.html"
+backup_files "brave browser bookmarks" $braveBrowserBookmarks $braveBackupDirectory "bookmarks_$currentDate.html"
 backup_files "zsh config" $zshConfig $zshBackupDirectory ".zshrc"
 backup_files "VS Code settings" $vscodeSettings $vsCodeBackupDirectory "settings.json"
 backup_files "git user settings" $gitConfig $gitBackupDirectory "config"
