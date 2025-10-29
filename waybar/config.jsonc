@@ -1,7 +1,7 @@
 {
   "reload_style_on_change": true,
-  "layer": "top",
-  "position": "top",
+  "layer": "bottom",
+  "position": "bottom",
   "spacing": 3,
   "height": 26,
   "modules-left": ["custom/omarchy", "hyprland/workspaces"],
@@ -63,7 +63,7 @@
     "on-click": "$TERMINAL -e btop"
   },
   "clock": {
-    "format": "{:L%H:%M, %A %D}",
+    "format": "{:L%H:%M, %A %d/%m/%Y}",
     "format-alt": "{:L%H:%M, %A %d %B %Y W%V}",
     "tooltip": false,
     "on-click-right": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
