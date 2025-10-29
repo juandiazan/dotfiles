@@ -15,6 +15,7 @@ zshConfig="$HOME/.zshrc"
 vscodeSettings="$HOME/.config/Code/User/settings.json"
 gitConfig="$HOME/.config/git/config"
 waybarConfig="$HOME/.config/waybar/config.jsonc"
+hyprlandConfig="$HOME/.config/hypr"
 
 # dotfiles destinations
 dotfilesBackupDir="$HOME/dotfiles"
@@ -23,7 +24,11 @@ zshBackupDirectory="$dotfilesBackupDir/zsh-and-omz-config"
 vsCodeBackupDirectory="$dotfilesBackupDir/vs-code"
 gitBackupDirectory="$dotfilesBackupDir/git"
 waybarConfigBackupDirectory="$dotfilesBackupDir/waybar"
+hyprlandConfigBackupDirectory="$dotfilesBackupDir/hyprland"
 
+
+# param 1 = color
+# param 2 = text
 print_color() {
 	echo -e $1$2$NO_COLOR
 }
@@ -45,6 +50,7 @@ create_dir_if_not_exists $zshBackupDirectory
 create_dir_if_not_exists $vsCodeBackupDirectory
 create_dir_if_not_exists $gitBackupDirectory
 create_dir_if_not_exists $waybarConfigBackupDirectory
+create_dir_if_not_exists $hyprlandConfigBackupDirectory
 
 echo "Backing up files..."
 
@@ -73,13 +79,35 @@ backup_files() {
 				print_color $BOLD_RED "Could not save extensions."
 			fi
 		fi
+		# end of vs code case
+	
+	elif [ -d $2 ]; then
+		echo "Directory found! Backing up..."
+
+		# hyprland config case
+        if [ "$1" == "hyprland config" ]; then
+            for confFile in $2/*.conf; do
+                if [ -f "$confFile" ]; then
+                    echo "Backing up $confFile..."
+                    cp "$confFile" "$3/"
+                    if [ $? -eq 0 ]; then
+                        print_color $BOLD_GREEN "Successfully backed up $confFile!"
+                    else
+                        print_color $BOLD_RED "Failed to back up $confFile."
+                    fi
+                fi
+            done
+        fi
+		# end of hyprland case
+
 	else
 		print_color $BOLD_RED "File not found. Could not create backup."
 	fi
 }
 
-backup_files "brave browser bookmarks" $braveBrowserBookmarks $braveBackupDirectory "bookmarks_$currentDate.html"
+# backup_files "brave browser bookmarks" $braveBrowserBookmarks $braveBackupDirectory "bookmarks_$currentDate.html"
 backup_files "zsh config" $zshConfig $zshBackupDirectory ".zshrc"
 backup_files "VS Code settings" $vscodeSettings $vsCodeBackupDirectory "settings.json"
 backup_files "git user settings" $gitConfig $gitBackupDirectory "config"
 backup_files "waybar config" $waybarConfig $waybarConfigBackupDirectory "config.jsonc"
+backup_files "hyprland config" $hyprlandConfig $hyprlandConfigBackupDirectory "hyprland.conf"
