@@ -1,0 +1,108 @@
+@import "../omarchy/current/theme/waybar.css";
+
+* {
+  background-color: @background;
+  color: @foreground;
+  background: transparent;
+
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: 'Hasklug Nerd Font';
+  font-size: 14px;
+}
+
+.modules-left {
+  margin-left: 8px;
+}
+
+.modules-right {
+  margin-right: 8px;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#cpu,
+#memory,
+#disk,
+#battery,
+#pulseaudio,
+#bluetooth,
+#network
+#custom-omarchy,
+#custom-screenrecording-indicator,
+#custom-update {
+  margin: 0 7.5px;
+}
+
+#tray {
+  margin-right: 16px;
+}
+
+#custom-expand-icon {
+  margin-right: 20px;
+}
+
+tooltip {
+  padding: 2px;
+}
+
+#custom-update {
+  font-size: 10px;
+}
+
+#clock {
+  margin-left: 8.75px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#custom-screenrecording-indicator {
+  min-width: 12px;
+  margin-left: 8.75px;
+  font-size: 10px;
+}
+
+#custom-screenrecording-indicator.active {
+  color: #a55555;
+}
+
+
+/* NEW STUFF BY ME */
+#clock {
+  color: whitesmoke;
+  background-color: darkorchid; 
+  border-radius: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#custom-omarchy {
+  color: orange;
+}
+
+#battery {
+  color: seagreen;
+}
+
+#bluetooth,
+#network {
+  color: darkcyan;
+}
+
+#cpu,
+#memory,
+#disk {
+  color: red;
+}

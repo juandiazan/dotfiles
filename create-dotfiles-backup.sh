@@ -15,6 +15,7 @@ zshConfig="$HOME/.zshrc"
 vscodeSettings="$HOME/.config/Code/User/settings.json"
 gitConfig="$HOME/.config/git/config"
 waybarConfig="$HOME/.config/waybar/config.jsonc"
+waybarStyle="$HOME/.config/waybar/style.css"
 hyprlandConfig="$HOME/.config/hypr"
 
 # dotfiles destinations
@@ -110,4 +111,5 @@ backup_files "zsh config" $zshConfig $zshBackupDirectory ".zshrc"
 backup_files "VS Code settings" $vscodeSettings $vsCodeBackupDirectory "settings.json"
 backup_files "git user settings" $gitConfig $gitBackupDirectory "config"
 backup_files "waybar config" $waybarConfig $waybarConfigBackupDirectory "config.jsonc"
+backup_files "waybar style" $waybarStyle $waybarConfigBackupDirectory "style.css"
 backup_files "hyprland config" $hyprlandConfig $hyprlandConfigBackupDirectory "hyprland.conf"
