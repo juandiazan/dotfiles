@@ -1,7 +1,6 @@
 {
   "update.mode": "none",
   "workbench.secondarySideBar.defaultVisibility": "hidden",
-  "files.autoSave": "afterDelay",
   "editor.cursorBlinking": "expand",
 
   "editor.defaultFormatter": null,

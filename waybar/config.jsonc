@@ -7,13 +7,12 @@
   "modules-left": ["custom/omarchy", "hyprland/workspaces", "wlr/taskbar", "hyprland/window"],
   "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator"],
   "modules-right": [
-    "group/tray-expander",
     "bluetooth",
     "network",
     "pulseaudio",
     "group/hardware",
     "hyprland/language",
-    "battery",
+    "battery"
   ],
 
   // -------------------- MODULES LEFT --------------------
@@ -44,18 +43,18 @@
       "2": [],
       "3": [],
       "4": [],
-      "5": [],
+      "5": []
     }
   },
   "wlr/taskbar":{
     "format": "{icon}",
-    "icon-size": 18,
+    "icon-size": 15,
     "tooltip-format": "{title}",
     "on-click": "activate",
-    "on-click-middle": "close",
+    "on-click-middle": "close"
   },
   "hyprland/window":{
-    "max-length": 30,
+    "max-length": 30
   },
   // --------------------------------------------------------
 
@@ -83,26 +82,6 @@
   // --------------------------------------------------------
 
   // -------------------- MODULES RIGHT --------------------  
-  
-  // Enable tray?
-  /*
-  "group/tray-expander": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 600,
-      "children-class": "tray-group-item"
-    },
-    "modules": ["custom/expand-icon", "tray"]
-  },
-  "custom/expand-icon": {
-    "format": "",
-    "tooltip": false
-  },
-  "tray": {
-    "icon-size": 15,
-    "spacing": 20
-  },
-  */
   "bluetooth": {
     "format": "",
     "format-disabled": "󰂲",
@@ -143,23 +122,23 @@
     //"format": "󰍛",
     "interval": 5,
     "format": "CPU:{usage}%",
-    "on-click": "xdg-terminal-exec btop",
+    "on-click": "xdg-terminal-exec btop"
   },
   "memory": {
     "interval": 5,
     "format": "MEM:{}%",
-    "on-click": "xdg-terminal-exec btop",
+    "on-click": "xdg-terminal-exec btop"
   },
   "disk": {
     "interval": 5,
     "format": "DSK:{percentage_used}%",
     "path": "/", 
-    "on-click": "xdg-terminal-exec btop",
+    "on-click": "xdg-terminal-exec btop"
   },
 
   "group/hardware":{
     "orientation": "inherit",
-    "modules": ["cpu", "memory", "disk"],
+    "modules": ["cpu", "memory", "disk"]
   },
   // ----------------------------- END OF HARDWARE GROUP ----------------------------- 
 
@@ -170,7 +149,7 @@
     "format-en": "ENG"
   },
   "battery": {
-    "format": "{icon} {capacity}% ",
+    "format": "{icon} {capacity}%",
     "format-discharging": "{icon} {capacity}%",
     "format-charging": "{icon} {capacity}%",
     "format-plugged": " {capacity}%",
@@ -179,8 +158,8 @@
       "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
     "format-full": "󰂅 {capacity}%",
-    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
-    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "tooltip-format-discharging": "{timeTo} ({power:>1.0f}W↓, {capacity}%)",
+    "tooltip-format-charging": "{timeTo} ({power:>1.0f}W↑ {capacity}%)",
     "interval": 5,
     "on-click": "omarchy-menu power",
     "states": {

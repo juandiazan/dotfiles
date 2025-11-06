@@ -84,7 +84,7 @@ zstyle ':omz:plugins:alias-finder' cheaper yes # disabled by default
 # Add wisely, as too many plugins slow down shell startup.
 
 
-plugins=(aliases alias-finder command-not-found colored-man-pages git cabal dotnet docker docker-compose poetry snap vscode) 
+plugins=(aliases alias-finder command-not-found colored-man-pages git cabal dotnet docker docker-compose poetry vscode nestjs) 
 # QoL para terminal (desde aliases a colored-man-pages)
 # autocomplete de comandos de lenguajes y herramientas de desarrollo (desde git a vscode)
 
@@ -120,3 +120,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ -f "/home/juan/.ghcup/env" ] && . "/home/juan/.ghcup/env" # ghcup-env
+# pnpm
+export PNPM_HOME="/home/juan/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

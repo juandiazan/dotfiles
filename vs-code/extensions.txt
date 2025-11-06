@@ -1,3 +1,4 @@
+agurodriguez.vscode-lbnf
 arcticicestudio.nord-visual-studio-code
 catppuccin.catppuccin-vsc
 davidanson.vscode-markdownlint
@@ -10,6 +11,7 @@ haskell.haskell
 jdinhlife.gruvbox
 jovejonovski.ocean-green
 justusadam.language-haskell
+mnxn.jvm-bytecode-viewer
 monokai.theme-monokai-pro-vscode
 ms-python.debugpy
 ms-python.python

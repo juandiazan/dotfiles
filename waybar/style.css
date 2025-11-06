@@ -1,67 +1,237 @@
 @import "../omarchy/current/theme/waybar.css";
 
+/* 
+----------------------------------------------
+---------------- global rules ---------------- 
+----------------------------------------------
+*/
 * {
-  background-color: @background;
-  color: @foreground;
-  background: transparent;
-
+  /* background-color: @background; */
+  
+  /* text color, by default it's color: @foreground;*/
+  color: whitesmoke; 
+  
   border: none;
-  border-radius: 0;
-  min-height: 0;
   font-family: 'Hasklug Nerd Font';
-  font-size: 14px;
+  font-size: 15px;
+  min-height: 18px;
 }
 
+/* background bar */
+window#waybar {
+  background-color: transparent;
+}
+
+/* Separation to the left */
 .modules-left {
   margin-left: 8px;
 }
 
+/* Separation to the right */
 .modules-right {
   margin-right: 8px;
-}
-
-#workspaces button {
-  all: initial;
-  padding: 0 6px;
-  margin: 0 1.5px;
-  min-width: 9px;
-}
-
-#workspaces button.empty {
-  opacity: 0.5;
-}
-
-#cpu,
-#memory,
-#disk,
-#battery,
-#pulseaudio,
-#bluetooth,
-#network
-#custom-omarchy,
-#custom-screenrecording-indicator,
-#custom-update {
-  margin: 0 7.5px;
-}
-
-#tray {
-  margin-right: 16px;
-}
-
-#custom-expand-icon {
-  margin-right: 20px;
 }
 
 tooltip {
   padding: 2px;
 }
 
-#custom-update {
-  font-size: 10px;
+/* 
+----------------------------------------------
+---------------- omarchy icon ---------------- 
+----------------------------------------------
+*/
+#custom-omarchy {
+  color: rgba(67, 114, 67, 0.8);  
+
+  margin-right: 5px;
 }
 
+/* 
+----------------------------------------------
+------------- workspaces module -------------- 
+----------------------------------------------
+*/
+#workspaces {
+  background-color: rgb(98, 45, 81); 
+  margin: 4px 0;
+
+  padding: 0px 6px;
+  border-radius: 10px;
+
+  margin-left: 1px;
+}
+
+#workspaces button {
+  margin: 0 1.5px;
+  
+  padding: 0 4px;
+  border-radius: 20px;
+
+  min-width: 10px;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#workspaces button.occupied {
+  opacity: 1;
+}
+
+/* Buttons for empty workspaces */
+#workspaces button.empty {
+  opacity: 0.3;
+}
+
+/* Button for active workspace */
+#workspaces button.active {
+  text-shadow: 0 0 4px whitesmoke;
+}
+
+/* 
+----------------------------------------------
+--------------- taskbar module --------------- 
+----------------------------------------------
+*/
+#taskbar {
+  background: rgba(0, 0, 0, 0.8);
+  margin: 4px 0px;
+
+  padding: 0px 2px; /* distance between icons */
+  border-radius: 12px;
+}
+
+#taskbar button {
+  border-radius: 12px;
+
+  transition: background 0.3s ease;
+}
+
+#taskbar button.active {
+  background-color: rgba(82, 32, 164, 1);
+}
+
+#taskbar button:hover {
+  background-color: rgba(153, 100, 239, 0.7);
+}
+
+/* 
+----------------------------------------------
+---------------- clock module ---------------- 
+----------------------------------------------
+*/
 #clock {
+  background-color: rgba(67, 114, 67, 1);
+  margin: 4px 0;
+
+  padding: 0px 10px;
+  border-radius: 12px;
+
   margin-left: 8.75px;
+}
+
+/* 
+----------------------------------------------
+------- bluetooth and network modules -------- 
+----------------------------------------------
+*/
+#bluetooth,
+#network {
+  background-color: rgb(65, 23, 132);
+  margin: 4px 0px;
+
+  padding: 0px 6px;
+  border-radius: 12px;
+}
+
+/* 
+----------------------------------------------
+---------------- audio module ---------------- 
+----------------------------------------------
+*/
+#pulseaudio {
+  background-color: rgb(51, 116, 88);
+  margin: 4px 0;
+
+  padding: 0px 6px;
+  border-radius: 12px;
+}
+
+/* 
+----------------------------------------------
+-------------- hardware modules -------------- 
+----------------------------------------------
+*/
+/* distance between cpu, mem and dsk */
+#cpu,
+#memory,
+#disk {
+  padding: 0px 4px; 
+}
+
+#cpu {
+  background-color: rgba(151, 1, 6, 1);
+  margin: 4px 0;
+
+  /* distance between cpu and what is on the left */
+  padding-left: 6px; 
+
+  /* rounded border on the left of cpu module */
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
+
+}
+
+#memory {
+  background-color: rgb(6, 69, 81);
+  margin: 4px 0;
+}
+
+#disk {
+  background-color: rgb(197, 60, 14);
+  margin: 4px 0;
+
+  /* distance between dsk and what is on the right */
+  padding-right: 6px; 
+  
+  /* rounded border on the right of dsk module */
+  border-top-right-radius: 12px; 
+  border-bottom-right-radius: 12px;
+}
+
+/* 
+----------------------------------------------
+----------- keyboard layout module ----------- 
+----------------------------------------------
+*/
+#language {
+  background-color: rgba(56, 54, 58, 1);
+  margin: 4px 0;
+
+  padding: 0px 5px;
+  border-radius: 12px;
+}
+
+/* 
+----------------------------------------------
+--------------- battery module --------------- 
+----------------------------------------------
+*/
+#battery {
+  background-color: rgba(67, 114, 67, 0.8);
+  margin: 4px 0;
+
+  padding: 0px 6px;
+  border-radius: 12px;
+
+  color: rgba(8, 245, 111, 1);
+}
+
+/* 
+----------------------------------------------
+------------------- other -------------------- 
+----------------------------------------------
+*/
+#custom-update {
+  font-size: 10px;
 }
 
 .hidden {
@@ -76,33 +246,4 @@ tooltip {
 
 #custom-screenrecording-indicator.active {
   color: #a55555;
-}
-
-
-/* NEW STUFF BY ME */
-#clock {
-  color: whitesmoke;
-  background-color: darkorchid; 
-  border-radius: 15px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-#custom-omarchy {
-  color: orange;
-}
-
-#battery {
-  color: seagreen;
-}
-
-#bluetooth,
-#network {
-  color: darkcyan;
-}
-
-#cpu,
-#memory,
-#disk {
-  color: red;
 }
