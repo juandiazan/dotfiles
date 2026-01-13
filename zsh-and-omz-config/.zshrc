@@ -120,10 +120,27 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 [ -f "/home/juan/.ghcup/env" ] && . "/home/juan/.ghcup/env" # ghcup-env
-# pnpm
+
+
+# ===================== PNPM ============================
 export PNPM_HOME="/home/juan/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
+# ===================== PNPM END ========================
+
+# ===================== PYENV ============================
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
+
+# Load pyenv-virtualenv automatically by adding
+# the following to ~/.bashrc:
+
+eval "$(pyenv virtualenv-init -)"
+# ===================== PYENV END =========================
+
+# ===================== POETRY ============================
+export PATH="$HOME/.local/bin:$PATH"
+# ===================== POETRY END ========================
