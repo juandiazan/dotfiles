@@ -125,7 +125,22 @@ tooltip {
   padding: 0px 10px;
   border-radius: 12px;
 
-  margin-left: 8.75px;
+  margin-left: 5px;
+}
+
+/* 
+----------------------------------------------
+--------------- update module ---------------- 
+----------------------------------------------
+*/
+#custom-update {
+  background-color: rgb(28, 78, 186);
+  margin: 4px 0;
+
+  padding: 0px 10px;
+  border-radius: 12px;
+
+  margin-left: 2px;
 }
 
 /* 
@@ -140,6 +155,10 @@ tooltip {
 
   padding: 0px 6px;
   border-radius: 12px;
+}
+
+#network {
+  padding-right: 11px;
 }
 
 /* 
@@ -240,10 +259,19 @@ tooltip {
 
 #custom-screenrecording-indicator {
   min-width: 12px;
-  margin-left: 8.75px;
+  margin-left: 5px;
   font-size: 10px;
+  padding-bottom: 1px;
 }
 
 #custom-screenrecording-indicator.active {
+  color: #a55555;
+}
+#custom-voxtype {
+  min-width: 12px;
+  margin: 0 0 0 7.5px;
+}
+
+#custom-voxtype.recording {
   color: #a55555;
 }

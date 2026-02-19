@@ -112,6 +112,7 @@
     "format-source-muted": " ",
     "format-muted": "  {format_source}",
     "format-icons": {
+      "headphone": "",
       "default": ["", "", ""]
     }
   },
