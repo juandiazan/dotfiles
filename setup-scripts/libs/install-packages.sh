@@ -1,10 +1,13 @@
 #!/bin/bash
 
-source detect-package-manager.sh || {
+source ./libs/detect-package-manager.sh || {
     echo "Failed to load pkgm detection script."
     exit 1
 }
-
+source ./libs/utilities.sh || {
+    echo "Failed to load utilities script."
+    exit 1
+}
 
 PKG_MANAGER=$(detect_pkg_manager) || {
     echo "No supported package manager found."

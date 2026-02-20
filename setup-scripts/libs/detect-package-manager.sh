@@ -16,7 +16,6 @@ detect_pkg_manager() {
     fi
 }
 
-
 detect_aur_helper() {
     if command -v yay &>/dev/null; then
         echo "yay"
