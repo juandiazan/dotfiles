@@ -5,7 +5,7 @@
   "spacing": 3,
   "height": 26,
   "modules-left": ["custom/omarchy", "hyprland/workspaces", "wlr/taskbar", "hyprland/window"],
-  "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator"],
+  "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator", "custom/idle-indicator", "custom/notification-silencing-indicator"],
   "modules-right": [
     "bluetooth",
     "network",
@@ -113,6 +113,7 @@
     "format-muted": "  {format_source}",
     "format-icons": {
       "headphone": "",
+      "headset": "",
       "default": ["", "", ""]
     }
   },
