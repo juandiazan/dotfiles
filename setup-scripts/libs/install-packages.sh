@@ -24,7 +24,8 @@ PROGRAMS=(
     "obsidian"
 
     "zsh"
-    "spicetify"
+    "oh-my-zsh"
+    "spicetify (and marketplace)"
     "ckb-next (corsair drivers)"
     "solaar (logitech drivers)"
 )
@@ -37,7 +38,9 @@ declare -A PACKAGES=(
     [localsend]="localsend"
     [obsidian]="obsidian"
 
-    [spicetify]="spicetify-cli"
+    [zsh]="zsh"
+    [oh-my-zsh]="oh-my-zsh"
+    [spicetify and marketplace]="spicetify-cli"
     [ckb-next (corsair drivers)]="ckb-next"
     [solaar (logitech drivers)]="solaar"
 )
@@ -100,7 +103,19 @@ install_selected_software(){
     for program in "${SELECTED[@]}"; do
         echo "Installing $program..."
         pkg_name="${PACKAGES[$program]}"
-        install_package "$pkg_name" || echo "Failed to install $program"
+        case $program in
+            "oh-my-zsh")
+                sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+                ;;
+            "spicetify (and marketplace)")
+                install_package "$pkg_name" || echo "Failed to install $program"
+                curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
+                spicetify backup apply enable-devtools
+                ;;
+            *)
+                install_package "$pkg_name" || echo "Failed to install $program"
+                ;;
+        esac
     done
     echo ""
 }

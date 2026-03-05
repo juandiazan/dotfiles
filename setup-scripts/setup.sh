@@ -21,12 +21,12 @@ while [ $option -ne 0 ] ; do
     case $option in
 
     1)
-    select_software
-     ;; 
+        select_software
+    ;; 
 
     2)
-    apply_configurations
-     ;; 
+        apply_configs
+    ;; 
 
     *)
         print_color $BOLD_RED "wrong option"
