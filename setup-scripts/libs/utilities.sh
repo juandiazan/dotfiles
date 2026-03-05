@@ -24,11 +24,3 @@ NO_COLOR='\033[0m'
 print_color() {
     echo -e $1$2$NO_COLOR
 }
-
-print_menu() {
-    print_color $BOLD_GREEN "welcome to setup"
-
-    echo "1 - install software"
-    echo "2 - apply configurations on saved dotfiles"
-    echo "0 - exit"
-}

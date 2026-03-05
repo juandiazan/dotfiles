@@ -15,6 +15,96 @@ PKG_MANAGER=$(detect_pkg_manager) || {
 }
 AUR_HELPER=$(detect_aur_helper)
 
+PROGRAMS=(
+    "librewolf"
+    "discord"
+    "spotify"
+    "steam"
+    "localsend"
+    "obsidian"
+
+    "zsh"
+    "spicetify"
+    "ckb-next (corsair drivers)"
+    "solaar (logitech drivers)"
+)
+
+declare -A PACKAGES=(
+    [librewolf]="librewolf-bin"
+    [discord]="discord"
+    [spotify]="spotify"
+    [steam]="steam"
+    [localsend]="localsend"
+    [obsidian]="obsidian"
+
+    [spicetify]="spicetify-cli"
+    [ckb-next (corsair drivers)]="ckb-next"
+    [solaar (logitech drivers)]="solaar"
+)
+declare -a SELECTED=()
+
+# ---------
+# functions
+# ---------
+select_software() {
+    while true; do
+        clear
+        show_install_selection_menu
+        read -p "Choice: " choice
+
+        if [[ "$choice" =~ ^[0-9]+$ ]]; then
+            index=$((choice-1))
+            current_prog="${PROGRAMS[$index]}"
+            if [[ " ${SELECTED[*]} " == *" $current_prog "* ]]; then
+                remove_from_selected "$current_prog"
+            else
+                SELECTED+=("$current_prog")
+            fi
+        elif [[ "$choice" == "i" ]]; then
+            install_selected_software
+            break
+        elif [[ "$choice" == "q" ]]; then
+            break
+        else
+            echo "Invalid option."
+        fi
+    done
+}
+
+remove_from_selected() {
+    new_selected=()
+    for item in "${SELECTED[@]}"; do
+        [[ "$item" != "$1" ]] && new_selected+=("$item")
+    done
+    SELECTED=("${new_selected[@]}")
+}
+
+show_install_selection_menu() {
+    echo "Select programs to install:"
+    for i in "${!PROGRAMS[@]}"; do
+        current_prog="${PROGRAMS[$i]}"
+        # Check if already selected
+        if [[ " ${SELECTED[*]} " == *" $current_prog "* ]]; then
+            mark="[x]"
+        else
+            mark="[ ]"
+        fi
+        printf "%2d) %s %s\n" $((i+1)) "$mark" "$current_prog"
+    done
+    echo "i) Install selected"
+    echo "q) Quit"
+}
+
+install_selected_software(){
+    echo "Installing selected software:"
+    for program in "${SELECTED[@]}"; do
+        echo "Installing $program..."
+        pkg_name="${PACKAGES[$program]}"
+        install_package "$pkg_name" || echo "Failed to install $program"
+    done
+    echo ""
+}
+
 install_package() {
     local pkg="$1"
 
