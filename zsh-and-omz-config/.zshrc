@@ -138,7 +138,7 @@ eval "$(pyenv init - bash)"
 # Load pyenv-virtualenv automatically by adding
 # the following to ~/.bashrc:
 
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
 # ===================== PYENV END =========================
 
 # ===================== POETRY ============================
