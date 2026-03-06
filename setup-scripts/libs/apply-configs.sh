@@ -1,12 +1,7 @@
-#!/bin/bash
-
-CONFIGS=(
-    "zsh"
-    "obsidian"
-    "spicetify-theme"
-    "hyprland-omarchy"
-    "waybar"
-)
+source ./libs/config-files.sh || {
+    echo "Failed to load config file list."
+    exit 1
+}
 
 declare -a SELECTED_CONFIGS=()
 
@@ -16,7 +11,23 @@ apply_configs() {
         show_config_selection_menu
         read -p "Choice: " choice
 
-        if [[ "$choice" =~ ^[0-9]+$ ]]; then
+        case $choice in
+            "a")
+                apply_selected_configs
+                break
+            ;;
+            "c")
+                SELECTED_CONFIGS=()
+            ;;
+            "s")
+                SELECTED_CONFIGS=("${CONFIGS[@]}")
+            ;;
+            "q")
+                break
+            ;;
+        esac
+
+        if [[ "$choice" =~ ^[1-9]+$ ]]; then
             index=$((choice-1))
             current_config="${CONFIGS[$index]}"
             if [[ " ${SELECTED_CONFIGS[*]} " == *" $current_config "* ]]; then
@@ -24,11 +35,6 @@ apply_configs() {
             else
                 SELECTED_CONFIGS+=("$current_config")
             fi
-        elif [[ "$choice" == "a" ]]; then
-            apply_selected_configs
-            break
-        elif [[ "$choice" == "q" ]]; then
-            break
         else
             echo "Invalid option."
         fi
@@ -55,8 +61,12 @@ show_config_selection_menu() {
         fi
         printf "%2d) %s %s\n" $((i+1)) "$mark" "$current_config"
     done
+    echo "===================="
     echo "a) Apply selected"
+    echo "c) Clear selection"
+    echo "s) Select all"
     echo "q) Quit"
+    echo "===================="
 }
 
 apply_selected_configs(){
@@ -64,22 +74,28 @@ apply_selected_configs(){
     for config in "${SELECTED_CONFIGS[@]}"; do
         echo "Applying $config..."
         case $config in
-            "zsh")
+            "zsh and omz config (.zshrc)")
                 cp ~/dotfiles/zsh-and-omz-config/.zshrc ~/
             ;;
             "obsidian")
                 echo "TODO"
             ;;
-            "spicetify-theme")
+            "spicetify theme")
                 echo "Applying spicetify theme..."
                 spicetify config current_theme Sleek color_scheme Elementary
                 spicetify apply
             ;;
-            "hyprland-omarchy")
+            "omarchy hyprland files")
                 echo "TODO"
             ;;
-            "waybar")
+            "waybar hyprland files (jsonc and css)")
                 cp ~/dotfiles/waybar/* ~/.config/waybar/
+            ;;
+            "browser bookmarks")
+                echo "TODO"
+            ;;
+             *)
+                echo "$config not supported."
             ;;
         esac
     done

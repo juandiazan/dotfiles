@@ -1,5 +1,3 @@
-#!/bin/bash
-
 source ./libs/detect-package-manager.sh || {
     echo "Failed to load pkgm detection script."
     exit 1
@@ -9,53 +7,42 @@ source ./libs/utilities.sh || {
     exit 1
 }
 
+source ./libs/software.sh || {
+    echo "Failed to load software list."
+    exit 1
+}
+
 PKG_MANAGER=$(detect_pkg_manager) || {
     echo "No supported package manager found."
     exit 1
 }
 AUR_HELPER=$(detect_aur_helper)
 
-PROGRAMS=(
-    "librewolf"
-    "discord"
-    "spotify"
-    "steam"
-    "localsend"
-    "obsidian"
-
-    "zsh"
-    "oh-my-zsh"
-    "spicetify (and marketplace)"
-    "ckb-next (corsair drivers)"
-    "solaar (logitech drivers)"
-)
-
-declare -A PACKAGES=(
-    [librewolf]="librewolf-bin"
-    [discord]="discord"
-    [spotify]="spotify"
-    [steam]="steam"
-    [localsend]="localsend"
-    [obsidian]="obsidian"
-
-    [zsh]="zsh"
-    [oh-my-zsh]="oh-my-zsh"
-    [spicetify and marketplace]="spicetify-cli"
-    [ckb-next (corsair drivers)]="ckb-next"
-    [solaar (logitech drivers)]="solaar"
-)
 declare -a SELECTED=()
 
-# ---------
-# functions
-# ---------
 select_software() {
     while true; do
         clear
         show_install_selection_menu
         read -p "Choice: " choice
 
-        if [[ "$choice" =~ ^[0-9]+$ ]]; then
+        case $choice in
+            "i")
+                install_selected_software
+                break
+            ;;
+            "c")
+                SELECTED=()
+            ;;
+            "s")
+                SELECTED=("${PROGRAMS[@]}")
+            ;;
+            "q")
+                break
+            ;;
+        esac
+
+        if [[ "$choice" =~ ^[1-9]+$ ]]; then
             index=$((choice-1))
             current_prog="${PROGRAMS[$index]}"
             if [[ " ${SELECTED[*]} " == *" $current_prog "* ]]; then
@@ -63,11 +50,6 @@ select_software() {
             else
                 SELECTED+=("$current_prog")
             fi
-        elif [[ "$choice" == "i" ]]; then
-            install_selected_software
-            break
-        elif [[ "$choice" == "q" ]]; then
-            break
         else
             echo "Invalid option."
         fi
@@ -94,8 +76,12 @@ show_install_selection_menu() {
         fi
         printf "%2d) %s %s\n" $((i+1)) "$mark" "$current_prog"
     done
+    echo "===================="
     echo "i) Install selected"
+    echo "c) Clear selection"
+    echo "s) Select all"
     echo "q) Quit"
+    echo "===================="
 }
 
 install_selected_software(){

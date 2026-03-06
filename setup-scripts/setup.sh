@@ -1,16 +1,14 @@
-#!/bin/bash
-
 source ./libs/utilities.sh
 source ./libs/detect-package-manager.sh
 source ./libs/install-packages.sh
 source ./libs/apply-configs.sh
 
-print_menu() {
-    print_color $BOLD_GREEN "welcome to setup"
+print_color $BOLD_GREEN "Welcome to app and config setup!"
 
-    echo "1 - install software"
-    echo "2 - apply configurations on saved dotfiles"
-    echo "0 - exit"
+print_menu() {
+    echo "======== 1 - Install software                     ========"
+    echo "======== 2 - Apply backups of configuration files ========"
+    echo "======== 0 - Exit                                 ========"
 }
 
 print_menu
@@ -22,14 +20,16 @@ while [ $option -ne 0 ] ; do
 
     1)
         select_software
+        clear
     ;; 
 
     2)
         apply_configs
+        clear
     ;; 
 
     *)
-        print_color $BOLD_RED "wrong option"
+        print_color $BOLD_RED "Invalid option."
     esac
 
     print_menu
