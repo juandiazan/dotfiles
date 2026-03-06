@@ -76,6 +76,8 @@ apply_selected_configs(){
         case $config in
             "zsh and omz config (.zshrc)")
                 cp ~/dotfiles/zsh-and-omz-config/.zshrc ~/
+                chsh -s $(which zsh)
+                source ~/.zshrc
             ;;
             "obsidian")
                 echo "TODO"
