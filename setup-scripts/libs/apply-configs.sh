@@ -74,6 +74,16 @@ apply_selected_configs(){
     for config in "${SELECTED_CONFIGS[@]}"; do
         echo "Applying $config..."
         case $config in
+            "git credentials")
+                echo "Enter your name"
+                read name
+
+                echo "Enter your email"
+                read email
+
+                git config --global user.name $name
+                git config --global user.email $email
+            ;;
             "zsh and omz config (.zshrc)")
                 cp ~/dotfiles/zsh-and-omz-config/.zshrc ~/
                 chsh -s $(which zsh)

@@ -1,4 +1,5 @@
 CONFIGS=(
+    "git credentials"
     "zsh and omz config (.zshrc)"
     "spicetify theme"
     "obsidian"
