@@ -20,12 +20,10 @@ while [ $option -ne 0 ] ; do
 
     1)
         select_software
-        clear
     ;; 
 
     2)
         apply_configs
-        clear
     ;; 
 
     *)

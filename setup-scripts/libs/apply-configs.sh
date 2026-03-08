@@ -78,6 +78,7 @@ apply_selected_configs(){
                 cp ~/dotfiles/zsh-and-omz-config/.zshrc ~/
                 chsh -s $(which zsh)
                 source ~/.zshrc
+                print_color $BOLD_YELLOW "=====> Log out and log back in for effects to apply."
             ;;
             "obsidian")
                 echo "TODO"
