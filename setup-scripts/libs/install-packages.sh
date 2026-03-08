@@ -87,7 +87,7 @@ show_install_selection_menu() {
 install_selected_software(){
     echo "Installing selected software:"
     for program in "${SELECTED[@]}"; do
-        echo "Installing $program..."
+        print_color $BOLD_PURPLE "=====> Installing $program..."
         pkg_name="${PACKAGES[$program]}"
         case $program in
             "oh-my-zsh")
@@ -96,6 +96,11 @@ install_selected_software(){
             "spicetify (and marketplace)")
                 install_package "$pkg_name" || echo "Failed to install $program"
                 curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
+                
+                # give permission to modify spotify executable to OS
+                sudo chmod a+wr /opt/spotify
+                sudo chmod a+wr /opt/spotify/Apps -R
+
                 spicetify backup apply enable-devtools
                 ;;
             *)

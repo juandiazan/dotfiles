@@ -6,6 +6,8 @@ PROGRAMS=(
     "localsend"
     "obsidian"
 
+    "lazygit"
+
     "zsh"
     "oh-my-zsh"
     "spicetify (and marketplace)"
@@ -21,9 +23,11 @@ declare -A PACKAGES=(
     [localsend]="localsend"
     [obsidian]="obsidian"
 
+    [lazygit]="lazygit"
+
     [zsh]="zsh"
     [oh-my-zsh]="oh-my-zsh"
-    [spicetify and marketplace]="spicetify-cli"
+    [spicetify (and marketplace)]="spicetify-cli"
     [ckb-next (corsair drivers)]="ckb-next"
     [solaar (logitech drivers)]="solaar"
 )
