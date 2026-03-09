@@ -7,7 +7,9 @@ PROGRAMS=(
     "obsidian"
 
     "lazygit"
+    "lazydocker"
 
+    "fastfetch"
     "zsh"
     "oh-my-zsh"
     "spicetify (and marketplace)"
@@ -24,7 +26,9 @@ declare -A PACKAGES=(
     [obsidian]="obsidian"
 
     [lazygit]="lazygit"
+    [lazydocker]="lazydocker"
 
+    [fastfetch]="fastfetch"
     [zsh]="zsh"
     [oh-my-zsh]="oh-my-zsh"
     [spicetify (and marketplace)]="spicetify-cli"

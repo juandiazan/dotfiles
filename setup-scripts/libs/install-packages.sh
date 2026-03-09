@@ -42,7 +42,7 @@ select_software() {
             ;;
         esac
 
-        if [[ "$choice" =~ ^[1-9]+$ ]]; then
+        if [[ "$choice" =~ ^[0-9]+$ ]]; then
             index=$((choice-1))
             current_prog="${PROGRAMS[$index]}"
             if [[ " ${SELECTED[*]} " == *" $current_prog "* ]]; then
