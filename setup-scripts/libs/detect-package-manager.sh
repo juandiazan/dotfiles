@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 detect_pkg_manager() {
     if command -v pacman &>/dev/null; then
         echo "pacman"

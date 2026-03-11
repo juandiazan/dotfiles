@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 source ./libs/config-files.sh || {
     echo "Failed to load config file list."
     exit 1
@@ -81,14 +83,13 @@ apply_selected_configs(){
                 echo "Enter your email"
                 read email
 
-                git config --global user.name $name
-                git config --global user.email $email
+                git config --global user.name "$name"
+                git config --global user.email "$email"
             ;;
             "zsh and omz config (.zshrc)")
                 cp ~/dotfiles/zsh-and-omz-config/.zshrc ~/
-                chsh -s $(which zsh)
-                source ~/.zshrc
-                print_color $BOLD_YELLOW "=====> Log out and log back in for effects to apply."
+                chsh -s "$(command -v zsh)"
+                print_color $BOLD_YELLOW "=====> Log out and log back in, restart your terminal or run \"exec zsh\" for effects to apply."
             ;;
             "obsidian")
                 echo "TODO"

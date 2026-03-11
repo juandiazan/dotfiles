@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 source ./libs/detect-package-manager.sh || {
     echo "Failed to load pkgm detection script."
     exit 1

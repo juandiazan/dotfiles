@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 source ./libs/utilities.sh
 source ./libs/detect-package-manager.sh
 source ./libs/install-packages.sh

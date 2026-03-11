@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # color constants
 BOLD_RED='\033[1;31m'
 BOLD_GREEN='\033[1;32m'

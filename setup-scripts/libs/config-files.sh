@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 CONFIGS=(
     "git credentials"
     "zsh and omz config (.zshrc)"
