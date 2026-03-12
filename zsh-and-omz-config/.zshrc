@@ -1,3 +1,5 @@
+fastfetch
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -144,3 +146,7 @@ eval "$(pyenv init - bash)"
 # ===================== POETRY ============================
 export PATH="$HOME/.local/bin:$PATH"
 # ===================== POETRY END ========================
+
+# ======================= SPICETIFY =======================
+export PATH=$PATH:/home/juan/.spicetify
+# ======================= SPICETIFY END ===================
