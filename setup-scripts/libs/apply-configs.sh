@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ./libs/config-files.sh || {
+source ./utils/config-files.sh || {
     echo "Failed to load config file list."
     exit 1
 }

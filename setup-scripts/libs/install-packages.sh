@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-source ./libs/detect-package-manager.sh || {
+source ./utils/detect-package-manager.sh || {
     echo "Failed to load pkgm detection script."
     exit 1
 }
-source ./libs/software.sh || {
+source ./utils/software.sh || {
     echo "Failed to load software list."
     exit 1
 }

@@ -2,7 +2,6 @@
 
 source ./ui/colored_print.sh
 source ./ui/menus.sh
-source ./libs/detect-package-manager.sh
 source ./libs/install-packages.sh
 source ./libs/apply-configs.sh
 
