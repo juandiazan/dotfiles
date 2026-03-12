@@ -114,6 +114,11 @@ apply_selected_configs(){
             "browser bookmarks")
                 echo "TODO"
             ;;
+            "vs code extensions install")
+                for extension in $(cat ~/dotfiles/vs-code-extensions/extensions.txt); do
+                    code --install-extension "$extension"
+                done
+            ;;
              *)
                 echo "$config not supported."
             ;;
