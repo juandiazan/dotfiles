@@ -4,6 +4,14 @@ source ./libs/config-files.sh || {
     echo "Failed to load config file list."
     exit 1
 }
+source ./ui/menus.sh || {
+    echo "Failed to load menu script."
+    exit 1
+}
+source ./ui/colored_print.sh || {
+    echo "Failed to load special print script."
+    exit 1
+}
 
 declare -a SELECTED_CONFIGS=()
 
@@ -66,12 +74,7 @@ show_config_selection_menu() {
         fi
         printf "%2d) %s %s\n" $((i+1)) "$mark" "$current_config"
     done
-    echo "======================"
-    echo "| a) Apply selected  |"
-    echo "| c) Clear selection |"
-    echo "| s) Select all      |"
-    echo "| q) Quit            |"
-    echo "======================"
+    config_actions_menu
 }
 
 apply_selected_configs(){

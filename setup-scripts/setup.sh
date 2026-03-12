@@ -1,19 +1,14 @@
 #!/usr/bin/env bash
 
-source ./libs/utilities.sh
+source ./ui/colored_print.sh
+source ./ui/menus.sh
 source ./libs/detect-package-manager.sh
 source ./libs/install-packages.sh
 source ./libs/apply-configs.sh
 
 print_color $BOLD_GREEN "Welcome to app and config setup!"
 
-print_menu() {
-    echo "======== 1 - Install software                     ========"
-    echo "======== 2 - Apply backups of configuration files ========"
-    echo "======== 0 - Exit                                 ========"
-}
-
-print_menu
+main_menu
 read option
 
 while [ $option -ne 0 ] ; do
@@ -34,7 +29,7 @@ while [ $option -ne 0 ] ; do
         print_color $BOLD_RED "Invalid option."
     esac
 
-    print_menu
+    main_menu
     read option
 
 done

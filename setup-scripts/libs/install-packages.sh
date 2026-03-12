@@ -4,15 +4,19 @@ source ./libs/detect-package-manager.sh || {
     echo "Failed to load pkgm detection script."
     exit 1
 }
-source ./libs/utilities.sh || {
-    echo "Failed to load utilities script."
-    exit 1
-}
-
 source ./libs/software.sh || {
     echo "Failed to load software list."
     exit 1
 }
+source ./ui/menus.sh || {
+    echo "Failed to load menu script."
+    exit 1
+}
+source ./ui/colored_print.sh || {
+    echo "Failed to load special print script."
+    exit 1
+}
+
 
 PKG_MANAGER=$(detect_pkg_manager) || {
     echo "No supported package manager found."
@@ -81,12 +85,7 @@ show_install_selection_menu() {
         fi
         printf "%2d) %s %s\n" $((i+1)) "$mark" "$current_prog"
     done
-    echo "======================="
-    echo "| i) Install selected |"
-    echo "| c) Clear selection  |"
-    echo "| s) Select all       |"
-    echo "| q) Quit             |"
-    echo "======================="
+    install_actions_menu
 }
 
 install_selected_software(){
