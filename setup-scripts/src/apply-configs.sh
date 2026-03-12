@@ -101,7 +101,6 @@ apply_selected_configs(){
                 echo "TODO"
             ;;
             "spicetify theme")
-                echo "Applying spicetify theme..."
                 spicetify config current_theme Sleek color_scheme Elementary
                 spicetify apply
             ;;
