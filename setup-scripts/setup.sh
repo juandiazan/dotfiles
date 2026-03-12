@@ -2,8 +2,8 @@
 
 source ./ui/colored_print.sh
 source ./ui/menus.sh
-source ./libs/install-packages.sh
-source ./libs/apply-configs.sh
+source ./src/install-packages.sh
+source ./src/apply-configs.sh
 
 print_color $BOLD_GREEN "Welcome to app and config setup!"
 
