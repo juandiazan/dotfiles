@@ -40,21 +40,24 @@ select_software() {
                 SELECTED=("${PROGRAMS[@]}")
             ;;
             "q")
+                clear
                 break
             ;;
+            *)
+                if [[ "$choice" =~ ^[1-9]+$ ]]; then
+                    index=$((choice-1))
+                    current_prog="${PROGRAMS[$index]}"
+                    if [[ " ${SELECTED[*]} " == *" $current_prog "* ]]; then
+                        remove_from_selected "$current_prog"
+                    else
+                        SELECTED+=("$current_prog")
+                    fi
+                else
+                    print_color $BOLD_RED "Invalid option. Press enter to continue."
+                    read -p ""
+                fi
+            ;;
         esac
-
-        if [[ "$choice" =~ ^[0-9]+$ ]]; then
-            index=$((choice-1))
-            current_prog="${PROGRAMS[$index]}"
-            if [[ " ${SELECTED[*]} " == *" $current_prog "* ]]; then
-                remove_from_selected "$current_prog"
-            else
-                SELECTED+=("$current_prog")
-            fi
-        else
-            echo "Invalid option."
-        fi
     done
 }
 
@@ -78,12 +81,12 @@ show_install_selection_menu() {
         fi
         printf "%2d) %s %s\n" $((i+1)) "$mark" "$current_prog"
     done
-    echo "===================="
-    echo "i) Install selected"
-    echo "c) Clear selection"
-    echo "s) Select all"
-    echo "q) Quit"
-    echo "===================="
+    echo "======================="
+    echo "| i) Install selected |"
+    echo "| c) Clear selection  |"
+    echo "| s) Select all       |"
+    echo "| q) Quit             |"
+    echo "======================="
 }
 
 install_selected_software(){

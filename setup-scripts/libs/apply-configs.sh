@@ -25,21 +25,24 @@ apply_configs() {
                 SELECTED_CONFIGS=("${CONFIGS[@]}")
             ;;
             "q")
+                clear
                 break
             ;;
+            *)
+                if [[ "$choice" =~ ^[1-9]+$ ]]; then
+                    index=$((choice-1))
+                    current_config="${CONFIGS[$index]}"
+                    if [[ " ${SELECTED_CONFIGS[*]} " == *" $current_config "* ]]; then
+                        remove_config_from_selected "$current_config"
+                    else
+                        SELECTED_CONFIGS+=("$current_config")
+                    fi
+                else
+                    print_color $BOLD_RED "Invalid option. Press enter to continue."
+                    read -p ""
+                fi
+            ;;
         esac
-
-        if [[ "$choice" =~ ^[1-9]+$ ]]; then
-            index=$((choice-1))
-            current_config="${CONFIGS[$index]}"
-            if [[ " ${SELECTED_CONFIGS[*]} " == *" $current_config "* ]]; then
-                remove_config_from_selected "$current_config"
-            else
-                SELECTED_CONFIGS+=("$current_config")
-            fi
-        else
-            echo "Invalid option."
-        fi
     done
 }
 
@@ -63,12 +66,12 @@ show_config_selection_menu() {
         fi
         printf "%2d) %s %s\n" $((i+1)) "$mark" "$current_config"
     done
-    echo "===================="
-    echo "a) Apply selected"
-    echo "c) Clear selection"
-    echo "s) Select all"
-    echo "q) Quit"
-    echo "===================="
+    echo "======================"
+    echo "| a) Apply selected  |"
+    echo "| c) Clear selection |"
+    echo "| s) Select all      |"
+    echo "| q) Quit            |"
+    echo "======================"
 }
 
 apply_selected_configs(){

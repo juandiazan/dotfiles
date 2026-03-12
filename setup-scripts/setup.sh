@@ -21,10 +21,12 @@ while [ $option -ne 0 ] ; do
     case $option in
 
     1)
+        clear
         select_software
     ;; 
 
     2)
+        clear
         apply_configs
     ;; 
 
