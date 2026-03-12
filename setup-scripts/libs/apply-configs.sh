@@ -80,7 +80,7 @@ show_config_selection_menu() {
 apply_selected_configs(){
     echo "Applying selected configurations:"
     for config in "${SELECTED_CONFIGS[@]}"; do
-        echo "Applying $config..."
+        print_color $BOLD_PURPLE "=====> Applying $config..."
         case $config in
             "git credentials")
                 echo "Enter your name"
