@@ -114,7 +114,9 @@ apply_selected_configs(){
             "browser bookmarks")
                 echo "TODO"
             ;;
-            "vs code extensions install")
+            "vs code settings and extensions")
+                cp ~/dotfiles/vs-code-settings/settings.json ~/.config/Code/User/
+
                 for extension in $(cat ~/dotfiles/vs-code-extensions/extensions.txt); do
                     code --install-extension "$extension"
                 done

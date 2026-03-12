@@ -8,5 +8,5 @@ CONFIGS=(
     "omarchy hyprland files"
     "waybar hyprland files (jsonc and css)"
     "browser bookmarks"
-    "vs code extensions install"
+    "vs code settings and extensions"
 )
