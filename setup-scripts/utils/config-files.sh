@@ -3,6 +3,7 @@
 CONFIGS=(
     "git credentials"
     "zsh and omz config (.zshrc)"
+    "kitty config"
     "spicetify theme"
     "obsidian"
     "omarchy hyprland files"

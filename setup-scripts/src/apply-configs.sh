@@ -100,6 +100,9 @@ apply_selected_configs(){
             "obsidian")
                 echo "TODO"
             ;;
+            "kitty config")
+                cp ~/dotfiles/kitty-config/* ~/.config/kitty/
+            ;;
             "spicetify theme")
                 spicetify config current_theme Sleek color_scheme Elementary
                 spicetify apply
