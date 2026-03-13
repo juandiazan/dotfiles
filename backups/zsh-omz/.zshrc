@@ -150,3 +150,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # ======================= SPICETIFY =======================
 export PATH=$PATH:/home/juan/.spicetify
 # ======================= SPICETIFY END ===================
+
+# ========== STARSHIP ==========
+eval "$(starship init zsh)"
+# ========== STARSHIP END ======

@@ -133,6 +133,7 @@ backup_selected() {
 	create_dir_if_not_exists "$hyprland_backup_dir"
 	create_dir_if_not_exists "$waybar_backup_dir"
 	create_dir_if_not_exists "$vscode_backup_dir"
+	create_dir_if_not_exists "$starship_backup_dir"
 
 	print_color "$BOLD_PURPLE" "-----------------------------"
 	print_color "$BOLD_PURPLE" "------ dotfile backup -------"
@@ -155,6 +156,9 @@ run_backup_for_target() {
 		;;
 		"kitty config")
 			backup_file "kitty config" "$kitty_config" "$kitty_backup_dir" "kitty.conf"
+		;;
+		"starship config")
+			backup_file "starship config" "$starship_config" "$starship_backup_dir" "starship.toml"
 		;;
 		"hyprland config")
 			backup_directory "hyprland" "$hyprland_config_dir" "$hyprland_backup_dir"
