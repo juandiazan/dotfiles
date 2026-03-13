@@ -4,6 +4,7 @@ CONFIGS=(
     "git credentials"
     "zsh and omz config (.zshrc)"
     "kitty config"
+    "starship config"
     "spicetify theme"
     "omarchy hyprland files"
     "waybar hyprland files (jsonc and css)"
@@ -14,6 +15,7 @@ CONFIGS=(
 BACKUP_TARGETS=(
     "zsh config"
     "kitty config"
+    "starship config"
     "hyprland config"
     "waybar config"
     "VS Code settings and extensions"

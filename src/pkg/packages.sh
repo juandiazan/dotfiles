@@ -12,8 +12,10 @@ PROGRAMS=(
     "lazydocker"
 
     "fastfetch"
+    "kitty"
     "zsh"
     "oh-my-zsh"
+    "starship"
     "spicetify (and marketplace)"
     "ckb-next (corsair drivers)"
     "solaar (logitech drivers)"
@@ -31,8 +33,10 @@ declare -A PACKAGES=(
     [lazydocker]="lazydocker"
 
     [fastfetch]="fastfetch"
+    [kitty]="kitty"
     [zsh]="zsh"
     [oh-my-zsh]="oh-my-zsh"
+    [starship]="starship"
     [spicetify (and marketplace)]="spicetify-cli"
     [ckb-next (corsair drivers)]="ckb-next"
     [solaar (logitech drivers)]="solaar"

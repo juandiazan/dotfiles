@@ -20,16 +20,17 @@ source "$SCRIPT_DIR/configs.sh" || {
 
 current_date="$(date +%d-%m-%Y_%H:%M:%S)"
 
-# ============= dotfiles locations =============
+# ============= config locations =============
 # git credentials are not backed up
 zsh_config="$HOME/.zshrc"
 kitty_config="$HOME/.config/kitty/kitty.conf"
+starship_config="$HOME/.config/starship.toml"
 # spicetify theme is not backed up
 hyprland_config_dir="$HOME/.config/hypr"
 waybar_files_dir="$HOME/.config/waybar"
 #browser bookmarks TODO
 vscode_settings="$HOME/.config/Code/User/settings.json"
-# ============= dotfiles locations =============
+# ============= config locations =============
 
 
 # ============= backup destinations =============
@@ -37,6 +38,7 @@ backups_root_dir="$DOTFILES_DIR/backups"
 
 zsh_backup_dir="$backups_root_dir/zsh-omz"
 kitty_backup_dir="$backups_root_dir/kitty-config"
+starship_backup_dir="$backups_root_dir/starship-config"
 # spicetify theme is not backed up
 hyprland_backup_dir="$backups_root_dir/hyprland"
 waybar_backup_dir="$backups_root_dir/waybar"

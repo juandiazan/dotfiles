@@ -107,6 +107,9 @@ apply_selected_configs(){
             "kitty config")
                 cp "$BACKUPS_DIR/kitty-config"/* "$HOME/.config/kitty/"
             ;;
+            "starship config")
+                cp "$BACKUPS_DIR/starship-config/starship.toml" "$HOME/.config/starship.toml"
+            ;;
             "spicetify theme")
                 spicetify config current_theme Sleek color_scheme Elementary
                 spicetify apply
