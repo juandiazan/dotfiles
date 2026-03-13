@@ -1,21 +1,26 @@
 #!/usr/bin/env bash
 
-source ./utils/config-files.sh || {
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SETUP_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
+DOTFILES_DIR="$SETUP_DIR"
+BACKUPS_DIR="$DOTFILES_DIR/backups"
+
+source "$SCRIPT_DIR/configs.sh" || {
     echo "Failed to load config file list."
     exit 1
 }
-source ./ui/menus.sh || {
+source "$SETUP_DIR/ui/menus.sh" || {
     echo "Failed to load menu script."
     exit 1
 }
-source ./ui/colored_print.sh || {
+source "$SETUP_DIR/ui/colored_print.sh" || {
     echo "Failed to load special print script."
     exit 1
 }
 
 declare -a SELECTED_CONFIGS=()
 
-apply_configs() {
+select_configs() {
     while true; do
         clear
         show_config_selection_menu
@@ -83,6 +88,8 @@ apply_selected_configs(){
         print_color $BOLD_PURPLE "=====> Applying $config..."
         case $config in
             "git credentials")
+                git config credential.helper store
+                
                 echo "Enter your name"
                 read name
 
@@ -93,15 +100,12 @@ apply_selected_configs(){
                 git config --global user.email "$email"
             ;;
             "zsh and omz config (.zshrc)")
-                cp ~/dotfiles/zsh-and-omz-config/.zshrc ~/
+                cp "$BACKUPS_DIR/zsh-omz/.zshrc" "$HOME/"
                 chsh -s "$(command -v zsh)"
                 print_color $BOLD_YELLOW "=====> Log out and log back in, restart your terminal or run \"exec zsh\" for effects to apply."
             ;;
-            "obsidian")
-                echo "TODO"
-            ;;
             "kitty config")
-                cp ~/dotfiles/kitty-config/* ~/.config/kitty/
+                cp "$BACKUPS_DIR/kitty-config"/* "$HOME/.config/kitty/"
             ;;
             "spicetify theme")
                 spicetify config current_theme Sleek color_scheme Elementary
@@ -111,15 +115,15 @@ apply_selected_configs(){
                 echo "TODO"
             ;;
             "waybar hyprland files (jsonc and css)")
-                cp ~/dotfiles/waybar/* ~/.config/waybar/
+                cp "$BACKUPS_DIR/waybar"/* "$HOME/.config/waybar/"
             ;;
             "browser bookmarks")
                 echo "TODO"
             ;;
             "vs code settings and extensions")
-                cp ~/dotfiles/vs-code-settings/settings.json ~/.config/Code/User/
+                cp "$BACKUPS_DIR/vs-code/settings.json" "$HOME/.config/Code/User/"
 
-                for extension in $(cat ~/dotfiles/vs-code-extensions/extensions.txt); do
+                for extension in $(cat "$BACKUPS_DIR/vs-code/extensions.txt"); do
                     code --install-extension "$extension"
                 done
             ;;

@@ -1,18 +1,21 @@
 #!/usr/bin/env bash
 
-source ./utils/detect-package-manager.sh || {
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SETUP_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
+
+source "$SCRIPT_DIR/detect-package-manager.sh" || {
     echo "Failed to load pkgm detection script."
     exit 1
 }
-source ./utils/software.sh || {
+source "$SCRIPT_DIR/packages.sh" || {
     echo "Failed to load software list."
     exit 1
 }
-source ./ui/menus.sh || {
+source "$SETUP_DIR/ui/menus.sh" || {
     echo "Failed to load menu script."
     exit 1
 }
-source ./ui/colored_print.sh || {
+source "$SETUP_DIR/ui/colored_print.sh" || {
     echo "Failed to load special print script."
     exit 1
 }
@@ -123,7 +126,7 @@ install_package() {
             install_pkg_arch_based "$pkg"
             ;;
         apt|dnf)
-            install_generic "$PKG_MANAGER" "$pkg"
+            install_pkg_generic "$PKG_MANAGER" "$pkg"
             ;;
         *)
             echo "Unsupported package manager"
