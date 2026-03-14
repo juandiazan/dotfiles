@@ -110,6 +110,10 @@ apply_selected_configs(){
             "starship config")
                 cp "$BACKUPS_DIR/starship-config/starship.toml" "$HOME/.config/starship.toml"
             ;;
+            "fastfetch config")
+                mkdir -p "$HOME/.config/fastfetch"
+                cp "$BACKUPS_DIR/fastfetch-config/config.jsonc" "$HOME/.config/fastfetch/config.jsonc"
+            ;;
             "spicetify theme")
                 spicetify config current_theme Sleek color_scheme Elementary
                 spicetify apply

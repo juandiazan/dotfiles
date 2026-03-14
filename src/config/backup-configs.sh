@@ -25,6 +25,7 @@ current_date="$(date +%d-%m-%Y_%H:%M:%S)"
 zsh_config="$HOME/.zshrc"
 kitty_config="$HOME/.config/kitty/kitty.conf"
 starship_config="$HOME/.config/starship.toml"
+fastfetch_config="$HOME/.config/fastfetch/config.jsonc"
 # spicetify theme is not backed up
 hyprland_config_dir="$HOME/.config/hypr"
 waybar_files_dir="$HOME/.config/waybar"
@@ -39,6 +40,7 @@ backups_root_dir="$DOTFILES_DIR/backups"
 zsh_backup_dir="$backups_root_dir/zsh-omz"
 kitty_backup_dir="$backups_root_dir/kitty-config"
 starship_backup_dir="$backups_root_dir/starship-config"
+fastfetch_backup_dir="$backups_root_dir/fastfetch-config"
 # spicetify theme is not backed up
 hyprland_backup_dir="$backups_root_dir/hyprland"
 waybar_backup_dir="$backups_root_dir/waybar"
@@ -134,6 +136,7 @@ backup_selected() {
 	create_dir_if_not_exists "$waybar_backup_dir"
 	create_dir_if_not_exists "$vscode_backup_dir"
 	create_dir_if_not_exists "$starship_backup_dir"
+	create_dir_if_not_exists "$fastfetch_backup_dir"
 
 	print_color "$BOLD_PURPLE" "-----------------------------"
 	print_color "$BOLD_PURPLE" "------ dotfile backup -------"
@@ -159,6 +162,9 @@ run_backup_for_target() {
 		;;
 		"starship config")
 			backup_file "starship config" "$starship_config" "$starship_backup_dir" "starship.toml"
+		;;
+		"fastfetch config")
+			backup_file "fastfetch config" "$fastfetch_config" "$fastfetch_backup_dir" "config.jsonc"
 		;;
 		"hyprland config")
 			backup_directory "hyprland" "$hyprland_config_dir" "$hyprland_backup_dir"
