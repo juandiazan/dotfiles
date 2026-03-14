@@ -1,0 +1,360 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "padding": {
+      "top": 2,
+      "left": 0,
+      "right": 4
+    },
+    "position": "left"
+  },
+  "display": {
+    "separator": " -> ",
+    "temp": {
+      "unit": "D",
+      "ndigits": 1,
+      "color": {
+        "green": "32",
+        "yellow": "93",
+        "red": "91"
+      },
+      "spaceBeforeUnit": "default"
+    },
+    "percent": {
+      "type": 3,
+      "ndigits": 0,
+      "color": {
+        "green": "32",
+        "yellow": "93",
+        "red": "91"
+      },
+      "spaceBeforeUnit": "default",
+      "width": 0
+    },
+    "bar": {
+      "char": {
+        "elapsed": "■",
+        "total": "-"
+      },
+      "border": {
+        "left": "[ ",
+        "right": " ]",
+        "leftElapsed": "",
+        "rightElapsed": ""
+      },
+      "color": {
+        "elapsed": "auto",
+        "total": "97",
+        "border": "97"
+      },
+      "width": 10
+    },
+    "fraction": {
+      "ndigits": 2
+    },
+    "noBuffer": false,
+    "key": {
+      "width": 0,
+      "type": "both",
+      "paddingLeft": 0
+    },
+    "freq": {
+      "ndigits": 2,
+      "spaceBeforeUnit": "default"
+    },
+    "constants": [
+      "──────────────────────────────"
+    ]
+  },
+  "general": {
+    "thread": true,
+    "processingTimeout": 5000,
+    "detectVersion": true,
+    "playerName": "",
+    "dsForceDrm": false
+  },
+  "modules": [
+    { // top title border
+      "type": "custom",
+      "format": "┌{$1}{$1}┐",
+      "outputColor": "90"
+    },
+    { // title, user@hostname
+      "type": "title"
+    },
+    { // bottom title border
+      "type": "custom",
+      "format": "└{$1}{$1}┘",
+      "outputColor": "90"
+    },
+    {
+      "type": "custom",
+      "format": "System Information",
+      "outputColor": "93"
+    },
+    {
+      "type": "datetime",
+      "keyIcon": "    ",
+      "format": "{weekday}, {day-in-month}-{month-pretty}-{year} {hour-pretty}:{minute-pretty}:{second-pretty} [Week {week}] [UTC{offset-from-utc}]",
+      "keyColor": "93"
+    },
+    {
+      "type": "os",
+      "key": "OS",
+      "keyIcon": "    󰌌",
+      "keyColor": "93"
+    },
+    {
+      "type": "kernel",
+      "keyIcon": "    ",
+      "keyColor": "93"
+    },
+    {
+      "type": "uptime",
+      "keyIcon": "    ",
+      "keyColor": "93"
+    },
+    {
+      "type": "packages",
+      "keyIcon": "    󰏖",
+      "disabled": [
+        "apk"
+      ],
+      "combined": false,
+      "keyColor": "93"
+    },
+    {
+      "type": "shell",
+      "keyIcon": "    ",
+      "keyColor": "93"
+    },
+    { // separator between system info and display info
+      "type": "custom",
+      "format": "{$1}{$1}",
+      "outputColor": "90"
+    },
+    { // display info title
+      "type": "custom",
+      "format": "Display Information",
+      "outputColor": "blue"
+    },
+    {
+      "type": "lm",
+      "keyIcon": "    󰧨",
+      "keyColor": "blue"
+    },
+    {
+      "type": "display",
+      "keyIcon": "    󰍹",
+      "keyColor": "blue"
+    },
+    {
+      "type": "de",
+      "keyIcon": "    ",
+      "keyColor": "blue"
+    },
+    {
+      "type": "wm",
+      "keyIcon": "    ",
+      "detectPlugin": true,
+      "keyColor": "blue"
+    },
+    {
+      "type": "wmtheme",
+      "keyIcon": "    󰓸",
+      "keyColor": "blue"
+    },
+    {
+      "type": "wallpaper",
+      "keyIcon": "    󰸉",
+      "keyColor": "blue"
+    },
+    { // separator between display info and customization
+      "type": "custom",
+      "format": "{$1}{$1}",
+      "outputColor": "90"
+    },
+    { // customization title
+      "type": "custom",
+      "format": "Customization",
+      "outputColor": "95"
+    },
+    {
+      "type": "theme",
+      "keyIcon": "    󰉼",
+      "keyColor": "95"
+    },
+    {
+      "type": "icons",
+      "keyIcon": "    ",
+      "keyColor": "95"
+    },
+    {
+      "type": "font",
+      "keyIcon": "    ",
+      "keyColor": "95"
+    },
+    {
+      "type": "cursor",
+      "keyIcon": "    󰆿",
+      "keyColor": "95"
+    },
+    {
+      "type": "terminal",
+      "keyIcon": "    ",
+      "keyColor": "95"
+    },
+    {
+      "type": "terminalfont",
+      "keyIcon": "    ",
+      "keyColor": "95"
+    },
+    { // separator between customization and hardware info
+      "type": "custom",
+      "format": "{$1}{$1}",
+      "outputColor": "90"
+    },
+    { // hardware info title
+      "type": "custom",
+      "format": "Hardware Information",
+      "outputColor": "91"
+    },
+    {
+      "type": "cpu",
+      "keyIcon": "    ",
+      "temp": true,
+      "keyColor": "91",
+    },
+    {
+      "type": "gpu",
+      "keyIcon": "    󰾲",
+      "driverSpecific": true,
+      "temp": true,
+      "keyColor": "91"
+    },
+    {
+      "type": "memory",
+      "keyIcon": "    ",
+      "percent": {
+        "green": 50,
+        "yellow": 80,
+        "type": 0
+      },
+      "keyColor": "91"
+    },
+    {
+      "type": "swap",
+      "percent": {
+        "green": 50,
+        "yellow": 80,
+        "type": 0
+      },
+      "keyIcon": "    󰓡",
+      "separate": false,
+      "keyColor": "91"
+    },
+    {
+      "type": "disk",
+      "keyIcon": "    ",
+      "showRegular": true,
+      "showExternal": true,
+      "showHidden": false,
+      "showSubvolumes": false,
+      "showReadOnly": true,
+      "showUnknown": false,
+      "folders": "",
+      "hideFolders": "/efi:/boot:/boot/*",
+      "hideFS": "",
+      "useAvailable": false,
+      "percent": {
+        "green": 50,
+        "yellow": 80,
+        "type": 0
+      },
+      "keyColor": "91"
+    },
+    { // separator between hardware info and sound
+      "type": "custom",
+      "format": "{$1}{$1}",
+      "outputColor": "90"
+    },
+    { // sound title
+      "type": "custom",
+      "format": " Sound",
+      "outputColor": "cyan"
+    },
+    {
+      "type": "player",
+      "keyIcon": "    󰥠",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "media",
+      "keyIcon": "    ",
+      "keyColor": "cyan"
+    },
+    { // separator between sound and others
+      "type": "custom",
+      "format": "{$1}{$1}",
+      "outputColor": "90"
+    },
+    { // others title
+      "type": "custom",
+      "format": "Others",
+      "outputColor": "92"
+    },
+    {
+      "type": "localip",
+      "keyIcon": "    󰩟",
+      "showIpv4": true,
+      "showIpv6": false,
+      "showMac": false,
+      "showLoop": false,
+      "showPrefixLen": true,
+      "showMtu": false,
+      "showSpeed": false,
+      "showFlags": false,
+      "compact": false,
+      "defaultRouteOnly": true,
+      "showAllIps": false,
+      "namePrefix": "",
+      "keyColor": "92"
+    },
+    {
+      "type": "battery",
+      "keyIcon": "    ",
+      "temp": false,
+      "percent": {
+        "green": 50,
+        "yellow": 20,
+        "type": 0
+      },
+      "keyColor": "92"
+    },
+    {
+      "type": "poweradapter",
+      "keyIcon": "    󰚥",
+      "keyColor": "92"
+    },
+    {
+      "type": "locale",
+      "keyIcon": "    ",
+      "keyColor": "92"
+    },
+    "break",
+    {
+      "type": "colors",
+      "key": " ",
+      "keyIcon": "",
+      "symbol": "block",
+      "paddingLeft": 0,
+      "block": {
+        "width": 3,
+        "range": [
+          0,
+          15
+        ]
+      }
+    }
+  ]
+}
