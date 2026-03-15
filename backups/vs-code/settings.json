@@ -1,23 +1,14 @@
 {
-  "update.mode": "none",
-  "workbench.secondarySideBar.defaultVisibility": "hidden",
-  "editor.cursorBlinking": "expand",
-
-  "editor.defaultFormatter": null,
-
-  "[shellscript]": {
-    "editor.defaultFormatter": "foxundermoon.shell-format"
-  },
-
-  "shfmt.path": "/usr/bin/shfmt",
-  "shfmt.indent": 4,
-  "shfmt.logging": "verbose",
-  "haskell.manageHLS": "GHCup",
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Matte Black",
+  "workbench.colorTheme": "Nord",
+  "editor.fontFamily": "GoMono Nerd Font, monospace",
+  "editor.cursorBlinking": "expand",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "telemetry.feedback.enabled": false,
+  "telemetry.telemetryLevel": "off",
   "telemetry.editStats.enabled": false,
-  "telemetry.telemetryLevel": "error",
-  "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
-  }
+  "gitlens.telemetry.enabled": false,
 }
