@@ -108,6 +108,8 @@ install_selected_software(){
                 sudo chmod a+wr /opt/spotify
                 sudo chmod a+wr /opt/spotify/Apps -R
 
+                install_package "spicetify-themes-git" || echo "Failed to install spicetify themes package"
+
                 spicetify backup apply enable-devtools
                 ;;
             *)
