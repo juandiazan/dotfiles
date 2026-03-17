@@ -27,7 +27,9 @@ kitty_config="$HOME/.config/kitty/kitty.conf"
 starship_config="$HOME/.config/starship.toml"
 fastfetch_config="$HOME/.config/fastfetch/config.jsonc"
 # spicetify theme is not backed up
-hyprland_config_dir="$HOME/.config/hypr"
+hyprland_config_dir="$HOME/.config/hypr" # for laptop (omarchy)
+hypr_desktop_config="$HOME/.config/hypr/hyprland.conf" # for desktop (cachyos)
+
 waybar_files_dir="$HOME/.config/waybar"
 #browser bookmarks TODO
 vscode_settings="$HOME/.config/Code/User/settings.json"
@@ -42,10 +44,17 @@ kitty_backup_dir="$backups_root_dir/kitty-config"
 starship_backup_dir="$backups_root_dir/starship-config"
 fastfetch_backup_dir="$backups_root_dir/fastfetch-config"
 # spicetify theme is not backed up
-hyprland_backup_dir="$backups_root_dir/hyprland"
-waybar_backup_dir="$backups_root_dir/waybar"
+
 # browser bookmarks TODO
 vscode_backup_dir="$backups_root_dir/vs-code"
+
+# for laptop (omarchy)
+hyprland_backup_dir="$backups_root_dir/hyprland" 
+waybar_backup_dir="$backups_root_dir/waybar"
+
+# for pc (cachy)
+hypr_desktop_config_backup_dir="$backups_root_dir/hyprland-desktop" 
+waybar_backup_dir_desktop="$backups_root_dir/waybar-desktop"
 
 create_dir_if_not_exists() {
 	if [ ! -d "$1" ]; then
@@ -138,6 +147,9 @@ backup_selected() {
 	create_dir_if_not_exists "$starship_backup_dir"
 	create_dir_if_not_exists "$fastfetch_backup_dir"
 
+	create_dir_if_not_exists "$hypr_desktop_config_backup_dir"
+	create_dir_if_not_exists "$waybar_backup_dir_desktop"
+
 	print_color "$BOLD_PURPLE" "-----------------------------"
 	print_color "$BOLD_PURPLE" "------ dotfile backup -------"
 	print_color "$BOLD_PURPLE" "-----------------------------"
@@ -175,6 +187,10 @@ run_backup_for_target() {
 		"VS Code settings and extensions")
 			backup_file "VS Code settings" "$vscode_settings" "$vscode_backup_dir" "settings.json"
 			backup_vscode_extensions
+		;;
+		"hypr and waybar dotfiles for desktop pc")
+			backup_file "hyprland desktop conf" "$hypr_desktop_config" "$hypr_desktop_config_backup_dir" "hyprland.conf"
+			backup_directory "waybar desktop conf" "$waybar_files_dir" "$waybar_backup_dir_desktop"
 		;;
 		*)
 			print_color "$BOLD_RED" "$1 is not supported."

@@ -1,0 +1,129 @@
+{
+  "layer": "top",
+  "position": "top",
+  "spacing": 8,
+  "height": 35,
+  "modules-left": [
+    "hyprland/workspaces",
+    "wlr/taskbar",
+    "hyprland/window"],
+  "modules-center": [
+    "custom/distro",
+    "clock"
+  ],
+  "modules-right": [
+    "bluetooth",
+    "network",
+    "pulseaudio#output",
+    "pulseaudio#input",
+    "cpu",
+    "memory",
+    "disk",
+    "hyprland/language"
+  ],
+
+  // -------------------- MODULES LEFT --------------------
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "active": ""
+    },
+    "persistent-workspaces": {
+      "*": 9
+    }
+  },
+  "wlr/taskbar":{
+    "format": "{icon}",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close"
+  },
+  "hyprland/window":{
+    "max-length": 40,
+    "separate-outputs": false
+  },
+  // --------------------------------------------------------
+
+  // -------------------- MODULES CENTER --------------------
+   "custom/distro": {
+    "format": "󰣇 ",
+    "tooltip": false,
+    "on-click": "rofi -show drun"
+  },
+  "clock": {
+    "format": "{:L%H:%M, %A %d/%m/%Y}",
+    "tooltip": false
+  },
+ 
+  // --------------------------------------------------------
+
+  // -------------------- MODULES RIGHT --------------------  
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲 disconnected",
+    "format-connected": " connected",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "~/.config/waybar/scripts/bluetooth-open.sh",
+    "on-click-right": "~/.config/waybar/scripts/bluetooth-toggle.sh"
+  },
+  "network": {
+    "format-ethernet": "󰌘 online",
+    "format-disconnected": "󰌙 disconnected",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}"
+  },
+  "pulseaudio#output": {
+    "format": "{icon} {volume}%",
+    "format-muted": "{icon} {volume}%",
+    "format-icons": {
+			"default": [ "󰕿", "󰖀", "󰕾" ],
+			"default-muted": "󰝟",
+			"headphone": "󰋋",
+			"headphone-muted": "󰟎",
+			"headset": "󰋎",
+			"headset-muted": "󰋐"
+		},
+		"tooltip-format": "<b>Output Device</b>: {desc} at {volume}%",
+    "on-click": "~/.config/waybar/scripts/audio-open.sh",
+		"on-click-right": "~/.config/waybar/scripts/volume.sh output mute",
+
+    "on-scroll-up": "~/.config/waybar/scripts/volume.sh output raise",
+		"on-scroll-down": "~/.config/waybar/scripts/volume.sh output lower"
+  },
+
+  "pulseaudio#input": {
+		"format": "{format_source}",
+		"format-source": "󰍬 {volume}%",
+		"format-source-muted": "󰍭 {volume}%",
+		"on-click": "~/.config/waybar/scripts/volume.sh input mute",
+		"on-scroll-up": "~/.config/waybar/scripts/volume.sh input raise",
+		"on-scroll-down": "~/.config/waybar/scripts/volume.sh input lower",
+		"tooltip-format": "<b>Input Device</b>: {desc} at {volume}%" // currently does not work
+	},
+
+  // ----------------------------- HARDWARE GROUP ----------------------------- 
+
+  "cpu": {
+    "interval": 5,
+    "format": "CPU:{usage}%",
+    "on-click": "~/.config/waybar/scripts/hardware-monitor-open.sh"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "MEM:{}%",
+    "on-click": "~/.config/waybar/scripts/hardware-monitor-open.sh"
+  },
+  "disk": {
+    "interval": 5,
+    "format": "DSK:{percentage_used}%",
+    "path": "/", 
+    "on-click": "~/.config/waybar/scripts/hardware-monitor-open.sh"
+  },
+  // ----------------------------- END OF HARDWARE GROUP ----------------------------- 
+
+  "hyprland/language": {
+    "on-click": "hyprctl switchxkblayout ckb1:-corsair-gaming-k95-rgb-platinum-keyboard-vkb next",
+    "format-es": " ESP",
+    "format-en": " ENG"
+  }
+}

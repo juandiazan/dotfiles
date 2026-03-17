@@ -1,0 +1,119 @@
+@define-color ts transparent;
+@define-color background #0b011c;
+@define-color foreground #81b3b8;
+@define-color black #0f1014;
+@define-color red #c91629;
+@define-color green #0eab52;
+@define-color yellow #d2d45f;
+@define-color blue #292c49;
+@define-color magenta #9a578a;
+@define-color cyan #249d9d;
+@define-color white #fbf0de;
+@define-color purple #7635b8;
+@define-color pink #e35473;
+@define-color teal #55d4b2;
+@define-color bordo #a5334a;
+
+* {
+  font-family: "GoMono Nerd Font", monospace;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+window#waybar {
+  background-color: @background;
+  color: @teal;
+}
+
+/*
+=================================
+========= MODULES LEFT ==========
+=================================
+*/
+
+#workspaces button {
+  color: @teal;
+}
+
+#workspaces button.empty {
+  opacity: 0.3;
+}
+
+#workspaces button.active {
+  color: @red;
+  border-bottom: 4px;
+  text-shadow: 0 0 4px @red;
+  border-top: 3px solid @cyan;
+  border-bottom: 3px solid @cyan;
+}
+
+/* TASKBAR */
+
+#taskbar button.active {
+  border-left: 3px solid @cyan;
+  border-right: 3px solid @red;
+
+  border-top: 3px solid @cyan;
+  border-bottom: 3px solid @red;
+}
+
+#taskbar button:hover {
+  border: 3px solid @purple;
+}
+
+/*
+=================================
+========= MODULES CENTER ========
+=================================
+*/
+
+#clock {
+  color: @red;
+  border-bottom: 3px solid @red;
+}
+
+#custom-distro {
+  padding-left: 4px;
+  border-bottom: 3px solid @teal;
+}
+
+/*
+=================================
+========= MODULES RIGHT =========
+=================================
+*/
+
+#bluetooth {
+  color: @teal;
+  border-bottom: 3px solid @teal;
+}
+
+#network {
+  color: @pink;
+  border-bottom: 3px solid @pink;
+}
+
+#pulseaudio {
+  color: @white;
+  border-bottom: 3px solid @white;
+}
+
+#cpu {
+  color: @blue;
+  border-bottom: 3px solid @blue;
+}
+
+#memory {
+  color: @cyan;
+  border-bottom: 3px solid @cyan;
+}
+
+#disk {
+  color: @red;
+  border-bottom: 3px solid @red;
+}
+
+#language {
+  color: @magenta;
+  border-bottom: 3px solid @magenta;
+}
