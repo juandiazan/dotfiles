@@ -1,39 +1,24 @@
 @import "../omarchy/current/theme/waybar.css";
 
+@define-color ts transparent;
+@define-color background #0b011c;
+@define-color foreground #a9b1d6;
+@define-color blk #000000;
 /* 
 ----------------------------------------------
 ---------------- global rules ---------------- 
 ----------------------------------------------
 */
 * {
-  /* background-color: @background; */
-  
-  /* text color, by default it's color: @foreground;*/
-  color: whitesmoke; 
-  
-  border: none;
-  font-family: 'Hasklug Nerd Font';
-  font-size: 15px;
-  min-height: 18px;
+  font-family: 'GoMono Nerd Font', monospace;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 /* background bar */
 window#waybar {
-  background-color: transparent;
-}
-
-/* Separation to the left */
-.modules-left {
-  margin-left: 8px;
-}
-
-/* Separation to the right */
-.modules-right {
-  margin-right: 8px;
-}
-
-tooltip {
-  padding: 2px;
+  background-color: @background;
+  color: @foreground;
 }
 
 /* 
@@ -43,8 +28,6 @@ tooltip {
 */
 #custom-omarchy {
   color: rgba(67, 114, 67, 0.8);  
-
-  margin-right: 5px;
 }
 
 /* 
