@@ -124,9 +124,9 @@ apply_selected_configs(){
             "waybar hyprland files (jsonc and css)")
                 cp "$BACKUPS_DIR/waybar"/* "$HOME/.config/waybar/"
             ;;
-            "waybar and hyprland files (for desktop)")
+            "hypr and waybar dotfiles for desktop pc")
                 cp "$BACKUPS_DIR/hyprland-desktop/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
-                cp "$BACKUPS_DIR/waybar"/* "$HOME/.config/waybar/"
+                cp -r "$BACKUPS_DIR/waybar-desktop"/* "$HOME/.config/waybar/"
             ;;
             "browser bookmarks")
                 echo "TODO"
