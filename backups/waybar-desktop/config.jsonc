@@ -8,8 +8,9 @@
     "wlr/taskbar",
     "hyprland/window"],
   "modules-center": [
+    "clock",
     "custom/distro",
-    "clock"
+    "mpris"
   ],
   "modules-right": [
     "bluetooth",
@@ -31,7 +32,9 @@
     },
     "persistent-workspaces": {
       "*": 9
-    }
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
   },
   "wlr/taskbar":{
     "format": "{icon}",
@@ -53,9 +56,37 @@
   },
   "clock": {
     "format": "{:L%H:%M, %A %d/%m/%Y}",
-    "tooltip": false
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#c91629'><b>{}</b></span>", // red
+                              "days":       "<span color='#fbf0de'><b>{}</b></span>", // white
+                              "weeks":      "<span color='#55d4b2'><b>W{}</b></span>", // light teal
+                              "weekdays":   "<span color='#249d9d'><b>{}</b></span>", // dark teal
+                              "today":      "<span color='#e35473'><b><u>{}</u></b></span>" // pink
+                              }
+                    },
+        "actions":  {
+                    "on-click-right": "mode",
+                    "on-scroll-up": "shift_up",
+                    "on-scroll-down": "shift_down"
+                    }
   },
- 
+  "mpris": {
+    "player": "spotify",
+	  "format": "{status_icon} <i>{artist} - {album} - {title}</i>",
+	  "format-paused": "{status_icon} <i>{artist} - {album} - {title}</i>",
+	  "status-icons": {
+		  "paused": "▶",
+      "playing": "⏸"
+	  },
+    "interval": "1"
+	  // "ignored-players": ["firefox"]
+  },
   // --------------------------------------------------------
 
   // -------------------- MODULES RIGHT --------------------  
@@ -85,6 +116,7 @@
 		},
 		"tooltip-format": "<b>Output Device</b>: {desc} at {volume}%",
     "on-click": "~/.config/waybar/scripts/audio-open.sh",
+    "on-click-middle": "~/.config/waybar/scripts/change-audio-output.sh",
 		"on-click-right": "~/.config/waybar/scripts/volume.sh output mute",
 
     "on-scroll-up": "~/.config/waybar/scripts/volume.sh output raise",
