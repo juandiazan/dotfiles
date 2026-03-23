@@ -31,7 +31,7 @@
       "active": ""
     },
     "persistent-workspaces": {
-      "*": 9
+      "*": 5
     },
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1"
@@ -78,7 +78,7 @@
   },
   "mpris": {
     "player": "spotify",
-	  "format": "{status_icon} <i>{artist} - {album} - {title}</i>",
+	  "format": "{status_icon} <i>{artist} - {title} - {album}</i>",
 	  "format-paused": "{status_icon} <i>{artist} - {album} - {title}</i>",
 	  "status-icons": {
 		  "paused": "▶",
