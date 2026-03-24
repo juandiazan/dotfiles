@@ -2,71 +2,54 @@
 
 @define-color ts transparent;
 @define-color background #0b011c;
-@define-color foreground #a9b1d6;
-@define-color blk #000000;
+@define-color foreground #3c3449;
+@define-color black #0f1014;
+@define-color red #c91629;
+@define-color green #0eab52;
+@define-color yellow #d2d45f;
+@define-color blue #292c49;
+@define-color magenta #9a578a;
+@define-color cyan #249d9d;
+@define-color white #fbf0de;
+@define-color purple #7635b8;
+@define-color pink #e35473;
+@define-color teal #55d4b2;
+@define-color bordo #a5334a;
+
 /* 
 ----------------------------------------------
 ---------------- global rules ---------------- 
 ----------------------------------------------
 */
 * {
-  font-family: 'GoMono Nerd Font', monospace;
+  font-family: "GoMono Nerd Font", monospace;
   font-size: 13px;
   font-weight: bold;
 }
 
-/* background bar */
 window#waybar {
   background-color: @background;
-  color: @foreground;
+  color: @teal;
 }
-
-/* 
-----------------------------------------------
----------------- omarchy icon ---------------- 
-----------------------------------------------
-*/
-#custom-omarchy {
-  color: rgba(67, 114, 67, 0.8);  
-}
-
 /* 
 ----------------------------------------------
 ------------- workspaces module -------------- 
 ----------------------------------------------
 */
-#workspaces {
-  background-color: rgb(98, 45, 81); 
-  margin: 4px 0;
-
-  padding: 0px 6px;
-  border-radius: 10px;
-
-  margin-left: 1px;
-}
-
 #workspaces button {
-  margin: 0 1.5px;
-  
-  padding: 0 4px;
-  border-radius: 20px;
-
-  min-width: 10px;
-  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+  color: @teal;
 }
 
-#workspaces button.occupied {
-  opacity: 1;
+#workspaces button.active {
+  color: @red;
+  border-bottom: 4px;
+  text-shadow: 0 0 4px @red;
+  border-top: 3px solid @cyan;
+  border-bottom: 3px solid @cyan;
 }
 
-/* Buttons for empty workspaces */
 #workspaces button.empty {
   opacity: 0.3;
-}
-
-/* Button for active workspace */
-#workspaces button.active {
-  text-shadow: 0 0 4px whitesmoke;
 }
 
 /* 
@@ -74,41 +57,36 @@ window#waybar {
 --------------- taskbar module --------------- 
 ----------------------------------------------
 */
-#taskbar {
-  background: rgba(0, 0, 0, 0.8);
-  margin: 4px 0px;
-
-  padding: 0px 2px; /* distance between icons */
-  border-radius: 12px;
-}
-
-#taskbar button {
-  border-radius: 12px;
-
-  transition: background 0.3s ease;
-}
-
 #taskbar button.active {
-  background-color: rgba(82, 32, 164, 1);
+  border-left: 3px solid @teal;
+  border-right: 3px solid @red;
+
+  border-top: 3px solid @teal;
+  border-bottom: 3px solid @red;
 }
 
 #taskbar button:hover {
-  background-color: rgba(153, 100, 239, 0.7);
+  border: 3px solid @white;
+
+  background-color: @foreground;
 }
 
 /* 
 ----------------------------------------------
----------------- clock module ---------------- 
+----------- clock & distro module ------------ 
 ----------------------------------------------
 */
 #clock {
-  background-color: rgba(67, 114, 67, 1);
-  margin: 4px 0;
+  color: @red;
+  border-bottom: 3px solid @red;
+  border-top: 3px solid @red;
+}
 
-  padding: 0px 10px;
-  border-radius: 12px;
-
-  margin-left: 5px;
+#custom-omarchy {
+  padding-left: 4px;
+  color: @cyan;
+  border-bottom: 3px solid @cyan;
+  border-top: 3px solid @cyan;
 }
 
 /* 
@@ -131,17 +109,14 @@ window#waybar {
 ------- bluetooth and network modules -------- 
 ----------------------------------------------
 */
-#bluetooth,
-#network {
-  background-color: rgb(65, 23, 132);
-  margin: 4px 0px;
-
-  padding: 0px 6px;
-  border-radius: 12px;
+#bluetooth {
+  color: @teal;
+  border-bottom: 3px solid @teal;
 }
 
 #network {
-  padding-right: 11px;
+  color: @pink;
+  border-bottom: 3px solid @pink;
 }
 
 /* 
@@ -150,11 +125,8 @@ window#waybar {
 ----------------------------------------------
 */
 #pulseaudio {
-  background-color: rgb(51, 116, 88);
-  margin: 4px 0;
-
-  padding: 0px 6px;
-  border-radius: 12px;
+  color: @white;
+  border-bottom: 3px solid @white;
 }
 
 /* 
@@ -170,33 +142,18 @@ window#waybar {
 }
 
 #cpu {
-  background-color: rgba(151, 1, 6, 1);
-  margin: 4px 0;
-
-  /* distance between cpu and what is on the left */
-  padding-left: 6px; 
-
-  /* rounded border on the left of cpu module */
-  border-bottom-left-radius: 12px;
-  border-top-left-radius: 12px;
-
+  color: @blue;
+  border-bottom: 3px solid @blue;
 }
 
 #memory {
-  background-color: rgb(6, 69, 81);
-  margin: 4px 0;
+  color: @cyan;
+  border-bottom: 3px solid @cyan;
 }
 
 #disk {
-  background-color: rgb(197, 60, 14);
-  margin: 4px 0;
-
-  /* distance between dsk and what is on the right */
-  padding-right: 6px; 
-  
-  /* rounded border on the right of dsk module */
-  border-top-right-radius: 12px; 
-  border-bottom-right-radius: 12px;
+  color: @red;
+  border-bottom: 3px solid @red;
 }
 
 /* 
@@ -205,11 +162,8 @@ window#waybar {
 ----------------------------------------------
 */
 #language {
-  background-color: rgba(56, 54, 58, 1);
-  margin: 4px 0;
-
-  padding: 0px 5px;
-  border-radius: 12px;
+  color: @magenta;
+  border-bottom: 3px solid @magenta;
 }
 
 /* 
@@ -218,23 +172,15 @@ window#waybar {
 ----------------------------------------------
 */
 #battery {
-  background-color: rgba(67, 114, 67, 0.8);
-  margin: 4px 0;
-
-  padding: 0px 6px;
-  border-radius: 12px;
-
-  color: rgba(8, 245, 111, 1);
+  color: @teal;
+  border-bottom: 3px solid @teal;
 }
 
 /* 
 ----------------------------------------------
-------------------- other -------------------- 
+------------------- other --------------------
 ----------------------------------------------
 */
-#custom-update {
-  font-size: 10px;
-}
 
 .hidden {
   opacity: 0;
