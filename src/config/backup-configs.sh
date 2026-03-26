@@ -178,7 +178,7 @@ run_backup_for_target() {
 			backup_directory "waybar laptop" "$waybar_files_dir" "$waybar_laptop_backup_dir"
 		;;
 		"hypr and waybar for pc")
-			backup_file "$hypr_desktop_config" "$hyprland_pc_backup_dir" "hyprland.conf"
+			backup_directory "hyprland pc" "$hyprland_config_dir" "$hyprland_pc_backup_dir"
 			backup_directory "waybar pc" "$waybar_files_dir" "$waybar_pc_backup_dir"
 		;;
 		"vs code settings and extensions")

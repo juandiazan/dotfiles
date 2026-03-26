@@ -127,7 +127,7 @@ apply_selected_configs(){
             "hypr and waybar for pc")
                 mkdir -p "$HOME/.config/hypr"
                 mkdir -p "$HOME/.config/waybar"
-                cp "$BACKUPS_DIR/pc-hypr-waybar/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
+                cp -r "$BACKUPS_DIR/pc-hypr-waybar/hypr"/* "$HOME/.config/hypr/"
                 cp -r "$BACKUPS_DIR/pc-hypr-waybar/waybar"/* "$HOME/.config/waybar/"
             ;;
             "browser bookmarks")
