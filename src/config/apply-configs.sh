@@ -9,11 +9,11 @@ source "$SCRIPT_DIR/configs.sh" || {
     echo "Failed to load config file list."
     exit 1
 }
-source "$SETUP_DIR/ui/menus.sh" || {
+source "$SETUP_DIR/src/ui/menus.sh" || {
     echo "Failed to load menu script."
     exit 1
 }
-source "$SETUP_DIR/ui/colored_print.sh" || {
+source "$SETUP_DIR/src/ui/colored_print.sh" || {
     echo "Failed to load special print script."
     exit 1
 }
@@ -99,8 +99,8 @@ apply_selected_configs(){
                 git config --global user.name "$name"
                 git config --global user.email "$email"
             ;;
-            "zsh and omz config (.zshrc)")
-                cp "$BACKUPS_DIR/zsh-omz/.zshrc" "$HOME/"
+            "zsh config")
+                cp "$BACKUPS_DIR/zsh/.zshrc" "$HOME/"
                 chsh -s "$(command -v zsh)"
                 print_color $BOLD_YELLOW "=====> Log out and log back in, restart your terminal or run \"exec zsh\" for effects to apply."
             ;;
@@ -118,15 +118,17 @@ apply_selected_configs(){
                 spicetify config current_theme Sleek color_scheme Elementary
                 spicetify apply
             ;;
-            "omarchy hyprland files")
-                echo "TODO"
+            "hypr and waybar for laptop")
+                mkdir -p "$HOME/.config/hypr"
+                mkdir -p "$HOME/.config/waybar"
+                cp -r "$BACKUPS_DIR/laptop-hypr-waybar/hypr"/* "$HOME/.config/hypr/"
+                cp -r "$BACKUPS_DIR/laptop-hypr-waybar/waybar"/* "$HOME/.config/waybar/"
             ;;
-            "waybar hyprland files (jsonc and css)")
-                cp "$BACKUPS_DIR/waybar"/* "$HOME/.config/waybar/"
-            ;;
-            "hypr and waybar dotfiles for desktop pc")
-                cp "$BACKUPS_DIR/hyprland-desktop/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
-                cp -r "$BACKUPS_DIR/waybar-desktop"/* "$HOME/.config/waybar/"
+            "hypr and waybar for pc")
+                mkdir -p "$HOME/.config/hypr"
+                mkdir -p "$HOME/.config/waybar"
+                cp "$BACKUPS_DIR/pc-hypr-waybar/hypr/hyprland.conf" "$HOME/.config/hypr/hyprland.conf"
+                cp -r "$BACKUPS_DIR/pc-hypr-waybar/waybar"/* "$HOME/.config/waybar/"
             ;;
             "browser bookmarks")
                 echo "TODO"

@@ -4,11 +4,11 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SETUP_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 DOTFILES_DIR="$SETUP_DIR"
 
-source "$SETUP_DIR/ui/colored_print.sh" || {
+source "$SETUP_DIR/src/ui/colored_print.sh" || {
 	echo "Failed to load print script."
 	exit 1
 }
-source "$SETUP_DIR/ui/menus.sh" || {
+source "$SETUP_DIR/src/ui/menus.sh" || {
 	echo "Failed to load menu script."
 	exit 1
 }
@@ -39,7 +39,7 @@ vscode_settings="$HOME/.config/Code/User/settings.json"
 # ============= backup destinations =============
 backups_root_dir="$DOTFILES_DIR/backups"
 
-zsh_backup_dir="$backups_root_dir/zsh-omz"
+zsh_backup_dir="$backups_root_dir/zsh"
 kitty_backup_dir="$backups_root_dir/kitty-config"
 starship_backup_dir="$backups_root_dir/starship-config"
 fastfetch_backup_dir="$backups_root_dir/fastfetch-config"
@@ -49,12 +49,14 @@ fastfetch_backup_dir="$backups_root_dir/fastfetch-config"
 vscode_backup_dir="$backups_root_dir/vs-code"
 
 # for laptop (omarchy)
-hyprland_backup_dir="$backups_root_dir/hyprland" 
-waybar_backup_dir="$backups_root_dir/waybar"
+laptop_hypr_waybar_base="$backups_root_dir/laptop-hypr-waybar"
+hyprland_laptop_backup_dir="$laptop_hypr_waybar_base/hypr" 
+waybar_laptop_backup_dir="$laptop_hypr_waybar_base/waybar"
 
 # for pc (cachy)
-hypr_desktop_config_backup_dir="$backups_root_dir/hyprland-desktop" 
-waybar_backup_dir_desktop="$backups_root_dir/waybar-desktop"
+pc_hypr_waybar_base="$backups_root_dir/pc-hypr-waybar"
+hyprland_pc_backup_dir="$pc_hypr_waybar_base/hypr" 
+waybar_pc_backup_dir="$pc_hypr_waybar_base/waybar"
 
 create_dir_if_not_exists() {
 	if [ ! -d "$1" ]; then
@@ -141,56 +143,47 @@ backup_selected() {
 
 	create_dir_if_not_exists "$zsh_backup_dir"
 	create_dir_if_not_exists "$kitty_backup_dir"
-	create_dir_if_not_exists "$hyprland_backup_dir"
-	create_dir_if_not_exists "$waybar_backup_dir"
 	create_dir_if_not_exists "$vscode_backup_dir"
 	create_dir_if_not_exists "$starship_backup_dir"
 	create_dir_if_not_exists "$fastfetch_backup_dir"
 
-	create_dir_if_not_exists "$hypr_desktop_config_backup_dir"
-	create_dir_if_not_exists "$waybar_backup_dir_desktop"
+	create_dir_if_not_exists "$hyprland_laptop_backup_dir"
+	create_dir_if_not_exists "$waybar_laptop_backup_dir"
 
-	print_color "$BOLD_PURPLE" "-----------------------------"
-	print_color "$BOLD_PURPLE" "------ dotfile backup -------"
-	print_color "$BOLD_PURPLE" "-----------------------------"
-	echo "Backup time: $current_date"
+	create_dir_if_not_exists "$hyprland_pc_backup_dir"
+	create_dir_if_not_exists "$waybar_pc_backup_dir"
 
 	for target in "${SELECTED_BACKUPS[@]}"; do
 		print_color "$BOLD_PURPLE" "=====> Backing up $target..."
 		run_backup_for_target "$target"
 	done
-
-	echo ""
-	print_color "$BOLD_GREEN" "Backup flow complete."
 }
 
 run_backup_for_target() {
 	case "$1" in
 		"zsh config")
-			backup_file "zsh config" "$zsh_config" "$zsh_backup_dir" ".zshrc"
+			backup_file "$zsh_config" "$zsh_backup_dir" ".zshrc"
 		;;
 		"kitty config")
-			backup_file "kitty config" "$kitty_config" "$kitty_backup_dir" "kitty.conf"
+			backup_file "$kitty_config" "$kitty_backup_dir" "kitty.conf"
 		;;
 		"starship config")
-			backup_file "starship config" "$starship_config" "$starship_backup_dir" "starship.toml"
+			backup_file "$starship_config" "$starship_backup_dir" "starship.toml"
 		;;
 		"fastfetch config")
-			backup_file "fastfetch config" "$fastfetch_config" "$fastfetch_backup_dir" "config.jsonc"
+			backup_file "$fastfetch_config" "$fastfetch_backup_dir" "config.jsonc"
 		;;
-		"hyprland config")
-			backup_directory "hyprland" "$hyprland_config_dir" "$hyprland_backup_dir"
+		"hypr and waybar for laptop")
+			backup_directory "hyprland laptop" "$hyprland_config_dir" "$hyprland_backup_dir"
+			backup_directory "waybar laptop" "$waybar_files_dir" "$waybar_laptop_backup_dir"
 		;;
-		"waybar config")
-			backup_directory "waybar" "$waybar_files_dir" "$waybar_backup_dir"
+		"hypr and waybar for pc")
+			backup_file "$hypr_desktop_config" "$hyprland_pc_backup_dir" "hyprland.conf"
+			backup_directory "waybar pc" "$waybar_files_dir" "$waybar_pc_backup_dir"
 		;;
-		"VS Code settings and extensions")
-			backup_file "VS Code settings" "$vscode_settings" "$vscode_backup_dir" "settings.json"
+		"vs code settings and extensions")
+			backup_file "$vscode_settings" "$vscode_backup_dir" "settings.json"
 			backup_vscode_extensions
-		;;
-		"hypr and waybar dotfiles for desktop pc")
-			backup_file "hyprland desktop conf" "$hypr_desktop_config" "$hypr_desktop_config_backup_dir" "hyprland.conf"
-			backup_directory "waybar desktop conf" "$waybar_files_dir" "$waybar_backup_dir_desktop"
 		;;
 		*)
 			print_color "$BOLD_RED" "$1 is not supported."
@@ -199,10 +192,9 @@ run_backup_for_target() {
 }
 
 backup_file() {
-	local label="$1"
-	local source_file="$2"
-	local destination_dir="$3"
-	local output_name="$4"
+	local source_file="$1"
+	local destination_dir="$2"
+	local output_name="$3"
 
 	if [ ! -f "$source_file" ]; then
 		print_color "$BOLD_RED" "File not found: $source_file"

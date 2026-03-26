@@ -2,8 +2,8 @@
 
 SETUP_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-source "$SETUP_SCRIPT_DIR/ui/colored_print.sh"
-source "$SETUP_SCRIPT_DIR/ui/menus.sh"
+source "$SETUP_SCRIPT_DIR/src/ui/colored_print.sh"
+source "$SETUP_SCRIPT_DIR/src/ui/menus.sh"
 source "$SETUP_SCRIPT_DIR/src/pkg/install-packages.sh"
 source "$SETUP_SCRIPT_DIR/src/config/apply-configs.sh"
 source "$SETUP_SCRIPT_DIR/src/config/backup-configs.sh"

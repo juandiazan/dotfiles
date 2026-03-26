@@ -11,11 +11,11 @@ source "$SCRIPT_DIR/packages.sh" || {
     echo "Failed to load software list."
     exit 1
 }
-source "$SETUP_DIR/ui/menus.sh" || {
+source "$SETUP_DIR/src/ui/menus.sh" || {
     echo "Failed to load menu script."
     exit 1
 }
-source "$SETUP_DIR/ui/colored_print.sh" || {
+source "$SETUP_DIR/src/ui/colored_print.sh" || {
     echo "Failed to load special print script."
     exit 1
 }

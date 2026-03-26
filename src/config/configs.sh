@@ -2,14 +2,13 @@
 
 CONFIGS=(
     "git credentials"
-    "zsh and omz config (.zshrc)"
+    "zsh config"
     "kitty config"
     "starship config"
     "fastfetch config"
     "spicetify theme"
-    "omarchy hyprland files"
-    "waybar hyprland files (jsonc and css)"
-    "hypr and waybar dotfiles for desktop pc"
+    "hypr and waybar for laptop"
+    "hypr and waybar for pc"
     "browser bookmarks"
     "vs code settings and extensions"
 )
@@ -19,8 +18,7 @@ BACKUP_TARGETS=(
     "kitty config"
     "starship config"
     "fastfetch config"
-    "hyprland config"
-    "waybar config"
-    "hypr and waybar dotfiles for desktop pc"
-    "VS Code settings and extensions"
+    "hypr and waybar for laptop"
+    "hypr and waybar for pc"
+    "vs code settings and extensions"
 )
