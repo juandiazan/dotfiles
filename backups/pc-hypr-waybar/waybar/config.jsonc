@@ -77,15 +77,15 @@
                     }
   },
   "mpris": {
-    "player": "spotify",
+    // "player": "spotify", // currently using spotify and kew TUI
 	  "format": "{status_icon} <i>{artist} - {title} - {album}</i>",
 	  "format-paused": "{status_icon} <i>{artist} - {album} - {title}</i>",
 	  "status-icons": {
 		  "paused": "▶",
       "playing": "⏸"
 	  },
-    "interval": "1"
-	  // "ignored-players": ["firefox"]
+    "interval": "1",
+	  "ignored-players": ["firefox", "librewolf"]
   },
   // --------------------------------------------------------
 
