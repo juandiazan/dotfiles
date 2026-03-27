@@ -16,7 +16,7 @@
 
 * {
   font-family: "GoMono Nerd Font", monospace;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -91,6 +91,11 @@ window#waybar {
 ========= MODULES RIGHT =========
 =================================
 */
+#custom-notification {
+  color: @magenta;
+  border-bottom: 3px solid @magenta;
+  padding-right: 3px;
+}
 
 #bluetooth {
   color: @teal;
