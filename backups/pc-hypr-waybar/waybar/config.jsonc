@@ -1,12 +1,13 @@
 {
-  "layer": "top",
+  "layer": "bottom",
   "position": "top",
   "spacing": 8,
   "height": 35,
   "modules-left": [
     "hyprland/workspaces",
     "wlr/taskbar",
-    "hyprland/window"],
+    "hyprland/window"
+  ],
   "modules-center": [
     "clock",
     "custom/distro",
@@ -23,7 +24,6 @@
     "disk",
     "hyprland/language"
   ],
-
   // -------------------- MODULES LEFT --------------------
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -37,20 +37,19 @@
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1"
   },
-  "wlr/taskbar":{
+  "wlr/taskbar": {
     "format": "{icon}",
     "tooltip-format": "{title}",
     "on-click": "activate",
     "on-click-middle": "close"
   },
-  "hyprland/window":{
+  "hyprland/window": {
     "max-length": 40,
     "separate-outputs": false
   },
   // --------------------------------------------------------
-
   // -------------------- MODULES CENTER --------------------
-   "custom/distro": {
+  "custom/distro": {
     "format": "󰣇 ",
     "tooltip": false,
     "on-click": "rofi -show drun"
@@ -58,38 +57,40 @@
   "clock": {
     "format": "{:L%H:%M, %A %d/%m/%Y}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "calendar": {
-                    "mode"          : "year",
-                    "mode-mon-col"  : 3,
-                    "weeks-pos"     : "right",
-                    "on-scroll"     : 1,
-                    "format": {
-                              "months":     "<span color='#c91629'><b>{}</b></span>", // red
-                              "days":       "<span color='#fbf0de'><b>{}</b></span>", // white
-                              "weeks":      "<span color='#55d4b2'><b>W{}</b></span>", // light teal
-                              "weekdays":   "<span color='#249d9d'><b>{}</b></span>", // dark teal
-                              "today":      "<span color='#e35473'><b><u>{}</u></b></span>" // pink
-                              }
-                    },
-        "actions":  {
-                    "on-click-right": "mode",
-                    "on-scroll-up": "shift_up",
-                    "on-scroll-down": "shift_down"
-                    }
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#c91629'><b>{}</b></span>", // red
+        "days": "<span color='#fbf0de'><b>{}</b></span>", // white
+        "weeks": "<span color='#55d4b2'><b>W{}</b></span>", // light teal
+        "weekdays": "<span color='#249d9d'><b>{}</b></span>", // dark teal
+        "today": "<span color='#e35473'><b><u>{}</u></b></span>" // pink
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
   },
   "mpris": {
     // "player": "spotify", // currently using spotify and kew TUI
-	  "format": "{status_icon} <i>{artist} - {title} - {album}</i>",
-	  "format-paused": "{status_icon} <i>{artist} - {album} - {title}</i>",
-	  "status-icons": {
-		  "paused": "▶",
+    "format": "{status_icon} <i>{artist} - {title} - {album}</i>",
+    "format-paused": "{status_icon} <i>{artist} - {album} - {title}</i>",
+    "status-icons": {
+      "paused": "▶",
       "playing": "⏸"
-	  },
+    },
     "interval": "1",
-	  "ignored-players": ["firefox", "librewolf"]
+    "ignored-players": [
+      "firefox",
+      "librewolf"
+    ]
   },
   // --------------------------------------------------------
-
   // -------------------- MODULES RIGHT --------------------  
   "custom/notification": {
     "tooltip": false,
@@ -128,34 +129,34 @@
     "format": "{icon} {volume}%",
     "format-muted": "{icon} {volume}%",
     "format-icons": {
-			"default": [ "󰕿", "󰖀", "󰕾" ],
-			"default-muted": "󰝟",
-			"headphone": "󰋋",
-			"headphone-muted": "󰟎",
-			"headset": "󰋎",
-			"headset-muted": "󰋐"
-		},
-		"tooltip-format": "<b>Output Device</b>: {desc} at {volume}%",
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ],
+      "default-muted": "󰝟",
+      "headphone": "󰋋",
+      "headphone-muted": "󰟎",
+      "headset": "󰋎",
+      "headset-muted": "󰋐"
+    },
+    "tooltip-format": "<b>Output Device</b>: {desc} at {volume}%",
     "on-click": "~/.config/waybar/scripts/audio-open.sh",
     "on-click-middle": "~/.config/waybar/scripts/change-audio-output.sh",
-		"on-click-right": "~/.config/waybar/scripts/volume.sh output mute",
-
+    "on-click-right": "~/.config/waybar/scripts/volume.sh output mute",
     "on-scroll-up": "~/.config/waybar/scripts/volume.sh output raise",
-		"on-scroll-down": "~/.config/waybar/scripts/volume.sh output lower"
+    "on-scroll-down": "~/.config/waybar/scripts/volume.sh output lower"
   },
-
   "pulseaudio#input": {
-		"format": "{format_source}",
-		"format-source": "󰍬 {volume}%",
-		"format-source-muted": "󰍭 {volume}%",
-		"on-click": "~/.config/waybar/scripts/volume.sh input mute",
-		"on-scroll-up": "~/.config/waybar/scripts/volume.sh input raise",
-		"on-scroll-down": "~/.config/waybar/scripts/volume.sh input lower",
-		"tooltip-format": "<b>Input Device</b>: {desc} at {volume}%" // currently does not work
-	},
-
+    "format": "{format_source}",
+    "format-source": "󰍬 {volume}%",
+    "format-source-muted": "󰍭 {volume}%",
+    "on-click": "~/.config/waybar/scripts/volume.sh input mute",
+    "on-scroll-up": "~/.config/waybar/scripts/volume.sh input raise",
+    "on-scroll-down": "~/.config/waybar/scripts/volume.sh input lower",
+    "tooltip-format": "<b>Input Device</b>: {desc} at {volume}%" // currently does not work
+  },
   // ----------------------------- HARDWARE GROUP ----------------------------- 
-
   "cpu": {
     "interval": 5,
     "format": "CPU:{usage}%",
@@ -169,11 +170,10 @@
   "disk": {
     "interval": 5,
     "format": "DSK:{percentage_used}%",
-    "path": "/", 
+    "path": "/",
     "on-click": "~/.config/waybar/scripts/hardware-monitor-open.sh"
   },
   // ----------------------------- END OF HARDWARE GROUP ----------------------------- 
-
   "hyprland/language": {
     "on-click": "hyprctl switchxkblayout ckb1:-corsair-gaming-k95-rgb-platinum-keyboard-vkb next",
     "format-es": " ESP",

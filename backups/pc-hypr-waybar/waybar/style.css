@@ -25,6 +25,13 @@ window#waybar {
   color: @teal;
 }
 
+tooltip {
+  background-color: @background;
+}
+
+tooltip label {
+  color: @bordo;
+}
 /*
 =================================
 ========= MODULES LEFT ==========
@@ -33,6 +40,7 @@ window#waybar {
 
 #workspaces button {
   color: @teal;
+  transition: all 200ms ease-in-out;
 }
 
 #workspaces button.active {
@@ -46,6 +54,7 @@ window#waybar {
 #workspaces button.empty {
   opacity: 0.3;
 }
+
 /* TASKBAR */
 
 #taskbar button.active {
@@ -86,6 +95,7 @@ window#waybar {
   border-bottom: 3px solid @teal;
   border-top: 3px solid @teal;
 }
+
 /*
 =================================
 ========= MODULES RIGHT =========
