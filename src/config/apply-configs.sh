@@ -114,6 +114,10 @@ apply_selected_configs(){
                 mkdir -p "$HOME/.config/fastfetch"
                 cp "$BACKUPS_DIR/fastfetch-config/config.jsonc" "$HOME/.config/fastfetch/config.jsonc"
             ;;
+            "rofi config")
+                mkdir -p "$HOME/.config/rofi"
+                cp -r "$BACKUPS_DIR/rofi" "$HOME/.config"
+            ;;
             "spicetify theme")
                 spicetify config current_theme Sleek color_scheme Elementary
                 spicetify apply
