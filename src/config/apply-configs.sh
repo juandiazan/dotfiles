@@ -105,7 +105,8 @@ apply_selected_configs(){
                 print_color $BOLD_YELLOW "=====> Log out and log back in, restart your terminal or run \"exec zsh\" for effects to apply."
             ;;
             "kitty config")
-                cp "$BACKUPS_DIR/kitty-config"/* "$HOME/.config/kitty/"
+                mkdir -p "$HOME/.config/kitty"
+                cp -r "$BACKUPS_DIR/kitty-config"/* "$HOME/.config/kitty/"
             ;;
             "starship config")
                 cp "$BACKUPS_DIR/starship-config/starship.toml" "$HOME/.config/starship.toml"

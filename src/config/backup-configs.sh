@@ -168,7 +168,7 @@ run_backup_for_target() {
 			backup_file "$zsh_config" "$zsh_backup_dir" ".zshrc"
 		;;
 		"kitty config")
-			backup_file "$kitty_config" "$kitty_backup_dir" "kitty.conf"
+			backup_directory "kitty" "$HOME/.config/kitty" "$kitty_backup_dir"
 		;;
 		"starship config")
 			backup_file "$starship_config" "$starship_backup_dir" "starship.toml"
