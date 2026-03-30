@@ -15,7 +15,7 @@ background_opacity 0.8
 
 # ==================== THEME ====================
 # BEGIN_KITTY_THEME
-# Blueberry Mango
+# Nord
 include current-theme.conf
 # END_KITTY_THEME
 # ==================== THEME ====================
