@@ -33,7 +33,7 @@ hypr_desktop_config="$HOME/.config/hypr/hyprland.conf" # for desktop (cachyos)
 
 waybar_files_dir="$HOME/.config/waybar"
 #browser bookmarks TODO
-vscode_settings="$HOME/.config/Code/User/settings.json"
+vscodium_settings="$HOME/.config/VSCodium/User/settings.json"
 # ============= config locations =============
 
 
@@ -48,7 +48,7 @@ rofi_backup_dir="$backups_root_dir/rofi"
 # spicetify theme is not backed up
 
 # browser bookmarks TODO
-vscode_backup_dir="$backups_root_dir/vs-code"
+vscodium_backup_dir="$backups_root_dir/vscodium"
 
 # for laptop (omarchy)
 laptop_hypr_waybar_base="$backups_root_dir/laptop-hypr-waybar"
@@ -145,7 +145,7 @@ backup_selected() {
 
 	create_dir_if_not_exists "$zsh_backup_dir"
 	create_dir_if_not_exists "$kitty_backup_dir"
-	create_dir_if_not_exists "$vscode_backup_dir"
+	create_dir_if_not_exists "$vscodium_backup_dir"
 	create_dir_if_not_exists "$starship_backup_dir"
 	create_dir_if_not_exists "$fastfetch_backup_dir"
 	create_dir_if_not_exists "$rofi_backup_dir"
@@ -187,9 +187,9 @@ run_backup_for_target() {
 			backup_directory "hyprland pc" "$hyprland_config_dir" "$hyprland_pc_backup_dir"
 			backup_directory "waybar pc" "$waybar_files_dir" "$waybar_pc_backup_dir"
 		;;
-		"vs code settings and extensions")
-			backup_file "$vscode_settings" "$vscode_backup_dir" "settings.json"
-			backup_vscode_extensions
+		"vscodium settings and extensions")
+			backup_file "$vscodium_settings" "$vscodium_backup_dir" "settings.json"
+			backup_vscodium_extensions
 		;;
 		*)
 			print_color "$BOLD_RED" "$1 is not supported."
@@ -234,16 +234,16 @@ backup_directory() {
 	fi
 }
 
-backup_vscode_extensions() {
-	echo "Trying to back up VS Code installed extensions..."
-	if ! command -v code >/dev/null 2>&1; then
-		print_color "$BOLD_RED" "VS Code CLI (code) not found. Skipping extensions backup."
+backup_vscodium_extensions() {
+	echo "Trying to back up VSCodium installed extensions..."
+	if ! command -v codium >/dev/null 2>&1; then
+		print_color "$BOLD_RED" "VSCodium CLI (codium) not found. Skipping extensions backup."
 		return
 	fi
 
-	code --list-extensions >"$vscode_backup_dir/extensions.txt"
+	codium --list-extensions >"$vscodium_backup_dir/extensions.txt"
 	if [ $? -eq 0 ]; then
-		print_color "$BOLD_GREEN" "Saved VS Code extensions list."
+		print_color "$BOLD_GREEN" "Saved VSCodium extensions list."
 	else
 		print_color "$BOLD_RED" "Could not save extensions."
 	fi

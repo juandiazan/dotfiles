@@ -11,7 +11,7 @@ CONFIGS=(
     "hypr and waybar for laptop"
     "hypr and waybar for pc"
     "browser bookmarks"
-    "vs code settings and extensions"
+    "vscodium settings and extensions"
 )
 
 BACKUP_TARGETS=(
@@ -22,5 +22,5 @@ BACKUP_TARGETS=(
     "rofi config"
     "hypr and waybar for laptop"
     "hypr and waybar for pc"
-    "vs code settings and extensions"
+    "vscodium settings and extensions"
 )

@@ -1,0 +1,12 @@
+{
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "material-icon-theme",
+    "editor.fontFamily": "'GoMono Nerd Font', monospace",
+    "editor.cursorBlinking": "expand",
+    "editor.formatOnSave": true,
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "telemetry.feedback.enabled": false,
+    "gitlens.telemetry.enabled": false,
+}

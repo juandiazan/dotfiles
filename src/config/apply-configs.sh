@@ -138,11 +138,11 @@ apply_selected_configs(){
             "browser bookmarks")
                 echo "TODO"
             ;;
-            "vs code settings and extensions")
-                cp "$BACKUPS_DIR/vs-code/settings.json" "$HOME/.config/Code/User/"
+            "vscodium settings and extensions")
+                cp "$BACKUPS_DIR/vscodium/settings.json" "$HOME/.config/VSCodium/User/"
 
-                for extension in $(cat "$BACKUPS_DIR/vs-code/extensions.txt"); do
-                    code --install-extension "$extension"
+                for extension in $(cat "$BACKUPS_DIR/vscodium/extensions.txt"); do
+                    codium --install-extension "$extension"
                 done
             ;;
              *)
