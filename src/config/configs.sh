@@ -10,7 +10,6 @@ CONFIGS=(
     "spicetify theme"
     "hypr and waybar for laptop"
     "hypr and waybar for pc"
-    "browser bookmarks"
     "vscodium settings and extensions"
 )
 

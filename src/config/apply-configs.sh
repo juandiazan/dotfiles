@@ -135,9 +135,6 @@ apply_selected_configs(){
                 cp -r "$BACKUPS_DIR/pc-hypr-waybar/hypr"/* "$HOME/.config/hypr/"
                 cp -r "$BACKUPS_DIR/pc-hypr-waybar/waybar"/* "$HOME/.config/waybar/"
             ;;
-            "browser bookmarks")
-                echo "TODO"
-            ;;
             "vscodium settings and extensions")
                 cp "$BACKUPS_DIR/vscodium/settings.json" "$HOME/.config/VSCodium/User/"
 

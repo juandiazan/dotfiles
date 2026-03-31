@@ -32,7 +32,6 @@ hyprland_config_dir="$HOME/.config/hypr" # for laptop (omarchy)
 hypr_desktop_config="$HOME/.config/hypr/hyprland.conf" # for desktop (cachyos)
 
 waybar_files_dir="$HOME/.config/waybar"
-#browser bookmarks TODO
 vscodium_settings="$HOME/.config/VSCodium/User/settings.json"
 # ============= config locations =============
 
@@ -47,7 +46,6 @@ fastfetch_backup_dir="$backups_root_dir/fastfetch-config"
 rofi_backup_dir="$backups_root_dir/rofi"
 # spicetify theme is not backed up
 
-# browser bookmarks TODO
 vscodium_backup_dir="$backups_root_dir/vscodium"
 
 # for laptop (omarchy)
