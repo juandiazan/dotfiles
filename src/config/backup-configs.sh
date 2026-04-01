@@ -27,6 +27,7 @@ kitty_config="$HOME/.config/kitty/kitty.conf"
 starship_config="$HOME/.config/starship.toml"
 fastfetch_config="$HOME/.config/fastfetch/config.jsonc"
 rofi_config_dir="$HOME/.config/rofi"
+swaync_config_dir="$HOME/.config/swaync"
 # spicetify theme is not backed up
 hyprland_config_dir="$HOME/.config/hypr" # for laptop (omarchy)
 hypr_desktop_config="$HOME/.config/hypr/hyprland.conf" # for desktop (cachyos)
@@ -44,6 +45,7 @@ kitty_backup_dir="$backups_root_dir/kitty-config"
 starship_backup_dir="$backups_root_dir/starship-config"
 fastfetch_backup_dir="$backups_root_dir/fastfetch-config"
 rofi_backup_dir="$backups_root_dir/rofi"
+swaync_backup_dir="$backups_root_dir/swaync"
 # spicetify theme is not backed up
 
 vscodium_backup_dir="$backups_root_dir/vscodium"
@@ -147,6 +149,7 @@ backup_selected() {
 	create_dir_if_not_exists "$starship_backup_dir"
 	create_dir_if_not_exists "$fastfetch_backup_dir"
 	create_dir_if_not_exists "$rofi_backup_dir"
+	create_dir_if_not_exists "$swaync_backup_dir"
 
 	create_dir_if_not_exists "$hyprland_laptop_backup_dir"
 	create_dir_if_not_exists "$waybar_laptop_backup_dir"
@@ -176,6 +179,9 @@ run_backup_for_target() {
 		;;
 		"rofi config")
 			backup_directory "rofi" "$rofi_config_dir" "$rofi_backup_dir"
+		;;
+		"swaync config")
+			backup_directory "swaync" "$swaync_config_dir" "$swaync_backup_dir"
 		;;
 		"hypr and waybar for laptop")
 			backup_directory "hyprland laptop" "$hyprland_config_dir" "$hyprland_backup_dir"

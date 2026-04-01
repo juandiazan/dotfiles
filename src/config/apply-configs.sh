@@ -119,6 +119,10 @@ apply_selected_configs(){
                 mkdir -p "$HOME/.config/rofi"
                 cp -r "$BACKUPS_DIR/rofi" "$HOME/.config"
             ;;
+            "swaync config")
+                mkdir -p "$HOME/.config/swaync"
+                cp -r "$BACKUPS_DIR/swaync"/* "$HOME/.config/swaync/"
+            ;;
             "spicetify theme")
                 spicetify config current_theme Sleek color_scheme Elementary
                 spicetify apply
