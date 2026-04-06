@@ -32,10 +32,24 @@
       "active": ""
     },
     "persistent-workspaces": {
-      "*": 5
+      "DP-3": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "HDMI-A-1": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
     },
     "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1"
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "all-outputs": false
   },
   "wlr/taskbar": {
     "format": "{icon}",
@@ -52,7 +66,7 @@
   "custom/distro": {
     "format": "󰣇 ",
     "tooltip": false,
-    "on-click": "rofi -show drun"
+    "on-click": "~/.config/rofi/launcher.sh"
   },
   "clock": {
     "format": "{:L%H:%M, %A %d/%m/%Y}",
