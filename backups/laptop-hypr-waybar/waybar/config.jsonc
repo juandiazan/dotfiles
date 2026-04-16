@@ -1,0 +1,214 @@
+{
+  "layer": "bottom",
+  "position": "bottom",
+  "spacing": 8,
+  "height": 26,
+  "modules-left": [
+    "hyprland/workspaces",
+    "wlr/taskbar",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "clock",
+    "custom/omarchy",
+    "custom/update",
+    "custom/screenrecording-indicator",
+    "custom/idle-indicator",
+    "custom/notification-silencing-indicator"
+  ],
+  "modules-right": [
+    "bluetooth",
+    "network",
+    "pulseaudio",
+    "group/hardware",
+    "hyprland/language",
+    "battery"
+  ],
+  // -------------------- MODULES LEFT --------------------
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "active": "󱓻"
+    },
+    "persistent-workspaces": {
+      "*": 5
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close"
+  },
+  "hyprland/window": {
+    "max-length": 30
+  },
+  // --------------------------------------------------------
+  // -------------------- MODULES CENTER --------------------
+  "custom/omarchy": {
+    "format": "<span font='omarchy'>\ue900 </span>",
+    "on-click": "omarchy-menu",
+    "on-click-right": "xdg-terminal-exec",
+    "tooltip-format": "Omarchy Menu\n\nSuper + Alt + Space"
+  },
+  "clock": {
+    "format": "{:L%H:%M, %A %d/%m/%Y}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#c91629'><b>{}</b></span>", // red
+        "days": "<span color='#fbf0de'><b>{}</b></span>", // white
+        "weeks": "<span color='#55d4b2'><b>W{}</b></span>", // light teal
+        "weekdays": "<span color='#249d9d'><b>{}</b></span>", // dark teal
+        "today": "<span color='#e35473'><b><u>{}</u></b></span>" // pink
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    },
+    "on-click": "omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
+  },
+  "custom/update": {
+    "format": " ",
+    "exec": "omarchy-update-available",
+    "on-click": "omarchy-launch-floating-terminal-with-presentation omarchy-update",
+    "tooltip-format": "Omarchy update available",
+    "signal": 7,
+    "interval": 3600
+  },
+  "custom/screenrecording-indicator": {
+    "on-click": "omarchy-cmd-screenrecord",
+    "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
+    "signal": 8,
+    "return-type": "json"
+  },
+  // --------------------------------------------------------
+  // -------------------- MODULES RIGHT --------------------  
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-connected": "",
+    "tooltip-format": "Devices connected: {num_connections}",
+    "on-click": "omarchy-launch-bluetooth"
+  },
+  "network": {
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "format": "{icon}",
+    "format-wifi": "{icon} {essid}",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)",
+    "tooltip-format-ethernet": "Connected",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "spacing": 1,
+    "on-click": "omarchy-launch-wifi"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}% {format_source}",
+    "on-click": "xdg-terminal-exec --app-id=com.omarchy.Wiremix -e wiremix",
+    "on-click-right": "pamixer -t",
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 5,
+    "format-source": "",
+    "format-source-muted": " ",
+    "format-muted": "  {format_source}",
+    "format-icons": {
+      "headphone": "",
+      "headset": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  // ----------------------------- HARDWARE GROUP ----------------------------- 
+  "cpu": {
+    "interval": 5,
+    "format": "CPU:{usage}%",
+    "on-click": "xdg-terminal-exec btop"
+  },
+  "memory": {
+    "interval": 5,
+    "format": "MEM:{}%",
+    "on-click": "xdg-terminal-exec btop"
+  },
+  "disk": {
+    "interval": 5,
+    "format": "DSK:{percentage_used}%",
+    "path": "/",
+    "on-click": "xdg-terminal-exec btop"
+  },
+  "group/hardware": {
+    "orientation": "inherit",
+    "modules": [
+      "cpu",
+      "memory",
+      "disk"
+    ]
+  },
+  // ----------------------------- END OF HARDWARE GROUP ----------------------------- 
+  "hyprland/language": {
+    "format": "{}  ",
+    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
+    "format-es": "ESP",
+    "format-en": "ENG"
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-discharging": "{icon} {capacity}%",
+    "format-charging": "{icon} {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": {
+      "charging": [
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ],
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ]
+    },
+    "format-full": "󰂅 {capacity}%",
+    "tooltip-format-discharging": "{timeTo} ({power:>1.0f}W↓, {capacity}%)",
+    "tooltip-format-charging": "{timeTo} ({power:>1.0f}W↑ {capacity}%)",
+    "interval": 5,
+    "on-click": "omarchy-menu power",
+    "states": {
+      "warning": 40,
+      "critical": 20
+    }
+  }
+}

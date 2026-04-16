@@ -1,0 +1,211 @@
+@import "../omarchy/current/theme/waybar.css";
+
+@define-color ts transparent;
+@define-color background #0b011c;
+@define-color foreground #3c3449;
+@define-color black #0f1014;
+@define-color red #c91629;
+@define-color green #0eab52;
+@define-color yellow #d2d45f;
+@define-color blue #292c49;
+@define-color magenta #9a578a;
+@define-color cyan #249d9d;
+@define-color white #fbf0de;
+@define-color purple #7635b8;
+@define-color pink #e35473;
+@define-color teal #55d4b2;
+@define-color bordo #a5334a;
+
+/* 
+----------------------------------------------
+---------------- global rules ---------------- 
+----------------------------------------------
+*/
+* {
+  font-family: "GoMono Nerd Font", monospace;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+window#waybar {
+  background-color: @background;
+  color: @teal;
+}
+/* 
+----------------------------------------------
+------------- workspaces module -------------- 
+----------------------------------------------
+*/
+#workspaces button {
+  color: @teal;
+}
+
+#workspaces button.active {
+  color: @red;
+  border-bottom: 4px;
+  text-shadow: 0 0 4px @red;
+  border-top: 3px solid @cyan;
+  border-bottom: 3px solid @cyan;
+}
+
+#workspaces button.empty {
+  opacity: 0.3;
+}
+
+/* 
+----------------------------------------------
+--------------- taskbar module --------------- 
+----------------------------------------------
+*/
+#taskbar button.active {
+  border-left: 3px solid @teal;
+  border-right: 3px solid @red;
+
+  border-top: 3px solid @teal;
+  border-bottom: 3px solid @red;
+}
+
+#taskbar button:hover {
+  border: 3px solid @white;
+
+  background-color: @foreground;
+}
+
+/* 
+----------------------------------------------
+----------- clock & distro module ------------ 
+----------------------------------------------
+*/
+#clock {
+  color: @red;
+  border-bottom: 3px solid @red;
+  border-top: 3px solid @red;
+}
+
+#custom-omarchy {
+  padding-left: 4px;
+  color: @cyan;
+  border-bottom: 3px solid @cyan;
+  border-top: 3px solid @cyan;
+}
+
+/* 
+----------------------------------------------
+--------------- update module ---------------- 
+----------------------------------------------
+*/
+#custom-update {
+  color: @blue;
+  border-bottom: 3px solid @blue;
+  border-top: 3px solid @blue;
+}
+
+/* 
+----------------------------------------------
+------- bluetooth and network modules -------- 
+----------------------------------------------
+*/
+#bluetooth {
+  color: @teal;
+  border-bottom: 3px solid @teal;
+}
+
+#network {
+  color: @pink;
+  border-bottom: 3px solid @pink;
+}
+
+/* 
+----------------------------------------------
+---------------- audio module ---------------- 
+----------------------------------------------
+*/
+#pulseaudio {
+  color: @white;
+  border-bottom: 3px solid @white;
+}
+
+/* 
+----------------------------------------------
+-------------- hardware modules -------------- 
+----------------------------------------------
+*/
+/* distance between cpu, mem and dsk */
+#cpu,
+#memory,
+#disk {
+  padding: 0px 4px; 
+}
+
+#cpu {
+  color: @blue;
+  border-bottom: 3px solid @blue;
+}
+
+#memory {
+  color: @cyan;
+  border-bottom: 3px solid @cyan;
+}
+
+#disk {
+  color: @red;
+  border-bottom: 3px solid @red;
+}
+
+/* 
+----------------------------------------------
+----------- keyboard layout module ----------- 
+----------------------------------------------
+*/
+#language {
+  color: @magenta;
+  border-bottom: 3px solid @magenta;
+}
+
+/* 
+----------------------------------------------
+--------------- battery module --------------- 
+----------------------------------------------
+*/
+#battery {
+  color: @teal;
+  border-bottom: 3px solid @teal;
+}
+
+/* 
+----------------------------------------------
+------------------- other --------------------
+----------------------------------------------
+*/
+
+.hidden {
+  opacity: 0;
+}
+
+
+#custom-screenrecording-indicator,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 12px;
+  margin-left: 5px;
+  margin-right: 0;
+  font-size: 10px;
+  padding-bottom: 1px;
+}
+
+#custom-screenrecording-indicator.active {
+  color: #a55555;
+}
+#custom-voxtype {
+  min-width: 12px;
+  margin: 0 0 0 7.5px;
+}
+
+#custom-voxtype.recording {
+  color: #a55555;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: #a55555;
+}
