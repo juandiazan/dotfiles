@@ -161,3 +161,9 @@ install_pkg_generic() {
 
     return 0
 }
+
+if [[ "${#PROGRAMS[@]}" -gt 0 ]]; then
+    select_software
+else
+    echo "No software selected for installation."
+fi
