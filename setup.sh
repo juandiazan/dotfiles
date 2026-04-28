@@ -9,7 +9,7 @@ source "$SETUP_SCRIPT_DIR/src/config/apply-configs.sh"
 source "$SETUP_SCRIPT_DIR/src/config/backup-configs.sh"
 
 print_color $BOLD_GREEN "Welcome to app and config setup!"
-
+ 
 main_menu
 read option
 
