@@ -9,4 +9,7 @@
     },
     "telemetry.feedback.enabled": false,
     "gitlens.telemetry.enabled": false,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
 }

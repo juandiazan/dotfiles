@@ -1,5 +1,3 @@
-fastfetch
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -86,7 +84,7 @@ zstyle ':omz:plugins:alias-finder' cheaper yes # disabled by default
 # Add wisely, as too many plugins slow down shell startup.
 
 
-plugins=(aliases alias-finder command-not-found colored-man-pages git cabal dotnet docker docker-compose poetry vscode nestjs) 
+plugins=(zsh-autosuggestions aliases alias-finder command-not-found colored-man-pages git cabal dotnet docker docker-compose poetry vscode nestjs) 
 # QoL para terminal (desde aliases a colored-man-pages)
 # autocomplete de comandos de lenguajes y herramientas de desarrollo (desde git a vscode)
 
@@ -133,13 +131,13 @@ esac
 # ===================== PNPM END ========================
 
 # ===================== PYENV ============================
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
+# CURRENTLY NOT WORKING FOR SOME REASON
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init - zsh)"
 
 # Load pyenv-virtualenv automatically by adding
 # the following to ~/.bashrc:
-
 # eval "$(pyenv virtualenv-init -)"
 # ===================== PYENV END =========================
 
@@ -161,3 +159,5 @@ if command -v eza &> /dev/null; then
   alias lt='eza --tree --level=2 --long --icons --git'
   alias lta='lt -a'
 fi
+
+fastfetch

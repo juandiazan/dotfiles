@@ -1,6 +1,6 @@
 {
   "layer": "bottom",
-  "position": "top",
+  "position": "bottom",
   "spacing": 8,
   "height": 35,
   "modules-left": [
@@ -93,7 +93,7 @@
   "mpris": {
     // "player": "spotify", // currently using spotify and kew TUI
     "format": "{status_icon} <i>{artist} - {title} - {album}</i>",
-    "format-paused": "{status_icon} <i>{artist} - {album} - {title}</i>",
+    "format-paused": "{status_icon} <i>{artist} - {title} - {album}</i>",
     "status-icons": {
       "paused": "▶",
       "playing": "⏸"
