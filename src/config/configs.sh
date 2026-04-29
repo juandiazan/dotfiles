@@ -11,7 +11,8 @@ CONFIGS=(
     "spicetify theme"
     "hypr and waybar for laptop"
     "hypr and waybar for pc"
-    "vscodium settings and extensions"
+    "vscodium settings"
+    "vscodium extensions"
 )
 
 BACKUP_TARGETS=(
@@ -23,5 +24,6 @@ BACKUP_TARGETS=(
     "swaync config"
     "hypr and waybar for laptop"
     "hypr and waybar for pc"
-    "vscodium settings and extensions"
+    "vscodium settings"
+    "vscodium extensions"
 )

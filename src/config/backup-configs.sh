@@ -97,7 +97,7 @@ select_backups() {
 				break
 			;;
 			*)
-				if [[ "$choice" =~ ^[1-9]+$ ]]; then
+				if [[ "$choice" =~ ^[0-9]+$ ]]; then
 					index=$((choice - 1))
 					current_target="${BACKUP_TARGETS[$index]}"
 					if [[ " ${SELECTED_BACKUPS[*]} " == *" $current_target "* ]]; then
@@ -191,8 +191,10 @@ run_backup_for_target() {
 			backup_directory "hyprland pc" "$hyprland_config_dir" "$hyprland_pc_backup_dir"
 			backup_directory "waybar pc" "$waybar_files_dir" "$waybar_pc_backup_dir"
 		;;
-		"vscodium settings and extensions")
+		"vscodium settings")
 			backup_file "$vscodium_settings" "$vscodium_backup_dir" "settings.json"
+		;;
+		"vscodium extensions")
 			backup_vscodium_extensions
 		;;
 		*)

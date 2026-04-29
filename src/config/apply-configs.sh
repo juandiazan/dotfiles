@@ -139,10 +139,11 @@ apply_selected_configs(){
                 cp -r "$BACKUPS_DIR/pc-hypr-waybar/hypr"/* "$HOME/.config/hypr/"
                 cp -r "$BACKUPS_DIR/pc-hypr-waybar/waybar"/* "$HOME/.config/waybar/"
             ;;
-            "vscodium settings and extensions")
+            "vscodium settings")
                 mkdir -p "$HOME/.config/VSCodium/User"
                 cp "$BACKUPS_DIR/vscodium/settings.json" "$HOME/.config/VSCodium/User/"
-
+            ;;
+            "vscodium extensions")
                 for extension in $(cat "$BACKUPS_DIR/vscodium/extensions.txt"); do
                     if codium --list-extensions | grep -q "$extension"; then
                         echo "Extension $extension already installed, skipping."
