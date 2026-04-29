@@ -3,7 +3,7 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SETUP_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 DOTFILES_DIR="$SETUP_DIR"
-BACKUPS_DIR="$DOTFILES_DIR/backups"
+BACKUPS_DIR="$DOTFILES_DIR/.config"
 
 source "$SCRIPT_DIR/configs.sh" || {
     echo "Failed to load config file list."
@@ -101,19 +101,18 @@ apply_selected_configs(){
             ;;
             "zsh config")
                 cp "$BACKUPS_DIR/zsh/.zshrc" "$HOME/"
-                chsh -s "$(command -v zsh)"
                 print_color $BOLD_YELLOW "=====> Log out and log back in, restart your terminal or run \"exec zsh\" for effects to apply."
             ;;
             "kitty config")
                 mkdir -p "$HOME/.config/kitty"
-                cp -r "$BACKUPS_DIR/kitty-config"/* "$HOME/.config/kitty/"
+                cp -r "$BACKUPS_DIR/kitty"/* "$HOME/.config/kitty/"
             ;;
             "starship config")
-                cp "$BACKUPS_DIR/starship-config/starship.toml" "$HOME/.config/starship.toml"
+                cp "$BACKUPS_DIR/starship/starship.toml" "$HOME/.config/starship.toml"
             ;;
             "fastfetch config")
                 mkdir -p "$HOME/.config/fastfetch"
-                cp "$BACKUPS_DIR/fastfetch-config/config.jsonc" "$HOME/.config/fastfetch/config.jsonc"
+                cp "$BACKUPS_DIR/fastfetch/config.jsonc" "$HOME/.config/fastfetch/config.jsonc"
             ;;
             "rofi config")
                 mkdir -p "$HOME/.config/rofi"

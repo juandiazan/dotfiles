@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+CONFIG_DIR="$HOME/.config"
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SETUP_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
-DOTFILES_DIR="$SETUP_DIR"
+BACKUPS_DIR="$SETUP_DIR/.config"
 
 source "$SETUP_DIR/src/ui/colored_print.sh" || {
 	echo "Failed to load print script."
@@ -18,48 +20,6 @@ source "$SCRIPT_DIR/configs.sh" || {
 	exit 1
 }
 
-current_date="$(date +%d-%m-%Y_%H:%M:%S)"
-
-# ============= config locations =============
-# git credentials are not backed up
-zsh_config="$HOME/.zshrc"
-kitty_config="$HOME/.config/kitty"
-starship_config="$HOME/.config/starship.toml"
-fastfetch_config="$HOME/.config/fastfetch/config.jsonc"
-rofi_config_dir="$HOME/.config/rofi"
-swaync_config_dir="$HOME/.config/swaync"
-# spicetify theme is not backed up
-hyprland_config_dir="$HOME/.config/hypr" # for laptop (omarchy)
-hypr_desktop_config="$HOME/.config/hypr/hyprland.conf" # for desktop (cachyos)
-
-waybar_files_dir="$HOME/.config/waybar"
-vscodium_settings="$HOME/.config/VSCodium/User/settings.json"
-# ============= config locations =============
-
-
-# ============= backup destinations =============
-backups_root_dir="$DOTFILES_DIR/backups"
-
-zsh_backup_dir="$backups_root_dir/zsh"
-kitty_backup_dir="$backups_root_dir/kitty-config"
-starship_backup_dir="$backups_root_dir/starship-config"
-fastfetch_backup_dir="$backups_root_dir/fastfetch-config"
-rofi_backup_dir="$backups_root_dir/rofi"
-swaync_backup_dir="$backups_root_dir/swaync"
-# spicetify theme is not backed up
-
-vscodium_backup_dir="$backups_root_dir/vscodium"
-
-# for laptop (omarchy)
-laptop_hypr_waybar_base="$backups_root_dir/laptop-hypr-waybar"
-hyprland_laptop_backup_dir="$laptop_hypr_waybar_base/hypr" 
-waybar_laptop_backup_dir="$laptop_hypr_waybar_base/waybar"
-
-# for pc (cachy)
-pc_hypr_waybar_base="$backups_root_dir/pc-hypr-waybar"
-hyprland_pc_backup_dir="$pc_hypr_waybar_base/hypr" 
-waybar_pc_backup_dir="$pc_hypr_waybar_base/waybar"
-
 create_dir_if_not_exists() {
 	if [ ! -d "$1" ]; then
 		print_color "$BOLD_YELLOW" "Directory $1 not found. Creating..."
@@ -71,7 +31,8 @@ create_dir_if_not_exists() {
 		fi
 	fi
 }
-# ============= backup destinations =============
+
+create_dir_if_not_exists $BACKUPS_DIR
 
 declare -a SELECTED_BACKUPS=()
 
@@ -143,115 +104,119 @@ backup_selected() {
 		return
 	fi
 
-	create_dir_if_not_exists "$zsh_backup_dir"
-	create_dir_if_not_exists "$kitty_backup_dir"
-	create_dir_if_not_exists "$vscodium_backup_dir"
-	create_dir_if_not_exists "$starship_backup_dir"
-	create_dir_if_not_exists "$fastfetch_backup_dir"
-	create_dir_if_not_exists "$rofi_backup_dir"
-	create_dir_if_not_exists "$swaync_backup_dir"
-
-	create_dir_if_not_exists "$hyprland_laptop_backup_dir"
-	create_dir_if_not_exists "$waybar_laptop_backup_dir"
-
-	create_dir_if_not_exists "$hyprland_pc_backup_dir"
-	create_dir_if_not_exists "$waybar_pc_backup_dir"
-
 	for target in "${SELECTED_BACKUPS[@]}"; do
-		print_color "$BOLD_PURPLE" "=====> Backing up $target..."
 		run_backup_for_target "$target"
 	done
 }
 
 run_backup_for_target() {
-	case "$1" in
+	local target="$1"
+	local backup_status=0
+
+	print_color "$BOLD_PURPLE" "====> Trying to back up $target..."
+
+	case "$target" in
 		"zsh config")
-			backup_file "$zsh_config" "$zsh_backup_dir" ".zshrc"
+			echo "$BACKUPS_DIR/zsh"
+			create_dir_if_not_exists "$BACKUPS_DIR/zsh"
+			backup_item "file" "$HOME/.zshrc" "$BACKUPS_DIR/zsh/.zshrc" || backup_status=1
 		;;
 		"kitty config")
-			backup_directory "kitty" "$kitty_config" "$kitty_backup_dir"
+			create_dir_if_not_exists "$BACKUPS_DIR/kitty"
+			backup_item "directory" "$CONFIG_DIR/kitty" "$BACKUPS_DIR/kitty" || backup_status=1
 		;;
 		"starship config")
-			backup_file "$starship_config" "$starship_backup_dir" "starship.toml"
+			create_dir_if_not_exists "$BACKUPS_DIR/starship"
+			backup_item "file" "$CONFIG_DIR/starship.toml" "$BACKUPS_DIR/starship/starship.toml" || backup_status=1
 		;;
 		"fastfetch config")
-			backup_file "$fastfetch_config" "$fastfetch_backup_dir" "config.jsonc"
+			create_dir_if_not_exists "$BACKUPS_DIR/fastfetch"
+			backup_item "file" "$CONFIG_DIR/fastfetch/config.jsonc" "$BACKUPS_DIR/fastfetch/config.jsonc" || backup_status=1
 		;;
 		"rofi config")
-			backup_directory "rofi" "$rofi_config_dir" "$rofi_backup_dir"
+			create_dir_if_not_exists "$BACKUPS_DIR/rofi"
+			backup_item "directory" "$CONFIG_DIR/rofi" "$BACKUPS_DIR/rofi" || backup_status=1
 		;;
 		"swaync config")
-			backup_directory "swaync" "$swaync_config_dir" "$swaync_backup_dir"
+			create_dir_if_not_exists "$BACKUPS_DIR/rofi"
+			backup_item "directory" "$CONFIG_DIR/swaync" "$BACKUPS_DIR/swaync" || backup_status=1
 		;;
 		"hypr and waybar for laptop")
-			backup_directory "hyprland laptop" "$hyprland_config_dir" "$hyprland_backup_dir"
-			backup_directory "waybar laptop" "$waybar_files_dir" "$waybar_laptop_backup_dir"
+			create_dir_if_not_exists "$BACKUPS_DIR/laptop-hypr-waybar"
+			create_dir_if_not_exists "$BACKUPS_DIR/laptop-hypr-waybar/hypr"
+			create_dir_if_not_exists "$BACKUPS_DIR/laptop-hypr-waybar/waybar"
+			backup_item "directory" "$CONFIG_DIR/hypr" "$BACKUPS_DIR/laptop-hypr-waybar/hypr" || backup_status=1
+			backup_item "directory" "$CONFIG_DIR/waybar" "$BACKUPS_DIR/laptop-hypr-waybar/waybar" || backup_status=1
 		;;
 		"hypr and waybar for pc")
-			backup_directory "hyprland pc" "$hyprland_config_dir" "$hyprland_pc_backup_dir"
-			backup_directory "waybar pc" "$waybar_files_dir" "$waybar_pc_backup_dir"
+			create_dir_if_not_exists "$BACKUPS_DIR/pc-hypr-waybar"
+			create_dir_if_not_exists "$BACKUPS_DIR/pc-hypr-waybar/hypr"
+			create_dir_if_not_exists "$BACKUPS_DIR/pc-hypr-waybar/waybar"
+			backup_item "directory" "$CONFIG_DIR/hypr" "$BACKUPS_DIR/pc-hypr-waybar/hypr" || backup_status=1
+			backup_item "directory" "$CONFIG_DIR/waybar" "$BACKUPS_DIR/pc-hypr-waybar/waybar" || backup_status=1
 		;;
 		"vscodium settings")
-			backup_file "$vscodium_settings" "$vscodium_backup_dir" "settings.json"
+			create_dir_if_not_exists "$BACKUPS_DIR/vscodium"
+			backup_item "file" "$CONFIG_DIR/VSCodium/User/settings.json" "$BACKUPS_DIR/vscodium/settings.json" || backup_status=1
 		;;
 		"vscodium extensions")
-			backup_vscodium_extensions
+			create_dir_if_not_exists "$BACKUPS_DIR/vscodium"
+			backup_vscodium_extensions || backup_status=1
 		;;
 		*)
-			print_color "$BOLD_RED" "$1 is not supported."
+			print_color "$BOLD_RED" "$target is not supported."
+			return 1
 		;;
 	esac
+
+	if [ "$backup_status" -eq 0 ]; then
+		print_color "$BOLD_GREEN" "Successfully backed up $target."
+	else
+		print_color "$BOLD_RED" "Failed to back up $target."
+	fi
+	SELECTED_BACKUPS=()
 }
 
-backup_file() {
-	local source_file="$1"
-	local destination_dir="$2"
-	local output_name="$3"
+backup_item() {
+	local item_type="$1"
+	local source_path="$2"
+	local destination="$3"
 
-	if [ ! -f "$source_file" ]; then
-		print_color "$BOLD_RED" "File not found: $source_file"
-		return
-	fi
-
-	cp "$source_file" "$destination_dir/$output_name"
-	if [ $? -eq 0 ]; then
-		print_color "$BOLD_GREEN" "Done!"
-	else
-		print_color "$BOLD_RED" "Could not copy file."
-	fi
-}
-
-backup_directory() {
-	local label="$1"
-	local source_dir="$2"
-	local destination_dir="$3"
-
-	echo "Trying to back up $label config..."
-	if [ ! -d "$source_dir" ]; then
-		print_color "$BOLD_RED" "Directory not found: $source_dir"
-		return
-	fi
-
-	cp -r "$source_dir"/. "$destination_dir/"
-	if [ $? -eq 0 ]; then
-		print_color "$BOLD_GREEN" "Successfully backed up $label directory."
-	else
-		print_color "$BOLD_RED" "Failed to back up $label directory."
-	fi
+	case "$item_type" in
+		"file")
+			if [ ! -f "$source_path" ]; then
+				print_color "$BOLD_RED" "File not found: $source_path"
+				return 1
+			fi
+			cp "$source_path" "$destination"
+		;;
+		"directory")
+			if [ ! -d "$source_path" ]; then
+				print_color "$BOLD_RED" "Directory not found: $source_path"
+				return 1
+			fi
+			cp -r "$source_path"/. "$destination/"
+		;;
+		*)
+			print_color "$BOLD_RED" "Unsupported backup type: $item_type"
+			return 1
+		;;
+	esac
 }
 
 backup_vscodium_extensions() {
 	echo "Trying to back up VSCodium installed extensions..."
 	if ! command -v codium >/dev/null 2>&1; then
 		print_color "$BOLD_RED" "VSCodium CLI (codium) not found. Skipping extensions backup."
-		return
+		return 1
 	fi
 
-	codium --list-extensions >"$vscodium_backup_dir/extensions.txt"
+	codium --list-extensions >"$BACKUPS_DIR/vscodium/extensions.txt"
 	if [ $? -eq 0 ]; then
 		print_color "$BOLD_GREEN" "Saved VSCodium extensions list."
 	else
 		print_color "$BOLD_RED" "Could not save extensions."
+		return 1
 	fi
 }
 
