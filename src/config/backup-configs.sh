@@ -23,7 +23,7 @@ current_date="$(date +%d-%m-%Y_%H:%M:%S)"
 # ============= config locations =============
 # git credentials are not backed up
 zsh_config="$HOME/.zshrc"
-kitty_config="$HOME/.config/kitty/kitty.conf"
+kitty_config="$HOME/.config/kitty"
 starship_config="$HOME/.config/starship.toml"
 fastfetch_config="$HOME/.config/fastfetch/config.jsonc"
 rofi_config_dir="$HOME/.config/rofi"
@@ -169,7 +169,7 @@ run_backup_for_target() {
 			backup_file "$zsh_config" "$zsh_backup_dir" ".zshrc"
 		;;
 		"kitty config")
-			backup_directory "kitty" "$HOME/.config/kitty" "$kitty_backup_dir"
+			backup_directory "kitty" "$kitty_config" "$kitty_backup_dir"
 		;;
 		"starship config")
 			backup_file "$starship_config" "$starship_backup_dir" "starship.toml"
