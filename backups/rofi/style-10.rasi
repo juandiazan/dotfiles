@@ -9,11 +9,12 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser,window";
+	// modi:                       "drun,run,filebrowser,window";
+	modi:                       "drun,window";
     show-icons:                 true;
     display-drun:               "APPS";
-    display-run:                "RUN";
-    display-filebrowser:        "FILES";
+    // display-run:                "RUN";
+    // display-filebrowser:        "FILES";
     display-window:             "WINDOW";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
@@ -21,13 +22,14 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "JetBrains Mono Nerd Font 10";
+    font:                        "GoMono Nerd Font 10";
     background:     #021B21FF;
     background-alt: #0C252BFF;
-    foreground:     #F2F1B9FF;
-    selected:       #44B5B1FF;
-    active:         #7CBF9EFF;
+    foreground:     #fbf0deFF;
+    selected:       #249d9dFF;
+    active:         #55d4b2FF; // current tab button color
     urgent:         #C2454EFF;
+    red:            #c91629FF;
 }
 
 /*****----- Main Window -----*****/
@@ -90,7 +92,7 @@ inputbar {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         "";
+    str:                         " ";
     background-color:            inherit;
     text-color:                  inherit;
 }
@@ -114,11 +116,11 @@ button {
     padding:                     15px;
     border-radius:               10px;
     background-color:            @background-alt;
-    text-color:                  inherit;
+    text-color:                  @red;
     cursor:                      pointer;
 }
 button selected {
-    background-color:            @selected;
+    background-color:            @red;
     text-color:                  @foreground;
 }
 
@@ -165,7 +167,7 @@ element normal.active {
 }
 element selected.normal {
     background-color:            @selected;
-    text-color:                  @foreground;
+    text-color:                  @red;
 }
 element selected.urgent {
     background-color:            @urgent;
