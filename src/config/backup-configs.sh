@@ -84,7 +84,7 @@ remove_from_selected() {
 }
 
 show_backup_selection_menu() {
-	echo "Select files/configurations to back up:"
+	echo "Select files to back up:"
 	for i in "${!BACKUP_TARGETS[@]}"; do
 		current_target="${BACKUP_TARGETS[$i]}"
 		if [[ " ${SELECTED_BACKUPS[*]} " == *" $current_target "* ]]; then
@@ -117,7 +117,6 @@ run_backup_for_target() {
 
 	case "$target" in
 		"zsh config")
-			echo "$BACKUPS_DIR/zsh"
 			create_dir_if_not_exists "$BACKUPS_DIR/zsh"
 			backup_item "file" "$HOME/.zshrc" "$BACKUPS_DIR/zsh/.zshrc" || backup_status=1
 		;;
