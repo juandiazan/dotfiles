@@ -86,7 +86,7 @@
     "interval": 3600
   },
   "custom/screenrecording-indicator": {
-    "on-click": "omarchy-cmd-screenrecord",
+    "on-click": "omarchy-capture-screenrecording",
     "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
     "signal": 8,
     "return-type": "json"
@@ -206,6 +206,7 @@
     "tooltip-format-charging": "{timeTo} ({power:>1.0f}W↑ {capacity}%)",
     "interval": 5,
     "on-click": "omarchy-menu power",
+    "on-click-right": "notify-send -u low \"$(omarchy-battery-status)\"",
     "states": {
       "warning": 40,
       "critical": 20
