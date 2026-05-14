@@ -22,6 +22,7 @@
     "cpu",
     "memory",
     "disk",
+    "idle_inhibitor",
     "hyprland/language"
   ],
   // -------------------- MODULES LEFT --------------------
@@ -188,6 +189,15 @@
     "on-click": "~/.config/waybar/scripts/hardware-monitor-open.sh"
   },
   // ----------------------------- END OF HARDWARE GROUP ----------------------------- 
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰌾 ",
+      "deactivated": "󰌵 "
+    },
+    "tooltip-format-activated": "Idle inhibitor: ON",
+    "tooltip-format-deactivated": "Idle inhibitor: OFF"
+  },
   "hyprland/language": {
     "on-click": "hyprctl switchxkblayout ckb1:-corsair-gaming-k95-rgb-platinum-keyboard-vkb next",
     "format-es": " ESP",
