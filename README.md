@@ -2,16 +2,16 @@
 
 ## Empty BG
 
-![bg](doc/background.png)
+![bg](img/readme/background.png)
 
 ## Kitty terminal, Waybar, SwayNC
 
-![Terminal + background + waybar + swaync](doc/terminal-swaync.png)
+![Terminal + background + waybar + swaync](img/readme/terminal-swaync.png)
 
 ## Kitty terminal with Lazygit, Waybar
 
-![Terminal + lazygit](doc/terminal-lazygit.png)
+![Terminal + lazygit](img/readme/terminal-lazygit.png)
 
 ## Rofi and SwayNC
 
-![Rofi + swaync](doc/rofi-swaync.png)
+![Rofi + swaync](img/readme/rofi-swaync.png)
