@@ -4,7 +4,7 @@ open_bluetui(){
     if pgrep -x bluetui >/dev/null; then
         pkill -x bluetui
     else
-        kitty --class bluetui bluetui
+        kitty bluetui
     fi
 }
 

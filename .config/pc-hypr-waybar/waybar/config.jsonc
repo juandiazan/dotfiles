@@ -176,8 +176,8 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": "󰌾 ",
-      "deactivated": "󰌵 "
+      "activated": "󰌾 on",
+      "deactivated": "󰌵 off"
     },
     "tooltip-format-activated": "Idle inhibitor: ON",
     "tooltip-format-deactivated": "Idle inhibitor: OFF"
