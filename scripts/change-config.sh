@@ -3,17 +3,17 @@
 dir="$HOME/.config/rofi"
 theme='style-10'
 
-option=$(printf "Hyprland\nWaybar\nDotfiles\nSwayNC\nRofi\nKitty\nZsh\nStarship\nFastfetch" \
+option=$(printf "hyprland\nwaybar\ndotfiles\nswaync\nrofi\nkitty\nzsh\nstarship\nfastfetch" \
     | rofi -dmenu -p "Edit Config" -theme ${dir}/${theme}.rasi)
 
 case "$option" in
-    "Hyprland") codium "$HOME/.config/hypr" ;;
-    "Waybar") codium "$HOME/.config/waybar" ;;
-    "Dotfiles") codium "$HOME/dotfiles";;
-    "SwayNC") codium "$HOME/.config/swaync" ;;
-    "Rofi") codium "$HOME/.config/rofi" ;;
-    "Kitty") codium "$HOME/.config/kitty" ;;
-    "Zsh") codium "$HOME/.zshrc" ;;
-    "Starship") codium "$HOME/.config/starship.toml";;
-    "Fastfetch") codium "$HOME/.config/fastfetch/config.jsonc";;
+    "hyprland") codium "$HOME/.config/hypr" ;;
+    "waybar") codium "$HOME/.config/waybar" ;;
+    "dotfiles") codium "$HOME/dotfiles";;
+    "swaync") codium "$HOME/.config/swaync" ;;
+    "rofi") codium "$HOME/.config/rofi" ;;
+    "kitty") codium "$HOME/.config/kitty" ;;
+    "zsh") codium "$HOME/.zshrc" ;;
+    "starship") codium "$HOME/.config/starship.toml";;
+    "fastfetch") codium "$HOME/.config/fastfetch/config.jsonc";;
 esac
