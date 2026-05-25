@@ -1,21 +1,34 @@
 #!/usr/bin/env bash
 
-PROGRAMS=(
+PROGRAMS_APPS=(
     "librewolf"
     "discord"
     "spotify"
     "steam"
     "localsend"
     "obsidian"
+)
 
+PROGRAMS_DEV=(
+    "git"
+    "docker"
+    "claude"
+)
+
+PROGRAMS_TUI=(
     "lazygit"
     "lazydocker"
+    "yazi"
+    "kew"
+)
 
+PROGRAMS_CUSTOMIZATION=(
     "fastfetch"
     "kitty"
     "zsh"
     "oh-my-zsh"
     "starship"
+    "rofi"
     "spicetify (and marketplace)"
     "swaync"
     "ckb-next (corsair drivers)"
@@ -30,16 +43,23 @@ declare -A PACKAGES=(
     [localsend]="localsend"
     [obsidian]="obsidian"
 
+    [git]="git"
+    [docker]="docker"
+    [claude]="claude-code"
+
     [lazygit]="lazygit"
     [lazydocker]="lazydocker"
+    [yazi]="yazi"
+    [kew]="kew"
 
     [fastfetch]="fastfetch"
     [kitty]="kitty"
     [zsh]="zsh"
     [oh-my-zsh]="oh-my-zsh"
     [starship]="starship"
-    [spicetify (and marketplace)]="spicetify-cli"
+    [rofi]="rofi"
+    ["spicetify (and marketplace)"]="spicetify-cli"
     [swaync]="swaync"
-    [ckb-next (corsair drivers)]="ckb-next"
-    [solaar (logitech drivers)]="solaar"
+    ["ckb-next (corsair drivers)"]="ckb-next"
+    ["solaar (logitech drivers)"]="solaar"
 )

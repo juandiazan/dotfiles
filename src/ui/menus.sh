@@ -27,6 +27,14 @@ install_actions_menu() {
     echo "======================="
 }
 
+install_category_actions_menu() {
+    echo "========================="
+    echo "| s) Select all        |"
+    echo "| c) Clear category    |"
+    echo "| b) Back              |"
+    echo "========================="
+}
+
 backup_actions_menu() {
     echo "======================="
     echo "| b) Backup selected  |"
