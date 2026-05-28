@@ -20,6 +20,8 @@ PROGRAMS_TUI=(
     "lazydocker"
     "yazi"
     "kew"
+    "eza"
+    "bat"
 )
 
 PROGRAMS_CUSTOMIZATION=(
@@ -27,6 +29,7 @@ PROGRAMS_CUSTOMIZATION=(
     "kitty"
     "zsh"
     "oh-my-zsh"
+    "zsh-syntax-highlighting"
     "starship"
     "rofi"
     "spicetify (and marketplace)"
@@ -51,11 +54,14 @@ declare -A PACKAGES=(
     [lazydocker]="lazydocker"
     [yazi]="yazi"
     [kew]="kew"
+    [eza]="eza"
+    [bat]="bat"
 
     [fastfetch]="fastfetch"
     [kitty]="kitty"
     [zsh]="zsh"
     [oh-my-zsh]="oh-my-zsh"
+    [zsh-syntax-highlighting]="zsh-syntax-highlighting"
     [starship]="starship"
     [rofi]="rofi"
     ["spicetify (and marketplace)"]="spicetify-cli"
