@@ -158,11 +158,24 @@ export PATH=$PATH:/home/juan/.spicetify
 eval "$(starship init zsh)"
 # ========== STARSHIP END ======
 
+# ========== EZA ==========
 if command -v eza &> /dev/null; then
   alias ls='eza -lh --group-directories-first --icons=auto'
   alias lsa='ls -a'
   alias lt='eza --tree --level=2 --long --icons --git'
   alias lta='lt -a'
 fi
+# ========== EZA END =======
+
+# ========== BAT ==========
+if command -v bat &> /dev/null; then 
+  alias cat='bat'
+fi
+# ========== BAT END ======
+
+
+# ========== ZSH SYNTAX HIGHLIGHTING ==========
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# ========== ZSH SYNTAX HIGHLIGHTING END ======
 
 fastfetch
