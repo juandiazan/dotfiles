@@ -1,0 +1,112 @@
+// Color palette matches waybar theme
+$background: #0b011c;
+$surface:     #1a0d2e;
+$foreground:  #3c3449;
+$teal:        #55d4b2;
+$red:         #c91629;
+$pink:        #e35473;
+$white:       #fbf0de;
+$purple:      #7635b8;
+$magenta:     #9a578a;
+
+* {
+  font-family: "GoMono Nerd Font", monospace;
+  font-weight: bold;
+  all: unset;
+}
+
+.player {
+  background-color: $background;
+  border: 2px solid $teal;
+  border-radius: 12px;
+  padding: 8px;
+  color: $white;
+
+  .art-box {
+    margin-right: 10px;
+
+    image {
+      border-radius: 8px;
+    }
+  }
+
+  .content {
+    padding: 4px 8px 4px 0;
+  }
+
+  .player-header {
+    margin-bottom: 2px;
+
+    .player-name {
+      font-size: 11px;
+      color: $magenta;
+      letter-spacing: 1px;
+    }
+
+    .focus-btn {
+      background: transparent;
+      color: $magenta;
+      font-size: 13px;
+      padding: 0 4px;
+      border-radius: 4px;
+
+      &:hover {
+        background-color: $foreground;
+        color: $white;
+      }
+    }
+  }
+
+  .title {
+    font-size: 14px;
+    color: $white;
+  }
+
+  .artist {
+    font-size: 12px;
+    color: $teal;
+  }
+
+  // Progress bar
+  .progress {
+    trough {
+      background-color: $foreground;
+      border-radius: 4px;
+      min-height: 4px;
+    }
+    highlight {
+      background-color: $teal;
+      border-radius: 4px;
+    }
+    slider {
+      background-color: $pink;
+      border-radius: 50%;
+      min-width: 10px;
+      min-height: 10px;
+      margin: -3px;
+    }
+  }
+
+  // Control buttons
+  .controls {
+    margin-top: 2px;
+
+    .ctrl-btn {
+      background: transparent;
+      color: $teal;
+      font-size: 16px;
+      padding: 2px 10px;
+      border-radius: 6px;
+
+      &:hover {
+        background-color: $foreground;
+        color: $white;
+      }
+    }
+
+    .play-pause {
+      color: $pink;
+      font-size: 20px;
+    }
+  }
+}

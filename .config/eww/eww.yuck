@@ -1,0 +1,73 @@
+;; ---- Polls ----
+
+(defpoll media :interval "2s"
+`~/dotfiles/scripts/media-info.sh`)
+
+(defpoll art :interval "3s"
+`~/dotfiles/scripts/get-album-art.sh`)
+
+;; ---- Window ----
+;; Floats just above the bottom waybar (35px bar + ~15px gap = 50px from bottom).
+;; Toggle with: eww open --toggle media-player
+
+(defwindow media-player ;; creates a window
+  :monitor 0 ;; at monitor 0
+  :geometry (geometry
+    :x "0px" ;; with a certain x coord,
+    :y "10px" ;; a y coord
+    :width "400px" ;; and a specific width
+  :anchor "bottom center")
+  :stacking "overlay"
+  :exclusive false
+  (media-player-widget)
+)
+
+;; ---- Widget ----
+
+(defwidget media-player-widget []
+  (box :class "player" :orientation "h" :space-evenly false :spacing 0
+    (box :class "art-box"
+      (image :path {art} :image-width 104 :image-height 104)
+    )
+    (box :class "content" :orientation "v" :space-evenly false
+      :spacing 6 :hexpand true :valign "center"
+      (box :class "player-header" :orientation "h" :space-evenly false :hexpand true
+        (label :class "player-name"
+          :text {media.player}
+          :halign "start"
+        :hexpand true)
+        (button :class "focus-btn"
+          :onclick "~/dotfiles/scripts/focus-player.sh"
+        "")
+      )
+      (label :class "title"
+        :text {media.title}
+        :limit-width 26
+        :halign "start"
+      :ellipsize "end")
+      (label :class "artist"
+        :text {media.artist}
+        :limit-width 26
+        :halign "start"
+      :ellipsize "end")
+      (scale :class "progress"
+        :orientation "h"
+        :hexpand true
+        :min 0
+        :max {media.length}
+        :value {media.position}
+      :onchange "true")
+      (box :class "controls" :orientation "h" :space-evenly true :hexpand true
+        (button :class "ctrl-btn"
+          :onclick "playerctl --ignore-player=firefox,librewolf previous"
+        "󰒮")
+        (button :class "ctrl-btn play-pause"
+          :onclick "playerctl --ignore-player=firefox,librewolf play-pause"
+        {media.status == "Playing" ? "󰏤" : "󰐊"})
+        (button :class "ctrl-btn"
+          :onclick "playerctl --ignore-player=firefox,librewolf next"
+        "󰒭")
+      )
+    )
+  )
+)
