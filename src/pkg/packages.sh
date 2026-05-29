@@ -34,6 +34,8 @@ PROGRAMS_CUSTOMIZATION=(
     "rofi"
     "spicetify (and marketplace)"
     "swaync"
+    "eww"
+    "playerctl"
     "ckb-next (corsair drivers)"
     "solaar (logitech drivers)"
 )
@@ -66,6 +68,8 @@ declare -A PACKAGES=(
     [rofi]="rofi"
     ["spicetify (and marketplace)"]="spicetify-cli"
     [swaync]="swaync"
+    [eww]="eww"
+    [playerctl]="playerctl"
     ["ckb-next (corsair drivers)"]="ckb-next"
     ["solaar (logitech drivers)"]="solaar"
 )
