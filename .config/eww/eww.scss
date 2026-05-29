@@ -38,14 +38,13 @@ $magenta:     #9a578a;
     margin-bottom: 2px;
 
     .player-name {
-      font-size: 11px;
-      color: $magenta;
-      letter-spacing: 1px;
+      font-size: 12px;
+      color: $red;
     }
 
     .focus-btn {
       background: transparent;
-      color: $magenta;
+      color: $red;
       font-size: 13px;
       padding: 0 4px;
       border-radius: 4px;
@@ -79,7 +78,7 @@ $magenta:     #9a578a;
       border-radius: 4px;
     }
     slider {
-      background-color: $pink;
+      background-color: $red;
       border-radius: 50%;
       min-width: 10px;
       min-height: 10px;
@@ -105,7 +104,7 @@ $magenta:     #9a578a;
     }
 
     .play-pause {
-      color: $pink;
+      color: $red;
       font-size: 20px;
     }
   }
