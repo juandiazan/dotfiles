@@ -76,11 +76,14 @@
     }
   },
   "mpris": {
-    "format": "󰝚 {title}  {artist}",
-    "format-paused": "󰏤 {title}  {artist}",
-    "max-length": 45,
+    "format": "{status_icon} {artist} - {title}",
+    "format-paused": "{status_icon} {artist} - {title}",
+    "status-icons": {
+      "paused": "⏸",
+      "playing": "󰝚"
+    },
     "interval": "1",
-    "on-click": "eww open --toggle media-player",
+    "on-click-right": "eww open --toggle media-player",
     "on-scroll-up": "playerctl --ignore-player=firefox,librewolf next",
     "on-scroll-down": "playerctl --ignore-player=firefox,librewolf previous",
     "ignored-players": [

@@ -110,10 +110,9 @@ tooltip label {
 }
 
 #mpris.paused {
-  color: @magenta;
-  border-bottom: 3px solid @magenta;
-  border-top: 3px solid @magenta;
-  opacity: 0.75;
+  color: @red;
+  border-bottom: 3px solid @red;
+  border-top: 3px solid @red;
 }
 
 /*
