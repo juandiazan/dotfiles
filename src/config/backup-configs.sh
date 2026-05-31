@@ -154,10 +154,6 @@ run_backup_for_target() {
 			backup_item "directory" "$CONFIG_DIR/hypr" "$BACKUPS_DIR/pc-hypr-waybar/hypr" || backup_status=1
 			backup_item "directory" "$CONFIG_DIR/waybar" "$BACKUPS_DIR/pc-hypr-waybar/waybar" || backup_status=1
 		;;
-		"eww media widget")
-			create_dir_if_not_exists "$BACKUPS_DIR/eww"
-			backup_item "directory" "$CONFIG_DIR/eww" "$BACKUPS_DIR/eww" || backup_status=1
-		;;
 		"vscodium settings")
 			create_dir_if_not_exists "$BACKUPS_DIR/vscodium"
 			backup_item "file" "$CONFIG_DIR/VSCodium/User/settings.json" "$BACKUPS_DIR/vscodium/settings.json" || backup_status=1

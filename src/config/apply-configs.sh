@@ -138,13 +138,6 @@ apply_selected_configs(){
                 cp -r "$BACKUPS_DIR/pc-hypr-waybar/hypr"/* "$HOME/.config/hypr/"
                 cp -r "$BACKUPS_DIR/pc-hypr-waybar/waybar"/* "$HOME/.config/waybar/"
             ;;
-            "eww media widget")
-                mkdir -p "$HOME/.config/eww/scripts"
-                cp -r "$BACKUPS_DIR/eww"/* "$HOME/.config/eww/"
-                chmod +x "$HOME/.config/eww/scripts/"*.sh
-                print_color $BOLD_YELLOW "=====> Make sure eww and playerctl are installed."
-                print_color $BOLD_YELLOW "=====> Start the widget with: eww daemon && eww open media-player"
-            ;;
             "vscodium settings")
                 mkdir -p "$HOME/.config/VSCodium/User"
                 cp "$BACKUPS_DIR/vscodium/settings.json" "$HOME/.config/VSCodium/User/"
