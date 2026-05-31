@@ -3,7 +3,7 @@
 dir="$HOME/.config/rofi"
 theme='style-10'
 
-option=$(printf "hyprland\nwaybar\ndotfiles\nswaync\nrofi\nkitty\nzsh\nstarship\nfastfetch" |
+option=$(printf "hyprland\nwaybar\ndotfiles\nswaync\nrofi\nkitty\nzsh\nstarship\nfastfetch\nags" |
     rofi -dmenu -p "Edit Config" -theme ${dir}/${theme}.rasi)
 
 case "$option" in
@@ -16,4 +16,5 @@ case "$option" in
 "zsh") kitty -e nvim "$HOME/.zshrc" ;;
 "starship") kitty -e nvim "$HOME/.config/starship.toml" ;;
 "fastfetch") kitty -e nvim "$HOME/.config/fastfetch/config.jsonc" ;;
+"ags") kitty -e nvim "$HOME/.config/ags" ;;
 esac
