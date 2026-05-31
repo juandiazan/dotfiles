@@ -11,10 +11,7 @@ local browser = "librewolf"
 local appMenu = "pkill rofi pkill rofi || bash ~/.config/rofi/launcher.sh"
 local configsMenu = "pkill rofi || bash ~/dotfiles/scripts/config-menu.sh"
 local shutdownMenu = "pkill rofi || bash ~/dotfiles/scripts/shutdown-menu.sh"
-
---- UTILITIES
-local restartWaybar = "pkill waybar; waybar &"
-local reloadSwaync = "swaync-client -R && swaync-client -rs"
+local restartServicesMenu = "pkill rofi || bash ~/dotfiles/scripts/restart-services-menu.sh"
 
 -----------------------
 ----- KEYBINDINGS -----
@@ -38,10 +35,7 @@ hl.bind(mainMod .. " + K", hl.dsp.exec_cmd(terminal .. " kew"))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(appMenu))
 hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.exec_cmd(configsMenu))
 hl.bind(mainMod .. " + SHIFT + ALT + SPACE", hl.dsp.exec_cmd(shutdownMenu))
-
---- UTILITIES
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.exec_cmd(restartWaybar))
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.exec_cmd(reloadSwaync))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.exec_cmd(restartServicesMenu))
 
 --- LOGGING OUT
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
@@ -51,14 +45,14 @@ hl.bind(
 )
 
 --- SCREENSHOTS
-hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m region")) -- screenshot region
-hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd("hyprshot -m window")) -- screenshot window
+hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m region"))                       -- screenshot region
+hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd("hyprshot -m window"))         -- screenshot window
 hl.bind(mainMod .. " + SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m output")) -- screenshot monitor
 
 --- HYPRLAND
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo()) -- dwindle
+hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())       -- dwindle
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
 -- Move focus with mainMod + arrow keys

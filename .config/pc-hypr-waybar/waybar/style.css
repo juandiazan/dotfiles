@@ -15,26 +15,27 @@
 @define-color bordo #a5334a;
 
 * {
-  /*
+    /*
   */
-  all: unset;
-  font-family: "GoMono Nerd Font", monospace;
-  font-size: 14px;
-  font-weight: bold;
+    all: unset;
+    font-family: "GoMono Nerd Font", monospace;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 window#waybar {
-  background-color: @background;
-  color: @teal;
+    background-color: @background;
+    color: @teal;
 }
 
 tooltip {
-  background-color: @background;
+    background-color: @background;
 }
 
 tooltip label {
-  color: @bordo;
+    color: @bordo;
 }
+
 /*
 =================================
 ========= MODULES LEFT ==========
@@ -42,46 +43,46 @@ tooltip label {
 */
 
 #workspaces button {
-  padding: 5px;
-  color: @teal;
-  transition: all 200ms ease-in-out;
+    padding: 5px;
+    color: @teal;
+    transition: all 200ms ease-in-out;
 }
 
 #workspaces button:hover {
-  border: 3px @purple;
-  background-color: @foreground;
+    border: 3px @purple;
+    background-color: @foreground;
 }
 
 #workspaces button.active {
-  color: @red;
-  border-bottom: 4px;
-  text-shadow: 0 0 4px @red;
-  border-top: 3px solid @cyan;
-  border-bottom: 3px solid @cyan;
+    color: @red;
+    border-bottom: 4px;
+    text-shadow: 0 0 4px @red;
+    border-top: 3px solid @cyan;
+    border-bottom: 3px solid @cyan;
 }
 
 #workspaces button.empty {
-  opacity: 0.3;
+    opacity: 0.3;
 }
 
 /* TASKBAR */
 
 #taskbar button {
-  padding: 5px;
+    padding: 5px;
 }
 
 #taskbar button.active {
-  border-left: 3px solid @teal;
-  border-right: 3px solid @red;
+    border-left: 3px solid @teal;
+    border-right: 3px solid @red;
 
-  border-top: 3px solid @teal;
-  border-bottom: 3px solid @red;
+    border-top: 3px solid @teal;
+    border-bottom: 3px solid @red;
 }
 
 #taskbar button:hover {
-  border: 3px solid @white;
+    border: 3px solid @white;
 
-  background-color: @foreground;
+    background-color: @foreground;
 }
 
 /*
@@ -91,28 +92,28 @@ tooltip label {
 */
 
 #clock {
-  color: @red;
-  border-bottom: 3px solid @red;
-  border-top: 3px solid @red;
+    color: @red;
+    border-bottom: 3px solid @red;
+    border-top: 3px solid @red;
 }
 
 #custom-distro {
-  padding-left: 4px;
-  color: @cyan;
-  border-bottom: 3px solid @cyan;
-  border-top: 3px solid @cyan;
+    padding-left: 4px;
+    color: @cyan;
+    border-bottom: 3px solid @cyan;
+    border-top: 3px solid @cyan;
 }
 
 #mpris {
-  color: @teal;
-  border-bottom: 3px solid @teal;
-  border-top: 3px solid @teal;
+    color: @teal;
+    border-bottom: 3px solid @teal;
+    border-top: 3px solid @teal;
 }
 
 #mpris.paused {
-  color: @red;
-  border-bottom: 3px solid @red;
-  border-top: 3px solid @red;
+    color: @red;
+    border-bottom: 3px solid @red;
+    border-top: 3px solid @red;
 }
 
 /*
@@ -121,56 +122,63 @@ tooltip label {
 =================================
 */
 #custom-notification {
-  color: @magenta;
-  border-top: 3px solid @magenta;
-  border-bottom: 3px solid @magenta;
-  padding-right: 3px;
+    color: @magenta;
+    border-top: 3px solid @magenta;
+    border-bottom: 3px solid @magenta;
+    padding-right: 3px;
 }
 
 #bluetooth {
-  color: @teal;
-  border-top: 3px solid @teal;
-  border-bottom: 3px solid @teal;
+    color: @teal;
+    border-top: 3px solid @teal;
+    border-bottom: 3px solid @teal;
 }
 
 #network {
-  color: @pink;
-  border-top: 3px solid @pink;
-  border-bottom: 3px solid @pink;
+    color: @pink;
+    border-top: 3px solid @pink;
+    border-bottom: 3px solid @pink;
 }
 
 #pulseaudio {
-  color: @white;
-  border-top: 3px solid @white;
-  border-bottom: 3px solid @white;
+    color: @white;
+    border-top: 3px solid @white;
+    border-bottom: 3px solid @white;
 }
 
 #cpu {
-  color: @blue;
-  border-top: 3px solid @blue;
-  border-bottom: 3px solid @blue;
+    color: @blue;
+    border-top: 3px solid @blue;
+    border-bottom: 3px solid @blue;
 }
 
 #memory {
-  color: @cyan;
-  border-top: 3px solid @cyan;
-  border-bottom: 3px solid @cyan;
+    color: @cyan;
+    border-top: 3px solid @cyan;
+    border-bottom: 3px solid @cyan;
 }
 
 #disk {
-  color: @red;
-  border-top: 3px solid @red;
-  border-bottom: 3px solid @red;
+    color: @red;
+    border-top: 3px solid @red;
+    border-bottom: 3px solid @red;
 }
 
 #idle_inhibitor {
-  color: @teal;
-  border-top: 3px solid @teal;
-  border-bottom: 3px solid @teal;
+    color: @teal;
+    border-top: 3px solid @teal;
+    border-bottom: 3px solid @teal;
 }
 
 #language {
-  color: @magenta;
-  border-top: 3px solid @magenta;
-  border-bottom: 3px solid @magenta;
+    color: @magenta;
+    border-top: 3px solid @magenta;
+    border-bottom: 3px solid @magenta;
+}
+
+#custom-settings {
+    padding-left: 4px;
+    color: @white;
+    border-top: 3px solid @white;
+    border-bottom: 3px solid @white;
 }

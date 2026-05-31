@@ -1,0 +1,45 @@
+{
+    "custom/distro": {
+        "format": "󰣇 ",
+        "tooltip": false,
+        "on-click": "~/.config/rofi/launcher.sh"
+    },
+    "clock": {
+        "format": "{:L%H:%M, %A %d/%m/%Y}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#c91629'><b>{}</b></span>", // red
+                "days": "<span color='#fbf0de'><b>{}</b></span>", // white
+                "weeks": "<span color='#55d4b2'><b>W{}</b></span>", // light teal
+                "weekdays": "<span color='#249d9d'><b>{}</b></span>", // dark teal
+                "today": "<span color='#e35473'><b><u>{}</u></b></span>" // pink
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "mpris": {
+        "format": "{status_icon} {artist} - {title}",
+        "format-paused": "{status_icon} {artist} - {title}",
+        "status-icons": {
+            "paused": "⏸",
+            "playing": "󰝚"
+        },
+        "interval": "1",
+        "on-click-right": "ags toggle media-player",
+        "on-scroll-up": "playerctl --ignore-player=firefox,librewolf next",
+        "on-scroll-down": "playerctl --ignore-player=firefox,librewolf previous",
+        "ignored-players": [
+            "firefox",
+            "librewolf"
+        ]
+    },
+}
