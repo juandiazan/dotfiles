@@ -36,6 +36,7 @@ PROGRAMS_CUSTOMIZATION=(
     "swaync"
     "eww"
     "playerctl"
+    "ags"
     "ckb-next (corsair drivers)"
     "solaar (logitech drivers)"
 )
@@ -70,6 +71,7 @@ declare -A PACKAGES=(
     [swaync]="swaync"
     [eww]="eww"
     [playerctl]="playerctl"
+    [ags]="ags"
     ["ckb-next (corsair drivers)"]="ckb-next"
     ["solaar (logitech drivers)"]="solaar"
 )

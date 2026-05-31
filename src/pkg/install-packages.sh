@@ -182,6 +182,13 @@ install_selected_software() {
 
                 spicetify backup apply enable-devtools
                 ;;
+            "ags")
+                install_package "$pkg_name" || echo "Failed to install $program"
+                if [[ -f "$HOME/.config/ags/package.json" ]]; then
+                    print_color $BOLD_YELLOW "=====> Running npm install in ~/.config/ags..."
+                    (cd "$HOME/.config/ags" && npm install)
+                fi
+                ;;
             *)
                 install_package "$pkg_name" || echo "Failed to install $program"
                 ;;
