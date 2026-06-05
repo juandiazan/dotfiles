@@ -26,6 +26,7 @@ hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("discord &"))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("obsidian &"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("hyprpicker"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.exec_cmd(terminal .. " yazi"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal .. " btop"))
@@ -33,26 +34,25 @@ hl.bind(mainMod .. " + K", hl.dsp.exec_cmd(terminal .. " kew"))
 
 --- MENUS
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(appMenu))
-hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.exec_cmd(configsMenu))
-hl.bind(mainMod .. " + SHIFT + ALT + SPACE", hl.dsp.exec_cmd(shutdownMenu))
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(configsMenu))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(shutdownMenu))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.exec_cmd(restartServicesMenu))
 
 --- LOGGING OUT
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(
-	mainMod .. " + SHIFT + L",
+	mainMod .. " + SHIFT + ALT + L",
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 
 --- SCREENSHOTS
-hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m region"))                       -- screenshot region
-hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd("hyprshot -m window"))         -- screenshot window
+hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m region")) -- screenshot region
+hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd("hyprshot -m window")) -- screenshot window
 hl.bind(mainMod .. " + SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m output")) -- screenshot monitor
 
 --- HYPRLAND
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())       -- dwindle
+hl.bind(mainMod .. " + P", hl.dsp.window.pseudo()) -- dwindle
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
 -- Move focus with mainMod + arrow keys

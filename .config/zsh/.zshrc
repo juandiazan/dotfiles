@@ -178,4 +178,9 @@ fi
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # ========== ZSH SYNTAX HIGHLIGHTING END ======
 
+# ========== FLUTTER VERSION MANAGER ==========
+export PATH="$HOME/fvm/default/bin:$HOME/.pub-cache/bin:$PATH"
+# ========== FLUTTER VERSION MANAGER END ======
+
 fastfetch
+
