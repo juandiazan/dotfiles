@@ -1,6 +1,8 @@
 # ======================= ALIASES =======================
 alias lzg=lazygit
 alias lzd=lazydocker
+alias cdot="cd dotfiles"
+alias codhere="codium ."
 # ======================= ALIASES END====================
 
 # If you come from bash you might have to change your $PATH.

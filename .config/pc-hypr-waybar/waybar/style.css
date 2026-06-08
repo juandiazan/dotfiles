@@ -135,6 +135,7 @@ tooltip label {
 }
 
 #network {
+    padding-left: 3px;
     color: @pink;
     border-top: 3px solid @pink;
     border-bottom: 3px solid @pink;

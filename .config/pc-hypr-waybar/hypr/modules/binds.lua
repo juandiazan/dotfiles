@@ -7,11 +7,13 @@ local terminal = "kitty"
 local fileManager = "nautilus"
 local browser = "librewolf"
 
+local scriptsPath = "~/dotfiles/scripts/"
+
 --- MENUS
 local appMenu = "pkill rofi pkill rofi || bash ~/.config/rofi/launcher.sh"
-local configsMenu = "pkill rofi || bash ~/dotfiles/scripts/config-menu.sh"
-local shutdownMenu = "pkill rofi || bash ~/dotfiles/scripts/shutdown-menu.sh"
-local restartServicesMenu = "pkill rofi || bash ~/dotfiles/scripts/restart-services-menu.sh"
+local configsMenu = "pkill rofi || bash " .. scriptsPath .. "menus/config-menu.sh"
+local shutdownMenu = "pkill rofi || bash " .. scriptsPath .. "menus/shutdown-menu.sh"
+local restartServicesMenu = "pkill rofi || bash " .. scriptsPath .. "menus/restart-services-menu.sh"
 
 -----------------------
 ----- KEYBINDINGS -----
