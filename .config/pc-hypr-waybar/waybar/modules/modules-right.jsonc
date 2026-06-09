@@ -56,8 +56,8 @@
     },
     "pulseaudio#input": {
         "format": "{format_source}",
-        "format-source": "󰍬 {volume}%",
-        "format-source-muted": "󰍭 {volume}%",
+        "format-source": "󰍬",
+        "format-source-muted": "󰍭",
         "on-click": "~/dotfiles/scripts/waybar/volume.sh input mute",
         "on-scroll-up": "~/dotfiles/scripts/waybar/volume.sh input raise",
         "on-scroll-down": "~/dotfiles/scripts/waybar/volume.sh input lower",

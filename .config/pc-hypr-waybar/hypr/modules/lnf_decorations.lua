@@ -3,45 +3,46 @@
 -----------------------------------
 
 hl.config({
-    general = {
-        gaps_in = 4,
-        gaps_out = 8,
+	general = {
+		gaps_in = 4,
+		gaps_out = 8,
 
-        border_size = 3,
+		border_size = 3,
 
-        col = {
-            active_border = { colors = { "rgb(249d9d)", "rgb(c91629)" }, angle = 60 },
-            inactive_border = "rgba(595959aa)"
-        },
+		col = {
+			active_border = { colors = { "rgb(249d9d)", "rgb(c91629)" }, angle = 60 },
+			inactive_border = "rgba(595959aa)",
+		},
 
-        -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
-        resize_on_border = false,
+		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps
+		resize_on_border = false,
 
-        allow_tearing = false,
+		allow_tearing = false,
 
-        layout = "dwindle",
-    },
+		layout = "dwindle",
+	},
 
-    decoration = {
-        rounding = 8,
-        rounding_power = 2,
+	decoration = {
+		rounding = 8,
+		rounding_power = 2,
 
-        active_opacity = 1.0,
-        inactive_opacity = 0.85,
+		active_opacity = 1.0,
+		inactive_opacity = 0.85,
 
-        shadow = {
-            enabled = true,
-            range = 10,
-            render_power = 3,
-            color = "rgba(1a1a1aee)"
-        },
+		shadow = {
+			enabled = true,
+			range = 10,
+			render_power = 3,
+			color = "rgba(1a1a1aee)",
+		},
 
-        blur = {
-            enabled = true,
-            size = 3,
-            passes = 1,
+		blur = {
+			enabled = true,
+			size = 6,
+			passes = 3,
+			new_optimizations = true,
 
-            vibrancy = 0.1696
-        }
-    }
+			vibrancy = 0.1696,
+		},
+	},
 })

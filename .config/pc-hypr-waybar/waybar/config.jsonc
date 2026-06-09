@@ -4,10 +4,9 @@
     "$HOME/.config/waybar/modules/modules-center.jsonc",
     "$HOME/.config/waybar/modules/modules-right.jsonc",
   ],
-  "layer": "bottom",
+  "layer": "top",
   "position": "bottom",
-  "spacing": 8,
-  "height": 35,
+  "height": 30,
   "modules-left": [
     "hyprland/workspaces",
     "wlr/taskbar",
@@ -31,4 +30,7 @@
     "hyprland/language",
     "custom/settings"
   ],
+  "spacing": 5,
+  "margin": 0,
+  "reload_style_on_change": true
 }

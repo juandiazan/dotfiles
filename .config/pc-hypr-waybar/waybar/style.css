@@ -1,18 +1,19 @@
-@define-color cyan rgb(3, 106, 110);
-@define-color cyan-light rgb(79, 151, 154);
-@define-color cyan-dark rgb(1, 42, 44);
+@define-color cyan rgb(5, 143, 143);
+@define-color cyan-light #50b1b1;
+@define-color cyan-dark #012b2b;
 
-@define-color ts transparent;
+@define-color black rgb(15, 16, 21);
+
+@define-color dark-blue rgb(11, 1, 28);
+
+@define-color red rgb(197, 5, 42);
+
+@define-color white #faf1dd;
+
 @define-color background #0b011c;
 @define-color foreground #3c3449;
-@define-color black #0f1014;
-@define-color red #c91629;
-@define-color green #0eab52;
-@define-color yellow #d2d45f;
 @define-color blue #292c49;
 @define-color magenta #9a578a;
-@define-color white #fbf0de;
-@define-color purple #7635b8;
 @define-color pink #e35473;
 @define-color teal #55d4b2;
 @define-color bordo #a5334a;
@@ -25,16 +26,19 @@
 }
 
 window#waybar {
-    background-color: @background;
-    color: @teal;
+    background-color: alpha(@dark-blue, 0.75);
+    color: @black;
 }
 
 tooltip {
-    background-color: @background;
+    background-color: @black;
+    border: 2px solid @cyan;
+    border-radius: 10px;
 }
 
 tooltip label {
-    color: @bordo;
+    padding: 2px;
+    color: @red;
 }
 
 /*
@@ -44,26 +48,27 @@ tooltip label {
 */
 
 #workspaces button {
+    color: @cyan;
     padding: 5px;
-    color: @teal;
     transition: all 200ms ease-in-out;
 }
 
 #workspaces button:hover {
-    border: 3px @purple;
-    background-color: @foreground;
+    border-radius: 10px;
+    background-color: alpha(@white, 0.1);
 }
 
 #workspaces button.active {
     color: @red;
+    border-radius: 20px;
     border-bottom: 4px;
     text-shadow: 0 0 4px @red;
     border-top: 3px solid @cyan;
     border-bottom: 3px solid @cyan;
 }
 
-#workspaces button.empty {
-    opacity: 0.3;
+#workspaces button.empty:not(.active) {
+    color: alpha(@cyan, 0.3);
 }
 
 /* TASKBAR */
@@ -73,6 +78,7 @@ tooltip label {
 }
 
 #taskbar button.active {
+    border-radius: 7px;
     border-left: 3px solid @teal;
     border-right: 3px solid @red;
 
@@ -81,9 +87,14 @@ tooltip label {
 }
 
 #taskbar button:hover {
-    border: 3px solid @white;
+    border-radius: 7px;
 
-    background-color: @foreground;
+    background-color: alpha(@dark-blue, 0.3);
+}
+
+/* hyprland current active window title */
+#window {
+    color: @white;
 }
 
 /*
@@ -160,7 +171,7 @@ tooltip label {
     border-bottom: 3px solid @cyan;
 }
 
-#memory:hover{
+#memory:hover {
     color: @cyan-light;
     border-top: 3px solid @cyan-light;
     border-bottom: 3px solid @cyan-light;
