@@ -1,22 +1,4 @@
-@define-color cyan rgb(5, 143, 143);
-@define-color cyan-light #50b1b1;
-@define-color cyan-dark #012b2b;
-
-@define-color black rgb(15, 16, 21);
-
-@define-color dark-blue rgb(11, 1, 28);
-
-@define-color red rgb(197, 5, 42);
-
-@define-color white #faf1dd;
-
-@define-color background #0b011c;
-@define-color foreground #3c3449;
-@define-color blue #292c49;
-@define-color magenta #9a578a;
-@define-color pink #e35473;
-@define-color teal #55d4b2;
-@define-color bordo #a5334a;
+@import "colors.css";
 
 * {
     all: unset;
@@ -26,8 +8,7 @@
 }
 
 window#waybar {
-    background-color: alpha(@dark-blue, 0.75);
-    color: @black;
+    background-color: alpha(@bg, 0.75);
 }
 
 tooltip {
@@ -55,7 +36,7 @@ tooltip label {
 
 #workspaces button:hover {
     border-radius: 10px;
-    background-color: alpha(@white, 0.1);
+    background-color: alpha(@text, 0.1);
 }
 
 #workspaces button.active {
@@ -89,12 +70,12 @@ tooltip label {
 #taskbar button:hover {
     border-radius: 7px;
 
-    background-color: alpha(@dark-blue, 0.3);
+    background-color: alpha(@bg, 0.3);
 }
 
 /* hyprland current active window title */
 #window {
-    color: @white;
+    color: @text;
 }
 
 /*
@@ -134,35 +115,42 @@ tooltip label {
 =================================
 */
 #custom-notification {
-    color: @magenta;
-    border-top: 3px solid @magenta;
-    border-bottom: 3px solid @magenta;
+    color: @violet;
+    border-top: 3px solid @violet;
+    border-bottom: 3px solid @violet;
     padding-right: 3px;
 }
 
 #bluetooth {
-    color: @teal;
-    border-top: 3px solid @teal;
-    border-bottom: 3px solid @teal;
+    color: @blue;
+    border-top: 3px solid @blue;
+    border-bottom: 3px solid @blue;
 }
 
 #network {
     padding-left: 3px;
-    color: @pink;
-    border-top: 3px solid @pink;
-    border-bottom: 3px solid @pink;
-}
-
-#pulseaudio {
-    color: @white;
-    border-top: 3px solid @white;
-    border-bottom: 3px solid @white;
-}
-
-#cpu {
     color: @blue;
     border-top: 3px solid @blue;
     border-bottom: 3px solid @blue;
+}
+
+#pulseaudio {
+    color: @text;
+    border-top: 3px solid @text;
+    border-bottom: 3px solid @text;
+}
+
+#cpu {
+    color: @red;
+    border-top: 3px solid @red;
+    border-bottom: 3px solid @red;
+}
+
+#cpu:hover {
+    color: @red-light;
+    border-top: 3px solid @red-light;
+    border-bottom: 3px solid @red-light;
+    transition: all 150ms ease-in-out;
 }
 
 #memory {
@@ -180,26 +168,53 @@ tooltip label {
 }
 
 #disk {
-    color: @red;
-    border-top: 3px solid @red;
-    border-bottom: 3px solid @red;
-}
-
-#idle_inhibitor {
     color: @teal;
     border-top: 3px solid @teal;
     border-bottom: 3px solid @teal;
 }
 
+#disk:hover {
+    color: @teal-light;
+    border-bottom: 3px solid @teal-light;
+    border-top: 3px solid @teal-light;
+    transition: all 150ms ease-in-out;
+}
+
+#idle_inhibitor.deactivated {
+    color: @red;
+    border-top: 3px solid @red;
+    border-bottom: 3px solid @red;
+}
+
+#idle_inhibitor.deactivated:hover{
+    color: @red-light;
+    border-bottom: 3px solid @red-light;
+    border-top: 3px solid @red-light;
+    transition: all 150ms ease-in-out;
+}
+
+#idle_inhibitor.activated {
+    color: @teal;
+    border-top: 3px solid @teal;
+    border-bottom: 3px solid @teal;
+}
+
+#idle_inhibitor.activated:hover{
+    color: @teal-light;
+    border-bottom: 3px solid @teal-light;
+    border-top: 3px solid @teal-light;
+    transition: all 150ms ease-in-out;
+}
+
 #language {
-    color: @magenta;
-    border-top: 3px solid @magenta;
-    border-bottom: 3px solid @magenta;
+    color: @violet;
+    border-top: 3px solid @violet;
+    border-bottom: 3px solid @violet;
 }
 
 #custom-settings {
     padding-left: 4px;
-    color: @white;
-    border-top: 3px solid @white;
-    border-bottom: 3px solid @white;
+    color: @cyan;
+    border-top: 3px solid @cyan;
+    border-bottom: 3px solid @cyan;
 }
