@@ -15,7 +15,8 @@
   "modules-center": [
     "clock",
     "custom/distro",
-    "mpris"
+    "mpris",
+    "tray",
   ],
   "modules-right": [
     "custom/notification",

@@ -6,10 +6,10 @@ $os\
 $username\
 [](bg:color_cyan fg:color_red_main)\
 $directory\
-[](fg:color_cyan bg:color_blue_main)\
+[](fg:color_cyan bg:color_teal)\
 $git_branch\
 $git_status\
-[](fg:color_blue_main bg:color_magenta)\
+[](fg:color_teal bg:color_magenta)\
 $c\
 $cpp\
 $rust\
@@ -47,11 +47,11 @@ palette = "custom"
 
 [palettes.custom]
 color_teal = "#55d4b2"
-color_cyan = "#249d9d"
-color_red_main = "#c91629"
-color_blue_main = "#292c49"
-color_magenta = "#9a578a"
-color_white = "#fbf0de"
+color_cyan = "#058f8f"
+color_red_main = "#c5052a"
+color_magenta = "#704bb6"
+color_black = "#0b011c"
+color_white = "#f8eddb"
 color_bg1 = "#3c3836"
 color_bg3 = "#665c54"
 
@@ -106,12 +106,12 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:color_blue_main"
-format = "[[ $symbol $branch ](fg:color_white bg:color_blue_main)]($style)"
+style = "bg:color_teal"
+format = "[[ $symbol $branch ](fg:color_black bg:color_teal)]($style)"
 
 [git_status]
-style = "bg:color_blue_main"
-format = "[[($all_status$ahead_behind )](fg:color_white bg:color_blue_main)]($style)"
+style = "bg:color_teal"
+format = "[[($all_status$ahead_behind )](fg:color_black bg:color_teal)]($style)"
 
 [nodejs]
 symbol = ""

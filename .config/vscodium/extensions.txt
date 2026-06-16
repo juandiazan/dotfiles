@@ -1,10 +1,14 @@
 arcticicestudio.nord-visual-studio-code
 catppuccin.catppuccin-vsc
+dart-code.dart-code
+dart-code.flutter
 davidanson.vscode-markdownlint
 dlasagno.rasi
 eamodio.gitlens
 esbenp.prettier-vscode
+eww-yuck.yuck
 fireblast.hyprlang-vscode
+golang.go
 haskell.haskell
 justusadam.language-haskell
 kamikillerto.vscode-colorize
@@ -14,7 +18,10 @@ ms-azuretools.vscode-docker
 ms-python.debugpy
 ms-python.python
 ms-python.vscode-python-envs
+mutyai.muty-pptviewer
+owenrumney.make-ls
 pkief.material-icon-theme
+sumneko.lua
 tombi-toml.tombi
 tomoki1207.pdf
 usernamehw.errorlens

@@ -186,3 +186,4 @@ export PATH="$HOME/fvm/default/bin:$HOME/.pub-cache/bin:$PATH"
 
 fastfetch
 
+export PATH="$HOME/.npm-global/bin:$PATH"

@@ -8,7 +8,7 @@
 }
 
 window#waybar {
-    background-color: alpha(@bg, 0.75);
+    background-color: alpha(@bg, 0.65);
 }
 
 tooltip {
@@ -186,7 +186,7 @@ tooltip label {
     border-bottom: 3px solid @red;
 }
 
-#idle_inhibitor.deactivated:hover{
+#idle_inhibitor.deactivated:hover {
     color: @red-light;
     border-bottom: 3px solid @red-light;
     border-top: 3px solid @red-light;
@@ -199,7 +199,7 @@ tooltip label {
     border-bottom: 3px solid @teal;
 }
 
-#idle_inhibitor.activated:hover{
+#idle_inhibitor.activated:hover {
     color: @teal-light;
     border-bottom: 3px solid @teal-light;
     border-top: 3px solid @teal-light;
@@ -210,6 +210,12 @@ tooltip label {
     color: @violet;
     border-top: 3px solid @violet;
     border-bottom: 3px solid @violet;
+}
+#language:hover {
+    color: @violet-light;
+    border-top: 3px solid @violet-light;
+    border-bottom: 3px solid @violet-light;
+    transition: all 150ms ease-in-out;
 }
 
 #custom-settings {
