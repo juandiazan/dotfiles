@@ -140,6 +140,10 @@ run_backup_for_target() {
 			create_dir_if_not_exists "$BACKUPS_DIR/rofi"
 			backup_item "directory" "$CONFIG_DIR/swaync" "$BACKUPS_DIR/swaync" || backup_status=1
 		;;
+		"tmux config")
+			create_dir_if_not_exists "$BACKUPS_DIR/tmux"
+			backup_item "directory" "$CONFIG_DIR/tmux" "$BACKUPS_DIR/tmux" || backup_status=1
+		;;
 		"hypr and waybar for laptop")
 			create_dir_if_not_exists "$BACKUPS_DIR/laptop-hypr-waybar"
 			create_dir_if_not_exists "$BACKUPS_DIR/laptop-hypr-waybar/hypr"

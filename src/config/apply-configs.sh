@@ -126,6 +126,10 @@ apply_selected_configs(){
                 spicetify config current_theme Sleek color_scheme Elementary
                 spicetify apply
             ;;
+            "tmux config")
+                mkdir -p "$HOME/.config/tmux"
+                cp -r "$BACKUPS_DIR/tmux"/* "$HOME/.config/tmux/"
+            ;;
             "hypr and waybar for laptop")
                 mkdir -p "$HOME/.config/hypr"
                 mkdir -p "$HOME/.config/waybar"
