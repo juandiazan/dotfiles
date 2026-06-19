@@ -7,13 +7,16 @@ davidanson.vscode-markdownlint
 dlasagno.rasi
 eamodio.gitlens
 esbenp.prettier-vscode
+eww-yuck.yuck
 fireblast.hyprlang-vscode
 golang.go
 haskell.haskell
 jemo.celestial-echoes
+juandiazan.bash-lsp
 justusadam.language-haskell
 kamikillerto.vscode-colorize
 llvm-vs-code-extensions.vscode-clangd
+maxie-homrich.copilot-for-vscode-oss
 ms-azuretools.vscode-containers
 ms-azuretools.vscode-docker
 ms-dotnettools.vscode-dotnet-runtime

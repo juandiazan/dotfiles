@@ -14,7 +14,7 @@ local appMenu = "pkill rofi pkill rofi || bash ~/.config/rofi/launcher.sh"
 local configsMenu = "pkill rofi || bash " .. scriptsPath .. "menus/config-menu.sh"
 local shutdownMenu = "pkill rofi || bash " .. scriptsPath .. "menus/shutdown-menu.sh"
 local restartServicesMenu = "pkill rofi || bash " .. scriptsPath .. "menus/restart-services-menu.sh"
-
+local projectsMenu = "pkill rofi || bash " .. scriptsPath .. "menus/projects-menu.sh"
 -----------------------
 ----- KEYBINDINGS -----
 -----------------------
@@ -39,6 +39,7 @@ hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(appMenu))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(configsMenu))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(shutdownMenu))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.exec_cmd(restartServicesMenu))
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(projectsMenu))
 
 --- LOGGING OUT
 hl.bind(

@@ -10,7 +10,7 @@ local terminal = "kitty"
 ---------------------
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("waybar & ckb-next & swaync & hypridle & hyprpaper & eww daemon")
+    hl.exec_cmd("waybar & ckb-next & swaync & hypridle & hyprpaper & hyprsunset &")
     hl.exec_cmd("rfkill unblock bluetooth")
     hl.exec_cmd("ags run")
 end)
