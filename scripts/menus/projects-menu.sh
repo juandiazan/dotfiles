@@ -17,4 +17,10 @@ option=$(printf '%s\n' "$projects" |
 
 [ -z "$option" ] && exit 0
 
-kitty -e nvim "$projects_dir/$option"
+project_dir="$projects_dir/$option"
+
+if command -v tmux >/dev/null 2>&1; then
+    exec kitty -e tmux new-session -As "$option" -c "$project_dir" "nvim \"$project_dir\""
+else
+    exec kitty -d "$project_dir" -e nvim "$project_dir"
+fi

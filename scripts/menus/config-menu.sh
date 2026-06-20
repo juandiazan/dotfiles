@@ -6,15 +6,32 @@ theme='style-10'
 option=$(printf "hyprland\nwaybar\ndotfiles\nswaync\nrofi\nkitty\nzsh\nstarship\nfastfetch\nags" |
     rofi -dmenu -p "Edit Config" -theme ${dir}/${theme}.rasi)
 
+[ -z "$option" ] && exit 0
+
 case "$option" in
-"hyprland") kitty -e nvim "$HOME/.config/hypr" ;;
-"waybar") kitty -e nvim "$HOME/.config/waybar" ;;
-"dotfiles") kitty -e nvim "$HOME/dotfiles" ;;
-"swaync") kitty -e nvim "$HOME/.config/swaync" ;;
-"rofi") kitty -e nvim "$HOME/.config/rofi" ;;
-"kitty") kitty -e nvim "$HOME/.config/kitty" ;;
-"zsh") kitty -e nvim "$HOME/.zshrc" ;;
-"starship") kitty -e nvim "$HOME/.config/starship.toml" ;;
-"fastfetch") kitty -e nvim "$HOME/.config/fastfetch/config.jsonc" ;;
-"ags") kitty -e nvim "$HOME/.config/ags" ;;
+"hyprland")  target="$HOME/.config/hypr" ;;
+"waybar")    target="$HOME/.config/waybar" ;;
+"dotfiles")  target="$HOME/dotfiles" ;;
+"swaync")    target="$HOME/.config/swaync" ;;
+"rofi")      target="$HOME/.config/rofi" ;;
+"kitty")     target="$HOME/.config/kitty" ;;
+"zsh")       target="$HOME/.zshrc" ;;
+"starship")  target="$HOME/.config/starship.toml" ;;
+"fastfetch") target="$HOME/.config/fastfetch/config.jsonc" ;;
+"ags")       target="$HOME/.config/ags" ;;
+*) exit 0 ;;
 esac
+
+if [ -d "$target" ]; then
+    workdir="$target"
+    nvim_cmd="nvim ."
+else
+    workdir="$(dirname "$target")"
+    nvim_cmd="nvim \"$target\""
+fi
+
+if command -v tmux >/dev/null 2>&1; then
+    exec kitty -e tmux new-session -As "$option" -c "$workdir" "$nvim_cmd"
+else
+    exec kitty -d "$workdir" -e nvim "$target"
+fi
