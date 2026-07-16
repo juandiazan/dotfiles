@@ -211,6 +211,7 @@ tooltip label {
     border-top: 3px solid @violet;
     border-bottom: 3px solid @violet;
 }
+
 #language:hover {
     color: @violet-light;
     border-top: 3px solid @violet-light;
@@ -223,4 +224,12 @@ tooltip label {
     color: @cyan;
     border-top: 3px solid @cyan;
     border-bottom: 3px solid @cyan;
+}
+
+#custom-settings:hover {
+    color: @cyan-light;
+    border-top: 3px solid @cyan-light;
+    border-bottom: 3px solid @cyan-light;
+    transition: all 150ms ease-in-out;
+
 }

@@ -34,6 +34,8 @@ hl.bind(mainMod .. " + SHIFT + F", hl.dsp.exec_cmd(terminal .. " yazi"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal .. " btop"))
 hl.bind(mainMod .. " + K", hl.dsp.exec_cmd(terminal .. " kew"))
 
+hl.bind(mainMod .. " + ALT + K", hl.dsp.exec_cmd("pkill waybar || waybar &"))
+
 --- MENUS
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(appMenu))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(configsMenu))
