@@ -63,6 +63,10 @@ hl.window_rule({
 hl.layer_rule({ match = { namespace = "waybar" }, blur = true })
 hl.layer_rule({ match = { namespace = "waybar" }, ignore_alpha = 0.5 })
 
+-- ROFI BLUR
+hl.layer_rule({ match = { namespace = "rofi" }, blur = true })
+hl.layer_rule({ match = { namespace = "rofi" }, ignore_alpha = 0.5 })
+
 -- AGS BLUR
 hl.layer_rule({ match = { namespace = "ags-control-panel" }, blur = true })
 hl.layer_rule({ match = { namespace = "ags-control-panel" }, ignore_alpha = 0.5 })

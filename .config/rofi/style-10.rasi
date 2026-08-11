@@ -22,9 +22,11 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
+    //background:     #021B21FF;
+    //background-alt: #0C252BFF;
     font:                        "GoMono Nerd Font 10";
-    background:     #021B21FF;
-    background-alt: #0C252BFF;
+    background:     #021B21A6;
+    background-alt: #0C252BCC;
     foreground:     #fbf0deFF;
     selected:       #249d9dFF;
     active:         #55d4b2FF; // current tab button color
