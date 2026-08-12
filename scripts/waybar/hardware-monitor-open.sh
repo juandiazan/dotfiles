@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if pgrep -x btop >/dev/null; then
     pkill -x btop

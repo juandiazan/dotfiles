@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-open_bluetui(){
+open_bluetui() {
     if pgrep -x bluetui >/dev/null; then
         pkill -x bluetui
     else

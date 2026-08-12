@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Extract the Sinks section first to avoid Streams/Sources
 SINKS_SECTION=$(wpctl status | sed -n '/Sinks:/,/Sources:/p')
